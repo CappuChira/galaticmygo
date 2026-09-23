@@ -1,0 +1,66 @@
+# 阶段三随动事件：素世的初次动摇（契合度异常）
+country_event = {
+	id = mygo.430
+	title = mygo_story.430.name
+	desc = mygo_story.430.desc
+	diplomatic = yes
+	picture_event_data = {
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_430_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_430_seen
+	}
+
+	option = {
+		name = mygo_story.430.a
+		response_text = mygo_story.430.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.430.b
+		response_text = mygo_story.430.b.response
+		default_hide_option = yes
+		# 此处不直接触发后续，留给考古链自然推进
+	}
+}
+
+# 阶段五随动事件：素世的终极宽慰（病态的温柔）
+country_event = {
+	id = mygo.440
+	title = mygo_story.440.name
+	desc = mygo_story.440.desc
+	diplomatic = yes
+	picture_event_data = {
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_440_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_440_seen
+	}
+
+	option = {
+		name = mygo_story.440.a
+		response_text = mygo_story.440.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.440.b
+		response_text = mygo_story.440.b.response
+		default_hide_option = yes
+	}
+}

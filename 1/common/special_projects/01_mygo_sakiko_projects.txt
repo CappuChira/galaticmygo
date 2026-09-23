@@ -1,0 +1,21 @@
+special_project = {
+	key = "MYGO_A3_A7_AUDIT_PROJECT"
+	days_to_research = 90
+	tech_department = society_technology
+	timelimit = -1
+	picture = GFX_evt_society_research
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+	location = yes
+	remove_when_completed = yes
+
+	event_scope = country_event
+
+	requirements = {
+		shipclass_science_ship = 1
+		leader = scientist
+	}
+
+	on_success = {
+		owner = { country_event = { id = mygo.653 } }
+	}
+}

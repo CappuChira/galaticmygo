@@ -1,0 +1,85 @@
+# 视察第一站：主控中枢
+country_event = {
+	id = mygo.422
+	title = mygo_story.422.name
+	desc = mygo_story.422.desc
+	diplomatic = yes
+	picture_event_data = {
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_422_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_422_seen
+	}
+
+	option = {
+		name = mygo_story.422.a
+		response_text = mygo_story.422.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.422.b
+		response_text = mygo_story.422.b.response
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.423 }
+		}
+	}
+}
+
+# 视察第二站：维生与水培区
+country_event = {
+	id = mygo.423
+	title = mygo_story.423.name
+	desc = mygo_story.423.desc
+	diplomatic = yes
+	picture_event_data = {
+		room = root
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.423.a
+		response_text = mygo_story.423.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.423.b
+		response_text = mygo_story.423.b.response
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.424 }
+		}
+	}
+}
+
+# 视察第三站：居住区与个人舱室
+country_event = {
+	id = mygo.424
+	title = mygo_story.424.name
+	desc = mygo_story.424.desc
+	diplomatic = yes
+	picture_event_data = {
+		room = root
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.424.a
+		response_text = mygo_story.424.a.response
+		is_dialog_only = yes
+	}
+	
+	option = {
+		name = mygo_story.424.b
+		default_hide_option = yes
+	}
+}

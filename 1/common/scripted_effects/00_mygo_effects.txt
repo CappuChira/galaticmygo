@@ -1,0 +1,752 @@
+mygo_finish_stardust_site_spawn = {
+	if = {
+		limit = { has_country_flag = mygo_stardust_signal_spawned }
+		set_country_flag = mygo_active_stardust_signal
+		create_point_of_interest = {
+			id = mygo_stardust_signal_poi
+			name = mygo_stardust_signal_poi
+			desc = mygo_stardust_signal_poi_desc
+			event_chain = mygo_stardust_beacons_chain
+			location = event_target:mygo_stardust_signal_planet
+		}
+		remove_country_flag = mygo_stardust_signal_spawned
+	}
+}
+
+mygo_spawn_stardust_home_site = {
+	save_event_target_as = mygo_stardust_owner_country
+	remove_country_flag = mygo_stardust_signal_spawned
+	capital_scope = {
+		solar_system = {
+			set_star_flag = mygo_stardust_site_system
+			save_event_target_as = mygo_stardust_signal_system
+			random_system_planet = {
+				limit = {
+					is_colonizable = no
+					is_star = no
+					is_asteroid = no
+					is_homeworld = no
+					NOT = { is_planet_class = pc_gas_giant }
+					NOT = { exists = archaeological_site }
+					NOT = { has_carrier_flag = suppress_archaeological_sites }
+				}
+				save_event_target_as = mygo_stardust_signal_planet
+				create_archaeological_site = $SITE$
+				event_target:mygo_stardust_owner_country = {
+					set_country_flag = mygo_stardust_signal_spawned
+				}
+			}
+		}
+	}
+	mygo_finish_stardust_site_spawn = yes
+}
+
+mygo_spawn_stardust_site = {
+	save_event_target_as = mygo_stardust_owner_country
+	remove_country_flag = mygo_stardust_signal_spawned
+	capital_scope = {
+		solar_system = {
+			spawn_system = {
+				min_distance = 8
+				max_distance = 20
+				max_jumps = 1
+				hyperlane = yes
+				initializer = "mygo_stardust_signal_system_initializer"
+			}
+			last_created_system = {
+				set_star_flag = mygo_stardust_site_system
+				save_event_target_as = mygo_stardust_signal_system
+				random_system_planet = {
+					limit = { has_planet_flag = mygo_stardust_signal_planet_flag }
+					save_event_target_as = mygo_stardust_signal_planet
+					create_archaeological_site = $SITE$
+					event_target:mygo_stardust_owner_country = {
+						set_country_flag = mygo_stardust_signal_spawned
+					}
+				}
+			}
+		}
+	}
+	mygo_finish_stardust_site_spawn = yes
+}
+
+mygo_spawn_popy_rest_stop_site = {
+	save_event_target_as = mygo_stardust_owner_country
+	remove_country_flag = mygo_stardust_signal_spawned
+	capital_scope = {
+		solar_system = {
+			spawn_system = {
+				min_distance = 8
+				max_distance = 20
+				max_jumps = 1
+				hyperlane = yes
+				initializer = "mygo_popy_rest_stop_system_initializer"
+			}
+			last_created_system = {
+				set_star_flag = mygo_stardust_site_system
+				save_event_target_as = mygo_stardust_signal_system
+				random_system_planet = {
+					limit = { has_planet_flag = mygo_popy_rest_stop_carrier }
+					save_event_target_as = mygo_stardust_signal_planet
+					create_archaeological_site = mygo_stardust_popy_station_site
+					event_target:mygo_stardust_owner_country = {
+						set_country_flag = mygo_stardust_signal_spawned
+					}
+				}
+			}
+		}
+	}
+	mygo_finish_stardust_site_spawn = yes
+}
+
+mygo_reveal_next_stardust_signal = {
+	if = {
+		limit = { NOT = { has_country_flag = mygo_active_stardust_signal } }
+		if = {
+			limit = { NOT = { has_country_flag = mygo_relic_string } }
+			mygo_spawn_stardust_home_site = { SITE = mygo_stardust_string_site }
+			set_country_flag = mygo_stardust_signal_string
+		}
+		else_if = {
+			limit = { NOT = { has_country_flag = mygo_relic_black_gold } }
+			mygo_spawn_stardust_site = { SITE = mygo_stardust_black_gold_site }
+			set_country_flag = mygo_stardust_signal_black_gold
+		}
+		else_if = {
+			limit = { NOT = { has_country_flag = mygo_relic_record } }
+			mygo_spawn_stardust_site = { SITE = mygo_stardust_two_site }
+			set_country_flag = mygo_stardust_signal_record
+		}
+		else_if = {
+			limit = { NOT = { has_country_flag = mygo_relic_popy_station } }
+			mygo_spawn_popy_rest_stop_site = yes
+			set_country_flag = mygo_stardust_signal_popy_station
+		}
+	}
+}
+
+mygo_force_establish_communications_with_bands = {
+	# Recompute the route from the live diplomatic state. This also repairs
+	# stale flags left by older versions or console testing.
+	remove_country_flag = mygo_relic_first_contact_popipa
+	remove_country_flag = mygo_relic_first_contact_morfonica
+	remove_country_flag = mygo_relic_first_contact_tsukinomori
+	every_country = {
+		limit = {
+			OR = {
+				has_country_flag = mygo_popipa
+				has_country_flag = mygo_morfonica
+				has_country_flag = mygo_tsukinomori
+			}
+			is_country_type = default
+		}
+		if = {
+			limit = { has_country_flag = mygo_popipa }
+			save_global_event_target_as = mygo_popipa_country
+			if = {
+				limit = {
+					NOT = { has_communications = prev }
+				}
+				prev = {
+					set_country_flag = mygo_relic_first_contact_popipa
+				}
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = mygo_morfonica }
+			save_global_event_target_as = mygo_morfonica_country
+			if = {
+				limit = {
+					NOT = { has_communications = prev }
+				}
+				prev = {
+					set_country_flag = mygo_relic_first_contact_morfonica
+				}
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = mygo_tsukinomori }
+			save_global_event_target_as = mygo_tsukinomori_country
+			if = {
+				limit = {
+					NOT = { has_communications = prev }
+				}
+				prev = {
+					set_country_flag = mygo_relic_first_contact_tsukinomori
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_communications = prev }
+			}
+			establish_communications_no_message = prev
+		}
+	}
+	set_country_flag = mygo_band_communications_restored
+}
+
+mygo_refresh_parallel_band_event_targets = {
+	every_country = {
+		limit = {
+			is_country_type = default
+			exists = capital_scope
+			OR = {
+				has_country_flag = mygo_popipa
+				has_country_flag = mygo_morfonica
+				has_country_flag = mygo_tsukinomori
+			}
+		}
+		if = {
+			limit = { has_country_flag = mygo_popipa }
+			save_global_event_target_as = mygo_popipa_country
+			capital_scope.planet = {
+				set_planet_flag = mygo_parallel_popipa_homeworld
+				solar_system = { set_star_flag = mygo_parallel_popipa_system }
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = mygo_morfonica }
+			save_global_event_target_as = mygo_morfonica_country
+			capital_scope.planet = {
+				set_planet_flag = mygo_parallel_morfonica_homeworld
+				solar_system = { set_star_flag = mygo_parallel_morfonica_system }
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = mygo_tsukinomori }
+			save_global_event_target_as = mygo_tsukinomori_country
+			capital_scope.planet = {
+				set_planet_flag = mygo_parallel_tsukinomori_homeworld
+				solar_system = { set_star_flag = mygo_parallel_tsukinomori_system }
+			}
+		}
+	}
+}
+
+mygo_collect_stardust_beacon = {
+	remove_point_of_interest = mygo_stardust_signal_poi
+	remove_country_flag = mygo_active_stardust_signal
+	add_event_chain_counter = {
+		event_chain = mygo_stardust_beacons_chain
+		counter = mygo_stardust_beacons
+		amount = 1
+	}
+	add_monthly_resource_mult = {
+		resource = unity
+		value = @tier1unityreward
+		min = @tier1unitymin
+		max = @tier1unitymax
+	}
+}
+
+# Keep the positive Stardust Analysis situation aligned with formal story
+# completion flags. Exact progress prevents duplicate/compatibility events from
+# advancing the bar more than once.
+mygo_sync_stardust_analysis = {
+	if = {
+		limit = {
+			is_ai = no
+			has_origin = origin_mygo_eternal_return
+			OR = {
+				has_country_flag = mygo_earth_tomb_complete
+				has_country_flag = mygo_stardust_analysis_complete
+			}
+		}
+		if = {
+			limit = {
+				any_situation = { is_situation_type = situation_mygo_stardust_analysis }
+			}
+			every_situation = {
+				limit = { is_situation_type = situation_mygo_stardust_analysis }
+				set_situation_progress = 100
+			}
+		}
+		else = {
+			set_country_flag = mygo_stardust_analysis_complete
+			if = {
+				limit = { NOT = { has_modifier = mygo_stardust_analysis_complete } }
+				add_modifier = { modifier = mygo_stardust_analysis_complete days = -1 }
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			is_ai = no
+			has_origin = origin_mygo_eternal_return
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_situation = { is_situation_type = situation_mygo_stardust_analysis }
+				}
+			}
+			start_situation = { type = situation_mygo_stardust_analysis }
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_mygo_stardust_analysis }
+			if = {
+				limit = { owner = { has_country_flag = mygo_relic_popy_station } }
+				set_situation_progress = 80
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = mygo_relic_record } }
+				set_situation_progress = 60
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = mygo_relic_black_gold } }
+				set_situation_progress = 40
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = mygo_relic_string } }
+				set_situation_progress = 20
+			}
+			else = {
+				set_situation_progress = 0
+			}
+		}
+	}
+}
+
+mygo_check_tour_country_completion = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = mygo_tour_first_completed }
+			has_country_flag = mygo_popipa
+		}
+		set_country_flag = mygo_tour_first_completed
+		add_monthly_resource_mult = {
+			resource = unity
+			value = @tier1unityreward
+			min = @tier1unitymin
+			max = @tier1unitymax
+		}
+		random_relation = {
+			limit = {
+				has_origin = origin_mygo_eternal_return
+				has_country_flag = mygo_tour_unlocked
+				is_galactic_community_member = yes
+				has_communications = prev
+			}
+			country_event = { id = mygo.601 }
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_country_flag = mygo_tour_first_completed }
+			has_country_flag = mygo_morfonica
+		}
+		set_country_flag = mygo_tour_first_completed
+		add_monthly_resource_mult = {
+			resource = society_research
+			value = @tier1researchreward
+			min = @tier1researchmin
+			max = @tier1researchmax
+		}
+		random_relation = {
+			limit = {
+				has_origin = origin_mygo_eternal_return
+				has_country_flag = mygo_tour_unlocked
+				has_communications = prev
+			}
+			country_event = { id = mygo.602 }
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_country_flag = mygo_tour_first_completed }
+			has_country_flag = mygo_tsukinomori
+		}
+		set_country_flag = mygo_tour_first_completed
+		add_resource = { influence = @opinion_contract_small }
+		random_relation = {
+			limit = {
+				has_origin = origin_mygo_eternal_return
+				has_country_flag = mygo_tour_unlocked
+				has_communications = prev
+			}
+			country_event = { id = mygo.603 }
+		}
+	}
+	else_if = {
+		limit = { NOT = { has_country_flag = mygo_tour_first_completed } }
+		set_country_flag = mygo_tour_first_completed
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = mygo_tour_all_completed }
+			NOT = {
+				any_owned_planet = {
+					is_colony = yes
+					is_under_colonization = no
+					planet = {
+						NOT = { has_planet_flag = mygo_tour_visited }
+					}
+					OR = {
+						is_capital = yes
+						pop_amount >= 200
+					}
+				}
+			}
+		}
+		set_country_flag = mygo_tour_all_completed
+		if = {
+			limit = { has_country_flag = mygo_popipa }
+			add_modifier = {
+				modifier = mygo_tour_completed_popipa
+				days = -1
+			}
+			random_relation = {
+				limit = {
+					has_origin = origin_mygo_eternal_return
+					has_country_flag = mygo_tour_unlocked
+					has_communications = prev
+				}
+				country_event = { id = mygo.604 }
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = mygo_morfonica }
+			add_modifier = {
+				modifier = mygo_tour_completed_morfonica
+				days = -1
+			}
+			random_relation = {
+				limit = {
+					has_origin = origin_mygo_eternal_return
+					has_country_flag = mygo_tour_unlocked
+					has_communications = prev
+				}
+				country_event = { id = mygo.605 }
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = mygo_tsukinomori }
+			add_modifier = {
+				modifier = mygo_tour_completed_tsukinomori
+				days = -1
+			}
+			random_relation = {
+				limit = {
+					has_origin = origin_mygo_eternal_return
+					has_country_flag = mygo_tour_unlocked
+					has_communications = prev
+				}
+				country_event = { id = mygo.606 }
+			}
+		}
+		else = {
+			add_modifier = {
+				modifier = mygo_tour_completed_generic
+				days = -1
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			is_galactic_community_member = yes
+			OR = {
+				is_active_resolution = "resolution_mygo_galactic_tour_public_stage_fund"
+				is_active_resolution = "resolution_mygo_galactic_tour_universal_mandate"
+			}
+		}
+		add_modifier = {
+			modifier = mygo_resolution_public_stage_host
+			years = 10
+		}
+		random_relation = {
+			limit = {
+				has_origin = origin_mygo_eternal_return
+				has_country_flag = mygo_tour_unlocked
+				has_communications = prev
+			}
+			add_resource = {
+				energy = 1000
+				influence = 25
+			}
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+		}
+	}
+}
+
+mygo_apply_tour_stop_effect = {
+	set_planet_flag = mygo_tour_visited
+	if = {
+		limit = { event_target:mygo_tour_operator_country = { has_country_flag = mygo_tour_style_old } }
+		add_modifier = {
+			modifier = mygo_tour_planet_old_songs
+			days = -1
+		}
+	}
+	else_if = {
+		limit = { event_target:mygo_tour_operator_country = { has_country_flag = mygo_tour_style_experimental } }
+		add_modifier = {
+			modifier = mygo_tour_planet_experimental
+			days = -1
+		}
+	}
+	else = {
+		add_modifier = {
+			modifier = mygo_tour_planet_new_songs
+			days = -1
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				is_galactic_community_member = yes
+				OR = {
+					is_active_resolution = "resolution_mygo_galactic_tour_planet_initiative"
+					is_active_resolution = "resolution_mygo_galactic_tour_mutual_benefit"
+					is_active_resolution = "resolution_mygo_galactic_tour_public_stage_fund"
+					is_active_resolution = "resolution_mygo_galactic_tour_universal_mandate"
+				}
+			}
+			NOT = { has_modifier = mygo_resolution_tour_planet_bonus }
+		}
+		add_modifier = {
+			modifier = mygo_resolution_tour_planet_bonus
+			days = -1
+		}
+	}
+}
+
+mygo_resolution_vote_passed_effect = {
+	set_global_flag = galactic_community_resolution_passed
+	set_timed_country_flag = {
+		flag = galactic_community_resolution_passed_mygo_tour
+		days = 360
+	}
+	add_modifier = {
+		modifier = resolution_passed_diplomatic_weight
+		days = 2200
+	}
+}
+
+mygo_resolution_vote_failed_effect = {
+	set_timed_country_flag = {
+		flag = galactic_community_resolution_failed_mygo_tour
+		days = 360
+	}
+	add_modifier = {
+		modifier = resolution_failed_diplomatic_weight
+		days = 2200
+	}
+}
+
+mygo_create_tour_stop_poi = {
+	create_point_of_interest = {
+		id = mygo_tour_stop_poi
+		name = mygo_tour_stop_poi_name
+		desc = mygo_tour_stop_poi_desc
+		event_chain = contract_mygo_tour_chain
+		location = event_target:mygo_tour_next_system
+	}
+	if = {
+		limit = { is_ai = yes }
+		enable_special_project = {
+			name = MYGO_CONTRACT_TOUR_PROJECT
+			location = event_target:mygo_tour_next_system
+			owner = this
+		}
+	}
+}
+
+mygo_complete_tour_route = {
+	remove_point_of_interest = mygo_tour_stop_poi
+	abort_special_project = { type = MYGO_CONTRACT_TOUR_PROJECT }
+	random_galaxy_planet = {
+		limit = { has_carrier_flag = mygo_tour_current_stop@root }
+		remove_carrier_flag = mygo_tour_current_stop@root
+		solar_system = { remove_star_flag = mygo_tour_current_system@root }
+	}
+	add_mission_counter = {
+		mission = contract_mygo_tour
+		counter = contract_progress_counter
+		amount = 1
+	}
+	if = {
+		limit = { NOT = { has_country_flag = mygo_tour_skip_route_complete_event } }
+		country_event = { id = mygo.636 days = 1 }
+	}
+	remove_country_flag = mygo_tour_skip_route_complete_event
+}
+
+mygo_spawn_earth_tomb_site = {
+	save_event_target_as = mygo_earth_tomb_owner_country
+	remove_country_flag = mygo_earth_tomb_site_spawned
+
+	# Prefer the actual vanilla nuclear-wasteland Earth. Scan the galaxy instead
+	# of trusting sol_system_earth, which can be overwritten by forced Sol starts.
+	random_galaxy_planet = {
+		limit = {
+			has_carrier_flag = nuked_earth
+			is_planet_class = pc_nuked
+			NOT = { exists = archaeological_site }
+		}
+		create_archaeological_site = mygo_earth_tomb_site
+		save_event_target_as = mygo_earth_tomb_planet
+		event_target:mygo_earth_tomb_owner_country = { set_country_flag = mygo_earth_tomb_site_spawned }
+	}
+
+	# If vanilla generated a wild non-wasteland Sol, reuse and normalize that
+	# system. This prevents this mod from adding a second wild Sol.
+	if = {
+		limit = { NOT = { has_country_flag = mygo_earth_tomb_site_spawned } }
+		random_system = {
+			limit = {
+				has_star_flag = sol
+				NOT = { has_star_flag = empire_home_system }
+				any_system_planet = {
+					OR = {
+						has_carrier_flag = planet_earth
+						has_carrier_flag = nuked_earth
+					}
+					NOT = { exists = archaeological_site }
+				}
+			}
+			set_name = NAME_Sol
+			set_star_flag = nuked_sol
+			remove_star_flag = primitive_sol
+			remove_star_flag = geocentric_sol
+			remove_star_flag = suppress_archaeological_sites
+			random_system_planet = {
+				limit = {
+					OR = {
+						has_carrier_flag = planet_earth
+						has_carrier_flag = nuked_earth
+					}
+					NOT = { exists = archaeological_site }
+				}
+				if = {
+					limit = { exists = owner }
+					destroy_colony = yes
+				}
+				change_pc = pc_nuked
+				set_name = NAME_Earth
+				remove_carrier_flag = planet_earth
+				remove_carrier_flag = suppress_archaeological_sites
+				remove_carrier_flag = ignore_startup_effect
+				set_carrier_flag = nuked_earth
+				prevent_anomaly = yes
+				clear_deposits = yes
+				create_archaeological_site = mygo_earth_tomb_site
+				save_event_target_as = mygo_earth_tomb_planet
+				event_target:mygo_earth_tomb_owner_country = { set_country_flag = mygo_earth_tomb_site_spawned }
+			}
+		}
+	}
+
+	# A damaged or mod-altered wild Sol may no longer have a usable Earth.
+	# Add the story Earth inside that same system rather than spawning another Sol.
+	if = {
+		limit = {
+			NOT = { has_country_flag = mygo_earth_tomb_site_spawned }
+			any_system = {
+				has_star_flag = sol
+				NOT = { has_star_flag = empire_home_system }
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = sol
+				NOT = { has_star_flag = empire_home_system }
+			}
+			set_name = NAME_Sol
+			set_star_flag = nuked_sol
+			spawn_planet = {
+				name = NAME_Earth
+				class = pc_nuked
+				orbit_distance = 25
+				orbit_angle = 120
+				size = 18
+				init_effect = {
+					set_carrier_flag = mygo_earth_tomb_fallback_planet
+					prevent_anomaly = yes
+					clear_deposits = yes
+					create_archaeological_site = mygo_earth_tomb_site
+					save_event_target_as = mygo_earth_tomb_planet
+					event_target:mygo_earth_tomb_owner_country = { set_country_flag = mygo_earth_tomb_site_spawned }
+				}
+			}
+		}
+	}
+
+	# With no Sol of any kind, create the exact vanilla nuclear-wasteland Sol.
+	if = {
+		limit = {
+			NOT = { has_country_flag = mygo_earth_tomb_site_spawned }
+			NOT = { any_system = { has_star_flag = sol } }
+		}
+		capital_scope = {
+			solar_system = {
+				spawn_system = {
+					min_distance = 12
+					max_distance = 30
+					max_jumps = 2
+					hyperlane = yes
+					initializer = "special_init_04"
+				}
+				last_created_system = {
+					random_system_planet = {
+						limit = { has_carrier_flag = nuked_earth }
+						create_archaeological_site = mygo_earth_tomb_site
+						save_event_target_as = mygo_earth_tomb_planet
+						event_target:mygo_earth_tomb_owner_country = { set_country_flag = mygo_earth_tomb_site_spawned }
+					}
+				}
+			}
+		}
+	}
+
+	# A forced empire-home Sol cannot be replaced safely. Add a separate story
+	# Earth with MyGO-only flags so vanilla never treats it as another Sol/Earth.
+	if = {
+		limit = {
+			NOT = { has_country_flag = mygo_earth_tomb_site_spawned }
+			NOT = {
+				any_system = {
+					has_star_flag = sol
+					NOT = { has_star_flag = empire_home_system }
+				}
+			}
+		}
+		capital_scope = {
+			solar_system = {
+				spawn_system = {
+					min_distance = 12
+					max_distance = 30
+					max_jumps = 2
+					hyperlane = yes
+					initializer = "mygo_earth_tomb_fallback_system_initializer"
+				}
+				last_created_system = {
+					random_system_planet = {
+						limit = { has_carrier_flag = mygo_earth_tomb_fallback_planet }
+						create_archaeological_site = mygo_earth_tomb_site
+						save_event_target_as = mygo_earth_tomb_planet
+						event_target:mygo_earth_tomb_owner_country = { set_country_flag = mygo_earth_tomb_site_spawned }
+					}
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = mygo_earth_tomb_site_spawned }
+		create_point_of_interest = {
+			id = mygo_earth_tomb_poi
+			name = mygo_earth_tomb_poi
+			desc = mygo_earth_tomb_poi_desc
+			event_chain = mygo_earth_tomb_chain
+			location = event_target:mygo_earth_tomb_planet
+		}
+		remove_country_flag = mygo_earth_tomb_site_spawned
+	}
+}

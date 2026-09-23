@@ -1,0 +1,4 @@
+interface:
+  display_name: "MyGO Character Portraits"
+  short_description: "Generate and QA MyGO Stellaris character portraits"
+  default_prompt: "Use $mygo-character-portraits to prepare, generate, QA, and hand off a MyGO character portrait."

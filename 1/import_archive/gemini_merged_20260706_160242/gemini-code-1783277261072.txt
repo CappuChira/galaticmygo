@@ -1,0 +1,102 @@
+# ==========================================
+# 阶段一：强迫症突袭房间
+# ==========================================
+country_event = {
+	id = mygo.470
+	title = mygo_story.470.name
+	desc = mygo_story.470.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.470.a
+		response_text = mygo_story.470.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.470.b
+		response_text = mygo_story.470.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.470.c
+		response_text = mygo_story.470.c.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.471 } }
+	}
+}
+
+# ==========================================
+# 阶段二：暴力大改造开始
+# ==========================================
+country_event = {
+	id = mygo.471
+	title = mygo_story.471.name
+	desc = mygo_story.471.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.471.a
+		response_text = mygo_story.471.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.471.b
+		response_text = mygo_story.471.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.471.c
+		response_text = mygo_story.471.c.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.472 } }
+	}
+}
+
+# ==========================================
+# 阶段三：床底下的秘密铁盒
+# ==========================================
+country_event = {
+	id = mygo.472
+	title = mygo_story.472.name
+	desc = mygo_story.472.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.472.a
+		response_text = mygo_story.472.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.472.b
+		response_text = mygo_story.472.b.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.473 } }
+	}
+}
+
+# ==========================================
+# 阶段四：羞耻心爆炸的终局
+# ==========================================
+country_event = {
+	id = mygo.473
+	title = mygo_story.473.name
+	desc = mygo_story.473.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.473.a
+		response_text = mygo_story.473.a.response
+		hidden_effect = {
+			# 房间虽然变整洁了，但爱音受到了严重的精神打击，降一点点影响力，加一点凝聚力
+			add_resource = { influence = -10 unity = 100 }
+		}
+	}
+}

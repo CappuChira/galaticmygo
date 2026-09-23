@@ -1,0 +1,329 @@
+# MYGO_REVIEW_STATUS: APPROVED
+# MYGO_REVIEWED_BY: LemueDuck
+# SOURCE: 文案草稿/联合Live至Popy休息区/05_人工新故事链事件文案.md
+
+country_event = {
+	id = mygo.554
+	title = mygo_story.554.name
+	desc = mygo_story.554.desc
+	picture = GFX_evt_arkship_in_orbit
+	show_sound = event_arkship_bridge
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_554_seen }
+	}
+	immediate = { set_country_flag = mygo_story_554_seen }
+	option = {
+		name = mygo_story.554.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.555 days = 3 } }
+	}
+}
+
+country_event = {
+	id = mygo.555
+	title = mygo_story.555.name
+	desc = mygo_story.555.desc
+	diplomatic = yes
+	picture_event_data = { portrait = tomori_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_555_seen }
+	}
+	immediate = { set_country_flag = mygo_story_555_seen }
+	option = {
+		name = mygo_story.555.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.556 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.556
+	title = mygo_story.556.name
+	desc = mygo_story.556.desc
+	diplomatic = yes
+	picture_event_data = { portrait = tomori_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_556_seen }
+	}
+	immediate = { set_country_flag = mygo_story_556_seen }
+	option = {
+		name = mygo_story.556.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.557 days = 25 } }
+	}
+}
+
+country_event = {
+	id = mygo.557
+	title = mygo_story.557.name
+	desc = mygo_story.557.desc
+	diplomatic = yes
+	picture_event_data = { portrait = kasumi_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_557_seen }
+	}
+	immediate = { set_country_flag = mygo_story_557_seen }
+	option = {
+		name = mygo_story.557.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.558 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.558
+	title = mygo_story.558.name
+	desc = mygo_story.558.desc
+	diplomatic = yes
+	picture_event_data = { portrait = kasumi_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_558_seen }
+	}
+	immediate = { set_country_flag = mygo_story_558_seen }
+	option = {
+		name = mygo_story.558.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.559 days = 2 } }
+	}
+}
+
+country_event = {
+	id = mygo.559
+	title = mygo_story.559.name
+	desc = mygo_story.559.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_559_seen }
+	}
+	immediate = { set_country_flag = mygo_story_559_seen }
+	option = {
+		name = mygo_story.559.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.560 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.560
+	title = mygo_story.560.name
+	desc = mygo_story.560.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_560_seen }
+	}
+	immediate = { set_country_flag = mygo_story_560_seen }
+	option = {
+		name = mygo_story.560.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.561 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.561
+	title = mygo_story.561.name
+	desc = mygo_story.561.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_561_seen }
+	}
+	immediate = { set_country_flag = mygo_story_561_seen }
+	option = {
+		name = mygo_story.561.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.562 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.562
+	title = mygo_story.562.name
+	desc = mygo_story.562.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_562_seen }
+	}
+	immediate = { set_country_flag = mygo_story_562_seen }
+	option = {
+		name = mygo_story.562.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.563 days = 25 } }
+	}
+}
+
+country_event = {
+	id = mygo.563
+	title = mygo_story.563.name
+	desc = mygo_story.563.desc
+	diplomatic = yes
+	picture_event_data = { portrait = kasumi_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_563_seen }
+	}
+	immediate = { set_country_flag = mygo_story_563_seen }
+	option = {
+		name = mygo_story.563.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.564 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.564
+	title = mygo_story.564.name
+	desc = mygo_story.564.desc
+	diplomatic = yes
+	picture_event_data = { portrait = kasumi_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_564_seen }
+	}
+	immediate = { set_country_flag = mygo_story_564_seen }
+	option = {
+		name = mygo_story.564.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.565 days = 30 } }
+	}
+}
+
+country_event = {
+	id = mygo.565
+	title = mygo_story.565.name
+	desc = mygo_story.565.desc
+	diplomatic = yes
+	picture_event_data = { portrait = mashiro_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_565_seen }
+	}
+	immediate = { set_country_flag = mygo_story_565_seen }
+	option = {
+		name = mygo_story.565.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.566 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.566
+	title = mygo_story.566.name
+	desc = mygo_story.566.desc
+	diplomatic = yes
+	picture_event_data = { portrait = mashiro_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_566_seen }
+	}
+	immediate = { set_country_flag = mygo_story_566_seen }
+	option = {
+		name = mygo_story.566.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.567 days = 3 } }
+	}
+}
+
+country_event = {
+	id = mygo.567
+	title = mygo_story.567.name
+	desc = mygo_story.567.desc
+	diplomatic = yes
+	picture_event_data = { portrait = mashiro_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_relic_record
+		NOT = { has_country_flag = mygo_story_567_seen }
+		NOT = { has_country_flag = mygo_relic_popy_station }
+		NOT = { has_country_flag = mygo_active_stardust_signal }
+		NOT = { has_country_flag = mygo_popy_route_accepted }
+	}
+	immediate = { set_country_flag = mygo_story_567_seen }
+	option = {
+		name = mygo_story.567.ask
+		response_text = mygo_story.567.ask.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.567.a
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_joint_live_bridge_complete
+			set_country_flag = mygo_popy_route_accepted
+			mygo_spawn_popy_rest_stop_site = yes
+			set_country_flag = mygo_stardust_signal_popy_station
+		}
+	}
+}
+
+l_simp_chinese:
+ mygo_story.554.name:0 "琴弦"
+ mygo_story.554.desc:0 "你的吉他已经不再落灰了。\n\n五弦和六弦开始发黑，手指尖一开始还会感觉疼，现在已经习惯了。过去几个月，你会在休息日Live结束以后留在货舱，按照谱子偷偷练习。你也不知道自己在做什么。\n\n没有人知道，你也不想让她们知道。\n\n§L如果你还有空重新拿起你的吉他的话。§!\n\n你又想起来这句话。摇摇头，试图把这句话从自己脑子里划走。\n\n§H重新拿起你的吉他。§!\n\n等再练习几周，就和她们一起去演奏吧。"
+ mygo_story.554.a:0 "先换弦吧。"
+ mygo_story.555.name:0 "日常练习"
+ mygo_story.555.desc:0 "货仓——现在是你的练习室了。\n\n你开始对着联合Live录像练习。实话讲，看着一个自己在台上演出的感觉真的很奇怪，但为了纠正自己的指法，让左手指在琴上立起来而不是趴下去、护弦更干净避免杂音，这些录像最好还是看一看——千早爱音，弹得真的很不错。\n\n今天的练习时间差不多也要结束了。就在你收拾好琴准备起身的时候——灯就站在门口。"
+ mygo_story.555.a:0 "“Tomorin？怎么不叫我？”"
+ mygo_story.556.name:0 "乐队邀约"
+ mygo_story.556.desc:0 "“小爱……来一起演出！”\n\n高松灯抱着笔记本：\n\n“就演奏之前的曲子，我们曾经一同演奏过的，大家一起……\n\n“来组乐队！”\n\n灯吐气的声音在这个房间里清楚地回响。"
+ mygo_story.556.a:0 "一起组乐队吧！"
+ mygo_story.557.name:0 "Poppin'邀请"
+ mygo_story.557.desc:0 "香澄再次接通通讯时，正抱着一只装满东西的箱子。\n\n“小爱音！有没有什么需要我帮忙的？食物、合金、航路图？虽然有咲刚刚说不可以全部答应但是我会偷偷全部塞给你——”\n\n箱子好像在画面外撞到了门框。香澄喊了声“哎呀”，手忙脚乱地先把视频挂掉了。\n\n“呐呐小爱音，要不要一起演出？”\n\n再接通时，她的第一句话变成了这个。"
+ mygo_story.557.a:0 "演出……？"
+ mygo_story.558.name:0 "Poppin'邀请"
+ mygo_story.558.desc:0 "“演出~！我们最近也在开Live哦！呐呐小爱音，组乐队最能加深大家关系了~让大家全都Kirakira地在一起，做什么都会变得KiraKira的！”\n\n“来吧来吧！绝对没问题的！”香澄说，“我们从一起排练开始~！”\n\n说着，她就开始在日历上建立共享排期。popipapa地一阵乱点，很快这份预约就发送了过来——\n\n“太棒了小爱音！到时候大家都会很开心，呜耶！”户山香澄似乎要激动地原地转个圈，“哦对了！小爱音有什么事要找我吗？”"
+ mygo_story.558.a:0 "嗯……我找你有什么事来着……"
+ mygo_story.559.name:0 "望海临江战役"
+ mygo_story.559.desc:0 "爽世把终端放在舰桥桌面上。屏幕朝向你，那是之前你和户山香澄……“敲定”……好的日程表。\n\n“我也要去吗？”她显得有些头疼与无奈。"
+ mygo_story.559.a:0 "只是排练而已啦。再说，我们一直都在开Live吧？"
+ mygo_story.560.name:0 "望海临江战役"
+ mygo_story.560.desc:0 "“是你们四个人在开哦。”"
+ mygo_story.560.a:0 "Soyorin也一直有在帮忙录像——"
+ mygo_story.561.name:0 "望海临江战役"
+ mygo_story.561.desc:0 "“所以你就擅自替我决定了？\n\n“先说好，我绝对不去。\n\n“演奏名单里不要写我。我不想弹，弹得也不好，我就给你们提供场外支援就可以了。”\n\n“……你就不怕到时候我把你强行拽到台上，Tomorin把贝斯塞给你，我再撩一下你的头发，然后你莫名其妙地就站在那里开始弹，最后大家一起哭这种事情发生吗？”\n\n你不知道从哪突然冒出来了这个创意，\n\n“我们的念诗就突然变成了演奏，大家围成一圈开始哭着即兴演奏，场面非常感人非常难忘，之后我们决定组一辈子乐队再也不分开……”\n\n“这是什么剧情啦？！”长崎素世脸上的表情完全控制不住了，“这么蠢的事情，亏你能想得出来。”"
+ mygo_story.561.a:0 "总之不想让它发生的话就加入排练吧！"
+ mygo_story.562.name:0 "望海临江战役"
+ mygo_story.562.desc:0 "“……不要用CRYCHIC的名字。不要弹录像里的曲子。”\n\n她把终端推到一旁，眼睛死死地盯住你，\n\n“爱音，你想让祥子看见你还会弹吉他，那是你的事。\n\n“但是她肯定回不来了。CRYCHIC的旧时光也肯定回不来了！”\n\n你没有回答。\n\n“只参加这一次。”"
+ mygo_story.562.a:0 "……好。"
+ mygo_story.563.name:0 "排练"
+ mygo_story.563.desc:0 "你们接通了Poppin'party的通讯。\n\n香澄离镜头特别近，只能看见她的半张脸。通讯接通的一瞬间，她爆发出了惊人的活力，简直要通过屏幕扑过来！\n\nPoppin'Party的练习室比迷子号的货舱窄一点，看上去也像是一个大仓库。\n\n墙上贴着很多便签，背景里甚至有很多盆栽和贴满了各种标签的纸盒。\n\n盆栽在这种环境里是怎么长大的？\n\n“听得到吗——小爱音——”"
+ mygo_story.563.a:0 "非常清楚！"
+ mygo_story.564.name:0 "排练"
+ mygo_story.564.desc:0 "“呐呐！我现在在想，等我们一起举办live了，我和小灯要在天上飞起来~！”户山香澄突然开始眉飞色舞，“然后然后，我们就在观众的头顶上开始抛巧克力螺！弹到solo段的时候要开始喷火！嗷呜——”\n\n“香澄！！！！”画面对面的键盘手似乎有些拿她没办法，“非常抱歉，大家，我们开始排练吧……”"
+ mygo_story.564.a:0 "我们开始吧……？"
+ mygo_story.565.name:0 "旧日记"
+ mygo_story.565.desc:0 "筑紫从Morfonica的档案修复室发来通讯。\n\n“我们找到一点有意思的东西——灯的手写笔记！\n\n“很抱歉，但是飓风影响……它受损有点严重。上面写的东西很混乱，有些页连前后顺序都不确定，我们这边没法完整整理出来。\n\n“可以请你们一起确认吗？”"
+ mygo_story.565.a:0 "Tomorin——有人找你！"
+ mygo_story.566.name:0 "大魔典"
+ mygo_story.566.desc:0 "来自Morfonica的通讯。\n\n画面上，扫描光从纸面左侧缓慢移过。\n\n风暴带来的水痕遮住了纸面上的大部分句子，剩下的部分也全部都充斥着杂乱的线条，简笔画，不成语句又团在一起的词语。\n\n这是灯的旧笔记。\n\n真白抱着另一本旧册子坐在频道另一端。封皮受过潮，四角向上翘着：\n\n“以前小灯写完以后，会把本子推给我看哦。”\n\n灯看向屏幕里的册子。\n\n“欸？我，我那时候，都写了什么？”\n\n真白翻了几页，纸页摩擦的声音传过来。\n\n“很多哦。石头、走廊、星群，还有巨大的黑洞！”\n\n“真白写了什么？”\n\n“这个……”\n\n她突然涨红了脸。\n\n“这个……这个这个……”\n\n画面里，二叶筑紫憋着笑，冲着你做手势示意赶紧离开，把频道留给她们两个秘密交谈。"
+ mygo_story.566.a:0 "血色玫瑰人生……"
+ mygo_story.567.name:0 "终点？"
+ mygo_story.567.desc:0 "灯和仓田真白的通话有一些意外收获。\n\n在旧笔记的零碎记录里，真白和灯发现了一份旧航路表。在一颗特殊的恒星附近，有一个奇怪的标记。\n\n旧地图上写着的设施名称是：\n\n§Y第一太空休息区。§!\n\n“啊，是这里……！”\n\n真白显得有些激动，\n\n“好怀念！好久没有回去过了……那里有什么呢~这个我要保密！你们有时间的话就去看一看吧！\n\n“唔，就当是替我们回去看啦。”"
+ mygo_story.567.ask:0 "欸？小真白你们不一起吗？"
+ mygo_story.567.ask.response:0 "我这边还在救灾当中啦，实在抱歉！\n\n而且，既然已经定居下来了，我们的活动就没那么自由啦。小灯有时间一定要过来玩！\n\n好怀念过去的时光~！"
+ mygo_story.567.a:0 "向着下一个星尘坐标，迷子号前进！"

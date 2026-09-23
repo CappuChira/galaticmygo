@@ -1,0 +1,188 @@
+# Morfonica: FROM is the acting country in propose slots. ROOT is the responding country
+# in consider/accept/refuse slots.
+
+action_declare_war = {
+	propose = {
+		MYGO_MORFONICA_DOW_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } }
+		}
+	}
+	accept = {
+		MYGO_MORFONICA_DOW_ACCEPT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } }
+		}
+	}
+}
+
+action_offer_peace = {
+	consider = {
+		MYGO_MORFONICA_PEACE_CONSIDER_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } }
+		}
+	}
+	propose = {
+		MYGO_MORFONICA_PEACE_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } }
+		}
+	}
+	accept = {
+		MYGO_MORFONICA_PEACE_ACCEPT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } }
+		}
+	}
+	refuse = {
+		MYGO_MORFONICA_PEACE_DECLINE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } }
+		}
+	}
+}
+
+action_offer_trade_deal = {
+	propose = {
+		MYGO_MORFONICA_TRADE_PROPOSE_01 = {
+			only_for_trade = yes
+			weight = { weight = 100000000 }
+			trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } }
+		}
+	}
+	consider = {
+		MYGO_MORFONICA_TRADE_CONSIDER_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } }
+		}
+	}
+	accept = {
+		MYGO_MORFONICA_GIFT_ACCEPT_01 = {
+			only_for_gift = yes
+			weight = { weight = 100000000 }
+			trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } }
+		}
+		MYGO_MORFONICA_TRADE_ACCEPT_01 = {
+			only_for_trade = yes
+			weight = { weight = 100000000 }
+			trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } }
+		}
+	}
+	refuse = {
+		MYGO_MORFONICA_TRADE_DECLINE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } }
+		}
+	}
+}
+
+action_open_borders = {
+	propose = { MYGO_MORFONICA_OPEN_BORDERS_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_close_borders = {
+	propose = { MYGO_MORFONICA_CLOSE_BORDERS_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+
+action_embassy = {
+	accept = { MYGO_MORFONICA_EMBASSY_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+	refuse = { MYGO_MORFONICA_EMBASSY_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_recall_embassy = {
+	propose = { MYGO_MORFONICA_RECALL_EMBASSY_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+
+action_form_research_agreement = {
+	propose = { MYGO_MORFONICA_RESEARCH_PROPOSE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+	accept = { MYGO_MORFONICA_RESEARCH_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+	refuse = { MYGO_MORFONICA_RESEARCH_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_break_research_agreement = {
+	propose = { MYGO_MORFONICA_RESEARCH_BREAK_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+
+action_form_commercial_pact = {
+	accept = { MYGO_MORFONICA_COMMERCIAL_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+	refuse = { MYGO_MORFONICA_COMMERCIAL_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_break_commercial_pact = {
+	propose = { MYGO_MORFONICA_COMMERCIAL_BREAK_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+
+action_form_migration_pact = {
+	propose = { MYGO_MORFONICA_MIGRATION_PROPOSE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+	accept = { MYGO_MORFONICA_MIGRATION_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+	refuse = { MYGO_MORFONICA_MIGRATION_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_break_migration_pact = {
+	propose = { MYGO_MORFONICA_MIGRATION_BREAK_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+
+action_form_non_aggression_pact = {
+	accept = { MYGO_MORFONICA_NAP_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+	refuse = { MYGO_MORFONICA_NAP_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_break_non_aggression_pact = {
+	propose = { MYGO_MORFONICA_NAP_BREAK_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_form_defensive_pact = {
+	accept = { MYGO_MORFONICA_DEFENSIVE_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+	refuse = { MYGO_MORFONICA_DEFENSIVE_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_break_defensive_pact = {
+	propose = { MYGO_MORFONICA_DEFENSIVE_BREAK_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+
+action_invite_to_federation = {
+	propose = { MYGO_MORFONICA_FEDERATION_INVITE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+	accept = { MYGO_MORFONICA_FEDERATION_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+	refuse = { MYGO_MORFONICA_FEDERATION_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_leave_federation = {
+	propose = { MYGO_MORFONICA_FEDERATION_LEAVE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+
+action_form_waystation_pact = {
+	propose = { MYGO_MORFONICA_WAYSTATION_PROPOSE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+	accept = { MYGO_MORFONICA_WAYSTATION_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+	refuse = { MYGO_MORFONICA_WAYSTATION_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_break_waystation_pact = {
+	propose = { MYGO_MORFONICA_WAYSTATION_BREAK_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+
+action_demand_subjugation = {
+	propose = { MYGO_MORFONICA_SUBJUGATE_PROPOSE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+	accept = { MYGO_MORFONICA_BECOME_SUBJECT_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+	refuse = { MYGO_MORFONICA_SUBJUGATE_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_ask_to_become_subjugated = {
+	accept = { MYGO_MORFONICA_ACCEPT_SUBJECT_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_release_subject = {
+	propose = { MYGO_MORFONICA_RELEASE_SUBJECT_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_ask_to_be_released_subject = {
+	propose = { MYGO_MORFONICA_ASK_RELEASE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_pledge_secret_fealty = {
+	propose = { MYGO_MORFONICA_SECRET_FEALTY_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+
+action_make_rival = {
+	propose = { MYGO_MORFONICA_RIVAL_PROPOSE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_end_rivalry = {
+	propose = { MYGO_MORFONICA_RIVAL_END_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_insult = {
+	propose = { MYGO_MORFONICA_INSULT_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_guarantee_independence = {
+	propose = { MYGO_MORFONICA_GUARANTEE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+action_support_independence = {
+	propose = { MYGO_MORFONICA_SUPPORT_INDEPENDENCE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_country_flag = mygo_morfonica } ROOT = { has_origin = origin_mygo_eternal_return } } } }
+}
+
+

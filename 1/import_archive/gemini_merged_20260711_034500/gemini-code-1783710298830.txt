@@ -1,0 +1,31 @@
+mygo_stardust_two_site = {
+	desc = mygo_stardust_two_site_desc
+	picture = GFX_evt_archaeological_dig
+	stages = 6
+	weight = 0
+	max_instances = 1
+	situation_log_category = empire_concerns
+
+	allow = {
+		is_ship_class = shipclass_science_ship
+		exists = leader
+		owner = { has_origin = origin_mygo_eternal_return }
+	}
+
+	visible = {
+		default_site_visible_trigger = yes
+	}
+
+	on_roll_failed = {
+		from = {
+			standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = no_events }
+		}
+	}
+
+	stage = { difficulty = 1 icon = GFX_archaeology_runes_A2 event = mygo.1201 }
+	stage = { difficulty = 1 icon = GFX_archaeology_runes_B2 event = mygo.1202 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_C2 event = mygo.1203 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_D2 event = mygo.1204 }
+	stage = { difficulty = 3 icon = GFX_archaeology_runes_E2 event = mygo.1205 }
+	stage = { difficulty = 3 icon = GFX_archaeology_runes_F2 event = mygo.1206 }
+}

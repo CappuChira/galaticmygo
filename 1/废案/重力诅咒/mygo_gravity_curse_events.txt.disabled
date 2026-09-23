@@ -1,0 +1,16 @@
+situation_event = {
+	id = mygo.90
+	title = mygo.90.name
+	desc = mygo.90.desc
+	picture = GFX_evt_ongoing_disaster
+	show_sound = event_red_alert
+	is_triggered_only = yes
+	situation = this
+
+	option = {
+		name = mygo.90.a
+		hidden_effect = {
+			set_situation_progress = 20
+		}
+	}
+}

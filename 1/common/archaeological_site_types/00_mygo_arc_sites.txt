@@ -1,0 +1,180 @@
+mygo_stardust_string_site = {
+	desc = mygo_stardust_string_site_desc
+	picture = GFX_evt_archaeological_dig
+	stages = 6
+	weight = 0
+	max_instances = 1
+	situation_log_category = empire_concerns
+
+	allow = {
+		is_ship_class = shipclass_science_ship
+		exists = leader
+		owner = { has_origin = origin_mygo_eternal_return }
+	}
+
+	visible = {
+		default_site_visible_trigger = yes
+	}
+
+	on_roll_failed = {
+		from = {
+			standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = no_events }
+		}
+	}
+
+	stage = {
+		difficulty = 1
+		icon = GFX_archaeology_runes_A2
+		event = mygo.1001
+	}
+	stage = {
+		difficulty = 1
+		icon = GFX_archaeology_runes_B2
+		event = mygo.1002
+	}
+	stage = {
+		difficulty = 1
+		icon = GFX_archaeology_runes_C2
+		event = mygo.1003
+	}
+	stage = {
+		difficulty = 2
+		icon = GFX_archaeology_runes_D2
+		event = mygo.1004
+	}
+	stage = {
+		difficulty = 2
+		icon = GFX_archaeology_runes_E2
+		event = mygo.1005
+	}
+	stage = {
+		difficulty = 2
+		icon = GFX_archaeology_runes_F2
+		event = mygo.1006
+	}
+}
+
+mygo_stardust_black_gold_site = {
+	desc = mygo_stardust_black_gold_site_desc
+	picture = GFX_evt_archaeological_dig
+	stages = 9
+	weight = 0
+	max_instances = 1
+	situation_log_category = empire_concerns
+
+	allow = {
+		is_ship_class = shipclass_science_ship
+		exists = leader
+		owner = { has_origin = origin_mygo_eternal_return }
+	}
+
+	visible = {
+		default_site_visible_trigger = yes
+	}
+
+	on_roll_failed = {
+		from = {
+			standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = no_events }
+		}
+	}
+
+	stage = { difficulty = 1 icon = GFX_archaeology_runes_A2 event = mygo.1101 }
+	stage = { difficulty = 1 icon = GFX_archaeology_runes_B2 event = mygo.1102 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_C2 event = mygo.1103 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_D2 event = mygo.1104 }
+	stage = { difficulty = 3 icon = GFX_archaeology_runes_E2 event = mygo.1105 }
+	stage = { difficulty = 3 icon = GFX_archaeology_runes_F2 event = mygo.1106 }
+	stage = { difficulty = 4 icon = GFX_archaeology_runes_A3 event = mygo.1107 }
+	stage = { difficulty = 4 icon = GFX_archaeology_runes_B3 event = mygo.1108 }
+	stage = { difficulty = 5 icon = GFX_archaeology_runes_C3 event = mygo.1109 }
+}
+
+mygo_stardust_two_site = {
+	desc = mygo_stardust_two_site_desc
+	picture = GFX_evt_archaeological_dig
+	stages = 6
+	weight = 0
+	max_instances = 1
+	situation_log_category = empire_concerns
+
+	allow = {
+		is_ship_class = shipclass_science_ship
+		exists = leader
+		owner = { has_origin = origin_mygo_eternal_return }
+	}
+
+	visible = {
+		default_site_visible_trigger = yes
+	}
+
+	on_roll_failed = {
+		from = {
+			standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = no_events }
+		}
+	}
+
+	stage = { difficulty = 1 icon = GFX_archaeology_runes_A2 event = mygo.1201 }
+	stage = { difficulty = 1 icon = GFX_archaeology_runes_B2 event = mygo.1202 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_C2 event = mygo.1203 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_D2 event = mygo.1204 }
+	stage = { difficulty = 3 icon = GFX_archaeology_runes_E2 event = mygo.1205 }
+	stage = { difficulty = 3 icon = GFX_archaeology_runes_F2 event = mygo.1206 }
+}
+
+mygo_stardust_popy_station_site = {
+	desc = mygo_stardust_popy_station_site_desc
+	picture = GFX_evt_space_station
+	stages = 7
+	weight = 0
+	max_instances = 1
+	situation_log_category = empire_concerns
+
+	allow = { is_ship_class = shipclass_science_ship exists = leader owner = { has_origin = origin_mygo_eternal_return } }
+	visible = { default_site_visible_trigger = yes }
+	on_roll_failed = { from = { standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = no_events } } }
+
+	stage = { difficulty = 1 icon = GFX_archaeology_runes_A2 event = mygo.1301 }
+	stage = { difficulty = 1 icon = GFX_archaeology_runes_B2 event = mygo.1302 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_C2 event = mygo.1303 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_D2 event = mygo.1304 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_E2 event = mygo.1305 }
+	stage = { difficulty = 3 icon = GFX_archaeology_runes_F2 event = mygo.1306 }
+	stage = { difficulty = 3 icon = GFX_archaeology_runes_A3 event = mygo.1307 }
+}
+
+# Retired compatibility definition. Keep in place for old saves/manual references,
+# but do not spawn, expand, or reconnect it to the mainline.
+mygo_stardust_crychic_site = {
+	desc = mygo_stardust_crychic_site_desc
+	picture = GFX_evt_relic_world
+	stages = 1
+	weight = 0
+	max_instances = 1
+	situation_log_category = empire_concerns
+
+	allow = { is_ship_class = shipclass_science_ship exists = leader owner = { has_origin = origin_mygo_eternal_return } }
+	visible = { default_site_visible_trigger = yes }
+	on_roll_failed = { from = { standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = no_events } } }
+
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_E2 event = mygo.105 }
+}
+
+mygo_earth_tomb_site = {
+	desc = mygo_earth_tomb_site_desc
+	picture = GFX_evt_tomb_world
+	stages = 6
+	weight = 0
+	max_instances = 1
+	situation_log_category = empire_concerns
+
+	allow = { is_ship_class = shipclass_science_ship exists = leader owner = { has_country_flag = mygo_phase_2 } }
+	visible = { default_site_visible_trigger = yes }
+	on_roll_failed = { from = { standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = no_events } } }
+
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_A3 event = mygo.201 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_B3 event = mygo.202 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_C3 event = mygo.203 }
+	stage = { difficulty = 3 icon = GFX_archaeology_runes_D3 event = mygo.204 }
+	stage = { difficulty = 3 icon = GFX_archaeology_runes_E3 event = mygo.205 }
+	stage = { difficulty = 4 icon = GFX_archaeology_runes_F3 event = mygo.206 }
+}

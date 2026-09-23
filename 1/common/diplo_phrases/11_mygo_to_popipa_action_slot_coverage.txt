@@ -1,0 +1,466 @@
+# Supplemental MyGO-to-Poppin'Party slots for previews and player-initiated actions.
+
+action_declare_war = {
+	select = {
+		MYGO_TO_POPIPA_HOSTILE_GREETING_05 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_open_borders = {
+	select = {
+		MYGO_TO_POPIPA_NEUTRAL_GREETING_03 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_NEUTRAL_GREETING_03 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_close_borders = {
+	select = {
+		MYGO_TO_POPIPA_HOSTILE_GREETING_03 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_HOSTILE_GREETING_03 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_embassy = {
+	select = {
+		MYGO_TO_POPIPA_EMBASSY_ACCEPT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	propose = {
+		MYGO_TO_POPIPA_EMBASSY_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_recall_embassy = {
+	select = {
+		MYGO_TO_POPIPA_RECALL_EMBASSY_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_RECALL_EMBASSY_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_form_research_agreement = {
+	consider = {
+		MYGO_TO_POPIPA_RESEARCH_CONSIDER_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	select = {
+		MYGO_TO_POPIPA_RESEARCH_CONSIDER_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_break_research_agreement = {
+	select = {
+		MYGO_TO_POPIPA_RESEARCH_BREAK_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_RESEARCH_BREAK_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_form_commercial_pact = {
+	consider = {
+		MYGO_TO_POPIPA_COMMERCIAL_CONSIDER_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	select = {
+		MYGO_TO_POPIPA_COMMERCIAL_CONSIDER_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	propose = {
+		MYGO_TO_POPIPA_COMMERCIAL_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_break_commercial_pact = {
+	select = {
+		MYGO_TO_POPIPA_COMMERCIAL_BREAK_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_COMMERCIAL_BREAK_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_form_migration_pact = {
+	consider = {
+		MYGO_TO_POPIPA_MIGRATION_CONSIDER_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	select = {
+		MYGO_TO_POPIPA_MIGRATION_CONSIDER_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_break_migration_pact = {
+	select = {
+		MYGO_TO_POPIPA_MIGRATION_BREAK_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_MIGRATION_BREAK_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_form_non_aggression_pact = {
+	consider = {
+		MYGO_TO_POPIPA_NAP_ACCEPT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	select = {
+		MYGO_TO_POPIPA_NAP_ACCEPT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	propose = {
+		MYGO_TO_POPIPA_NAP_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_break_non_aggression_pact = {
+	select = {
+		MYGO_TO_POPIPA_NAP_BREAK_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_NAP_BREAK_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_form_defensive_pact = {
+	consider = {
+		MYGO_TO_POPIPA_DEFENSIVE_ACCEPT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	select = {
+		MYGO_TO_POPIPA_DEFENSIVE_ACCEPT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	propose = {
+		MYGO_TO_POPIPA_DEFENSIVE_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_break_defensive_pact = {
+	select = {
+		MYGO_TO_POPIPA_DEFENSIVE_BREAK_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_DEFENSIVE_BREAK_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_invite_to_federation = {
+	consider = {
+		MYGO_TO_POPIPA_FEDERATION_INVITE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	select = {
+		MYGO_TO_POPIPA_FEDERATION_INVITE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_leave_federation = {
+	select = {
+		MYGO_TO_POPIPA_FEDERATION_LEAVE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_FEDERATION_LEAVE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_form_waystation_pact = {
+	select = {
+		MYGO_TO_POPIPA_WAYSTATION_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_break_waystation_pact = {
+	select = {
+		MYGO_TO_POPIPA_WAYSTATION_BREAK_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_WAYSTATION_BREAK_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_demand_subjugation = {
+	consider = {
+		MYGO_TO_POPIPA_SUBJUGATE_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	select = {
+		MYGO_TO_POPIPA_SUBJUGATE_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_ask_to_become_subjugated = {
+	consider = {
+		MYGO_TO_POPIPA_BECOME_SUBJECT_ACCEPT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	select = {
+		MYGO_TO_POPIPA_ACCEPT_SUBJECT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	propose = {
+		MYGO_TO_POPIPA_BECOME_SUBJECT_ACCEPT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_popipa } }
+		}
+	}
+	refuse = {
+		MYGO_TO_POPIPA_SUBJUGATE_DECLINE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_release_subject = {
+	select = {
+		MYGO_TO_POPIPA_RELEASE_SUBJECT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_RELEASE_SUBJECT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_ask_to_be_released_subject = {
+	consider = {
+		MYGO_TO_POPIPA_ASK_RELEASE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	select = {
+		MYGO_TO_POPIPA_ASK_RELEASE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_RELEASE_SUBJECT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	refuse = {
+		MYGO_TO_POPIPA_SUBJUGATE_DECLINE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_pledge_secret_fealty = {
+	select = {
+		MYGO_TO_POPIPA_SECRET_FEALTY_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_SECRET_FEALTY_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_make_rival = {
+	select = {
+		MYGO_TO_POPIPA_RIVAL_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_RIVAL_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_end_rivalry = {
+	select = {
+		MYGO_TO_POPIPA_RIVAL_END_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_RIVAL_END_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_insult = {
+	select = {
+		MYGO_TO_POPIPA_INSULT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_INSULT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_guarantee_independence = {
+	select = {
+		MYGO_TO_POPIPA_GUARANTEE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_GUARANTEE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}
+
+action_support_independence = {
+	select = {
+		MYGO_TO_POPIPA_SUPPORT_INDEPENDENCE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+	accept = {
+		MYGO_TO_POPIPA_SUPPORT_INDEPENDENCE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } }
+		}
+	}
+}

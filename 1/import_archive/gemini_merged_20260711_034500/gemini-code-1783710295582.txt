@@ -1,0 +1,25 @@
+fleet_event = {
+	id = mygo.1206
+	title = mygo_two.6.name
+	desc = mygo_two.6.desc
+	picture = GFX_evt_synth_sabotage
+	show_sound = event_power_down
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_two.6.a
+		owner = {
+			# 此处为示意效果：记录收集到了星尘信标，并准备触发外交事件
+			mygo_collect_stardust_beacon = yes
+			set_country_flag = mygo_relic_joint_live
+			mygo_reveal_next_stardust_signal = yes
+			
+			# 调用脚本效果：尝试与对应Tag的文明建立通讯
+			# mygo_force_establish_communications_with_bands = yes
+		}
+	}
+}

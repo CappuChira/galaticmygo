@@ -1,0 +1,151 @@
+status: awaiting_human_review
+game_loaded: false
+chain: joint_live_to_popy_rest_stop
+namespace: mygo
+
+entry:
+  current_event: mygo.1222
+  replace_schedule:
+    old: "country_event = { id = mygo.1230 days = 35 }"
+    new:
+      - "set_country_flag = mygo_joint_live_bridge_scheduled"
+      - "country_event = { id = mygo.550 days = 25 }"
+
+events:
+  - id: mygo.550
+    portrait: soyo_leader_mygo_portrait
+    delay_from_previous_days: 25
+    seen_flag: mygo_story_550_seen
+    next: { id: mygo.551, days: 2 }
+  - id: mygo.551
+    portrait: event_target:mygo_popipa_country.ruler
+    delay_from_previous_days: 2
+    seen_flag: mygo_story_551_seen
+    next: { id: mygo.552, days: 2 }
+  - id: mygo.552
+    portrait: event_target:mygo_morfonica_country.ruler
+    delay_from_previous_days: 2
+    seen_flag: mygo_story_552_seen
+    next: { id: mygo.553, days: 2 }
+  - id: mygo.553
+    portrait: event_target:mygo_tsukinomori_country.ruler
+    delay_from_previous_days: 2
+    seen_flag: mygo_story_553_seen
+    next: { id: mygo.554, days: 30 }
+  - id: mygo.554
+    portrait: anon_leader_mygo_portrait
+    delay_from_previous_days: 30
+    seen_flag: mygo_story_554_seen
+    next: { id: mygo.555, days: 3 }
+  - id: mygo.555
+    portrait: tomori_leader_mygo_portrait
+    delay_from_previous_days: 3
+    seen_flag: mygo_story_555_seen
+    next: { id: mygo.556, days: 3 }
+  - id: mygo.556
+    portrait: taki_leader_mygo_portrait
+    delay_from_previous_days: 3
+    seen_flag: mygo_story_556_seen
+    next: { id: mygo.557, days: 25 }
+  - id: mygo.557
+    portrait: soyo_leader_mygo_portrait
+    delay_from_previous_days: 25
+    seen_flag: mygo_story_557_seen
+    effects:
+      - add_mutual_opinion: { country: mygo_popipa_country, modifier: opinion_mygo_archive_correspondence }
+      - add_mutual_opinion: { country: mygo_morfonica_country, modifier: opinion_mygo_archive_correspondence }
+    next: { id: mygo.558, days: 3 }
+  - id: mygo.558
+    portrait: anon_leader_mygo_portrait
+    delay_from_previous_days: 3
+    seen_flag: mygo_story_558_seen
+    effects:
+      - "add_resource = { unity = 100 }"
+    next: { id: mygo.559, days: 30 }
+  - id: mygo.559
+    portrait: soyo_leader_mygo_portrait
+    delay_from_previous_days: 30
+    seen_flag: mygo_story_559_seen
+    next: { id: mygo.560, days: 2 }
+  - id: mygo.560
+    portrait: event_target:mygo_tsukinomori_country.ruler
+    delay_from_previous_days: 2
+    seen_flag: mygo_story_560_seen
+    next: { id: mygo.561, days: 3 }
+  - id: mygo.561
+    portrait: event_target:mygo_morfonica_country.ruler
+    delay_from_previous_days: 3
+    seen_flag: mygo_story_561_seen
+    effects:
+      - set_country_flag: mygo_joint_live_bridge_complete
+      - "country_event = { id = mygo.1230 days = 35 }"
+
+event_contract:
+  common_trigger:
+    - "has_origin = origin_mygo_eternal_return"
+    - "NOT = { has_country_flag = <seen_flag> }"
+  display:
+    diplomatic: true
+    room: root
+  progression_option:
+    response_key: null
+    dialog_only: false
+    default_hide_option: true
+    effect: schedule_next_event
+  question_option:
+    response_key: required
+    dialog_only: true
+    may_contain_required_plot_information: false
+
+opinion_modifier:
+  id: opinion_mygo_archive_correspondence
+  value: 15
+  targets:
+    - mygo_popipa_country
+    - mygo_morfonica_country
+  excluded:
+    - mygo_tsukinomori_country
+
+old_save_migration:
+  event_id: mygo.549
+  hook: on_monthly_pulse_country
+  hidden: true
+  trigger:
+    - "has_origin = origin_mygo_eternal_return"
+    - "has_country_flag = mygo_relic_joint_live"
+    - "has_country_flag = mygo_band_communications_restored"
+    - "NOT = { has_country_flag = mygo_joint_live_bridge_scheduled }"
+    - "NOT = { has_country_flag = mygo_joint_live_bridge_complete }"
+    - "NOT = { has_country_flag = mygo_popy_route_accepted }"
+    - "NOT = { has_country_flag = mygo_relic_popy_station }"
+  immediate:
+    - "set_country_flag = mygo_joint_live_bridge_scheduled"
+    - "country_event = { id = mygo.550 days = 1 }"
+
+popy_handoff:
+  event_id: mygo.1230
+  add_trigger:
+    - "has_country_flag = mygo_joint_live_bridge_complete"
+  keep_existing_safety_triggers:
+    - "has_country_flag = mygo_relic_record"
+    - "NOT = { has_country_flag = mygo_relic_popy_station }"
+    - "NOT = { has_country_flag = mygo_active_stardust_signal }"
+    - "NOT = { has_country_flag = mygo_popy_route_accepted }"
+  accepted_effects:
+    - "set_country_flag = mygo_popy_route_accepted"
+    - "mygo_spawn_popy_rest_stop_site = yes"
+    - "set_country_flag = mygo_stardust_signal_popy_station"
+
+review_gate:
+  requirement: human_approval_before_game_loaded_files
+  files_blocked_until_approval:
+    - events/mygo_events.txt
+    - events/mygo_story_events.txt
+    - common/on_actions/00_mygo_on_actions.txt
+    - common/opinion_modifiers/00_mygo_opinion_modifiers.txt
+    - localisation/simp_chinese/mygo_l_simp_chinese.yml
+  approval_then:
+    - generate_raw_import_payload
+    - import_new_event_blocks_and_new_localisation_keys
+    - manually_wire_entry_migration_and_existing_popy_localisation
+    - validate_and_archive

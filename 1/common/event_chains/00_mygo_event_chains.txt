@@ -1,0 +1,42 @@
+mygo_stardust_beacons_chain = {
+	icon = "gfx/interface/icons/situation_log/situation_log_main_quest.dds"
+	picture = GFX_evt_arkship_in_orbit
+	counter = {
+		mygo_stardust_beacons = {
+			max = 4
+		}
+	}
+	situation_log_category = empire_concerns
+
+	abort_trigger = {
+		NOT = { has_origin = origin_mygo_eternal_return }
+	}
+}
+
+mygo_earth_tomb_chain = {
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+	picture = GFX_evt_tomb_world
+	situation_log_category = empire_concerns
+
+	abort_trigger = {
+		NOT = { has_origin = origin_mygo_eternal_return }
+	}
+}
+
+contract_mygo_composition_chain = {
+	picture = GFX_evt_physics_research
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+	situation_log_category = contracts
+}
+
+contract_mygo_performance_chain = {
+	picture = GFX_evt_mysterious_signal
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+	situation_log_category = contracts
+}
+
+contract_mygo_tour_chain = {
+	picture = GFX_evt_forever_cruise
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+	situation_log_category = contracts
+}

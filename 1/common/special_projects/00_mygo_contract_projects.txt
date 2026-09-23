@@ -1,0 +1,115 @@
+special_project = {
+	key = "MYGO_CONTRACT_COMPOSITION_PROJECT"
+	event_chain = contract_mygo_composition_chain
+	cost = 750
+	tech_department = society_technology
+	timelimit = -1
+	picture = GFX_evt_society_research
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+	location = no
+	remove_when_completed = yes
+
+	event_scope = country_event
+
+	on_success = {
+		owner = {
+			add_mission_counter = {
+				mission = contract_mygo_composition
+				counter = contract_progress_counter
+				amount = 1
+			}
+		}
+	}
+
+	on_fail = {
+		owner = { end_event_chain = contract_mygo_composition_chain }
+	}
+
+	abort_trigger = {
+		NOT = {
+			owner = { has_event_chain = contract_mygo_composition_chain }
+		}
+	}
+
+	on_cancel = {
+		# Do nothing
+	}
+}
+
+special_project = {
+	key = "MYGO_CONTRACT_PERFORMANCE_PROJECT"
+	event_chain = contract_mygo_performance_chain
+	days_to_research = 90
+	project_type = project_type_contract
+	picture = GFX_evt_mysterious_signal
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+	location = yes
+	remove_when_completed = yes
+
+	event_scope = ship_event
+
+	requirements = {
+		carries_colony = 1
+	}
+
+	on_success = {
+		owner = {
+			add_mission_counter = {
+				mission = contract_mygo_performance
+				counter = contract_progress_counter
+				amount = 1
+			}
+		}
+	}
+
+	on_fail = {
+		owner = { end_event_chain = contract_mygo_performance_chain }
+	}
+
+	abort_trigger = {
+		NOT = {
+			owner = { has_event_chain = contract_mygo_performance_chain }
+		}
+	}
+
+	on_cancel = {
+		# Do nothing
+	}
+}
+
+special_project = {
+	key = "MYGO_CONTRACT_TOUR_PROJECT"
+	event_chain = contract_mygo_tour_chain
+	days_to_research = 3
+	project_type = project_type_contract
+	picture = GFX_evt_forever_cruise
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+	location = yes
+	remove_when_completed = yes
+
+	event_scope = ship_event
+
+	requirements = {
+		carries_colony = 1
+	}
+
+	on_success = {
+		fleet = {
+			clear_orders = yes
+		}
+	}
+
+	on_fail = {
+		owner = { end_event_chain = contract_mygo_tour_chain }
+	}
+
+	abort_trigger = {
+		NOT = {
+			owner = { has_event_chain = contract_mygo_tour_chain }
+		}
+	}
+
+	on_cancel = {
+		# Do nothing
+	}
+}

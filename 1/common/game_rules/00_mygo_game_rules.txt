@@ -1,0 +1,7 @@
+must_be_advanced_empire = {
+	OR = {
+		has_country_flag = lost_colony_parent
+		has_country_flag = MSI
+		has_origin = origin_mygo_parallel_ark_colony
+	}
+}

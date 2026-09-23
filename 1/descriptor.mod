@@ -1,0 +1,9 @@
+version="0.4.1"
+tags={
+	"Gameplay"
+	"Leaders"
+	"Events"
+	"Diplomacy"
+}
+name="galaticmygo"
+supported_version="v4.4.*"

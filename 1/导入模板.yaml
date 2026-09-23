@@ -1,0 +1,61 @@
+type: story_event
+note: "这是给 Gemini 或文案组使用的结构化草稿模板。本文件不会被 Stellaris 直接加载。"
+
+approved_payload_header:
+  required_after_human_review: true
+  lines:
+    - "# MYGO_REVIEW_STATUS: APPROVED"
+    - "# MYGO_REVIEWED_BY: <人工复核者>"
+  note: "结构化草稿本身不能直接导入。人工文案确认后，生成带以上标记的.txt载荷。"
+
+event:
+  id: "mygo.420"
+  title_key: "mygo_story.420.name"
+  desc_key: "mygo_story.420.desc"
+  diplomatic: true
+  room: "root"
+  trigger:
+    - "has_origin = origin_mygo_eternal_return"
+    - "NOT = { has_country_flag = mygo_story_420_seen }"
+  immediate:
+    - "set_country_flag = mygo_story_420_seen"
+  options:
+    - key: "mygo_story.420.a"
+      response_key: "mygo_story.420.a.response"
+      dialog_only: true
+    - key: "mygo_story.420.b"
+      default_hide_option: true
+      hidden_effect:
+        - "country_event = { id = mygo.421 days = 2 }"
+
+localisation:
+  mygo_story.420.name: "事件标题"
+  mygo_story.420.desc: "事件正文"
+  mygo_story.420.a: "普通询问按钮"
+  mygo_story.420.a.response: "普通询问回复"
+  mygo_story.420.b: "推进剧情按钮"
+
+manual_entry_design:
+  required: true
+  note: "导入器不会自动把事件接入主线。事件入口需要每次单独设计。"
+
+human_review_gate:
+  required: true
+  status: "awaiting_review"
+  draft_location: "文案草稿/或import_queue/"
+  rule: "人工复核通过前，不得把事件、效果或本地化写入Stellaris加载目录。"
+
+import_commands:
+  dry_run: "powershell -ExecutionPolicy Bypass -File 1\\tools\\import_gemini_drafts.ps1 -SourcePath <载荷路径>"
+  apply_after_report_review: "powershell -ExecutionPolicy Bypass -File 1\\tools\\import_gemini_drafts.ps1 -SourcePath <载荷路径> -Apply -ArchiveOnSuccess"
+  guarantees:
+    - "默认只预检，不修改游戏加载文件。"
+    - "缺少人工批准标记时整批拒绝。"
+    - "任一事件ID、本地化key、括号或scripted effect检查失败时整批拒绝。"
+    - "Apply后校验失败会恢复事件文件和本地化文件。"
+    - "导入器只合并事件块与新本地化key，不负责设计事件入口。"
+
+writing_rules:
+  progression_option: "推进选项不得设置response_key，直接连接下一事件或效果。"
+  non_progression_option: "dialog_only选项不得独占关键剧情或必要情报。"
+  pacing: "连续事件间隔1-5天；分段事件间隔20-60天。"

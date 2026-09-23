@@ -1,0 +1,37 @@
+# 阶段六后续主线剧情：爱音的重力失速（阶段六发掘后 20-30 天自动触发）
+country_event = {
+	id = mygo.450
+	title = mygo_story.450.name
+	desc = mygo_story.450.desc
+	diplomatic = yes
+	picture_event_data = {
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_story_440_seen # 必须经历过阶段五的宽慰
+		NOT = { has_country_flag = mygo_story_450_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_450_seen
+	}
+
+	option = {
+		name = mygo_story.450.a
+		response_text = mygo_story.450.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.450.b
+		response_text = mygo_story.450.b.response
+		default_hide_option = yes
+		hidden_effect = {
+			# 此处可调用内政效果，例如短暂扣除微量凝聚力，以体现“情绪低落”，但符合“看起来天塌了，实际不太痛”原则
+			add_resource = { influence = -20 }
+		}
+	}
+}

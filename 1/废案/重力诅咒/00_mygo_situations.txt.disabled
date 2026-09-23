@@ -1,0 +1,78 @@
+situation_mygo_gravity_curse = {
+	picture = GFX_evt_arkship_in_orbit
+	category = negative
+	initial_progress = 0
+	complete_icon_frame = GFX_situation_outcome_frame_red
+	complete_icon = GFX_situation_outcome_negative
+	situation_log_category = empire_concerns
+
+	on_start = {
+		set_situation_locked = yes
+	}
+
+	monthly_progress = {
+		base = 0.18
+	}
+
+	stages = {
+		stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_blue
+			end = 20
+			modifier = {
+				country_unity_produces_mult = -0.01
+			}
+			custom_tooltip = mygo_gravity_curse_stage_1_tt
+		}
+		stage_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_yellow
+			end = 40
+			modifier = {
+				pop_happiness = -0.02
+				country_unity_produces_mult = -0.02
+			}
+			custom_tooltip = mygo_gravity_curse_stage_2_tt
+		}
+		stage_3 = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_yellow
+			end = 60
+			modifier = {
+				pop_happiness = -0.03
+				country_unity_produces_mult = -0.03
+				all_technology_research_speed = -0.02
+			}
+			custom_tooltip = mygo_gravity_curse_stage_3_tt
+		}
+		stage_4 = {
+			icon = GFX_situation_stage_4
+			icon_background = GFX_situation_stage_frame_red
+			end = 80
+			modifier = {
+				pop_happiness = -0.04
+				country_unity_produces_mult = -0.04
+				all_technology_research_speed = -0.03
+			}
+			custom_tooltip = mygo_gravity_curse_stage_4_tt
+		}
+		stage_5 = {
+			icon = GFX_situation_stage_5
+			icon_background = GFX_situation_stage_frame_red
+			end = 100
+			modifier = {
+				pop_happiness = -0.05
+				country_unity_produces_mult = -0.05
+				all_technology_research_speed = -0.04
+			}
+			custom_tooltip = mygo_gravity_curse_stage_5_tt
+		}
+	}
+
+	on_progress_complete = {
+		custom_tooltip = mygo_gravity_curse_complete_tt
+		hidden_effect = {
+			situation_event = { id = mygo.90 }
+		}
+	}
+}

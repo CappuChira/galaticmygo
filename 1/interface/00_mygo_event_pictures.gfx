@@ -1,0 +1,62 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_evt_mygo_anon"
+		texturefile = "gfx/portraits/characters/anon.png"
+	}
+	spriteType = {
+		name = "GFX_evt_mygo_soyo"
+		texturefile = "gfx/portraits/characters/soyo.png"
+	}
+	spriteType = {
+		name = "GFX_evt_mygo_tomori"
+		texturefile = "gfx/portraits/characters/tomori.png"
+	}
+	spriteType = {
+		name = "GFX_evt_mygo_taki"
+		texturefile = "gfx/portraits/characters/taki.png"
+	}
+	spriteType = {
+		name = "GFX_evt_mygo_rana"
+		texturefile = "gfx/portraits/characters/rana.png"
+	}
+	spriteType = {
+		name = "GFX_evt_mygo_sakiko"
+		texturefile = "gfx/portraits/characters/sakiko.png"
+	}
+	spriteType = {
+		name = "GFX_evt_mygo_mutsumi"
+		texturefile = "gfx/portraits/characters/mutsumi.png"
+	}
+	spriteType = {
+		name = "GFX_evt_mygo_kasumi"
+		texturefile = "gfx/portraits/characters/kasumi.png"
+	}
+	spriteType = {
+		name = "GFX_evt_mygo_mashiro"
+		texturefile = "gfx/portraits/characters/mashiro.png"
+	}
+	spriteType = {
+		name = "GFX_evt_mygo_story_550"
+		texturefile = "gfx/event_pictures/mygo_story_550_reunion.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_mygo_story_551"
+		texturefile = "gfx/event_pictures/mygo_story_551_trust.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_mygo_story_552"
+		texturefile = "gfx/event_pictures/mygo_story_552_reunion_archive.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_mygo_story_553"
+		texturefile = "gfx/event_pictures/mygo_story_553_stop_searching.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+}

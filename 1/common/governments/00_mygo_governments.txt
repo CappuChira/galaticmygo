@@ -1,0 +1,90 @@
+gov_mygo_spica_command = {
+	ruler_title = RT_MYGO_CAPTAIN
+	ruler_title_female = RT_MYGO_CAPTAIN
+
+	possible = {
+		is_dictatorial_authority = yes
+		has_valid_civic = civic_mygo_star_seekers
+	}
+
+	weight = {
+		base = @gov_civic_override_weight
+	}
+}
+
+gov_mygo_popipa_commonwealth = {
+	ruler_title = RT_MYGO_COMMONWEALTH_REPRESENTATIVE
+	ruler_title_female = RT_MYGO_COMMONWEALTH_REPRESENTATIVE
+
+	possible = {
+		is_dictatorial_authority = yes
+		has_valid_civic = civic_free_haven
+		has_valid_civic = civic_environmentalist
+	}
+
+	weight = {
+		base = @gov_civic_override_weight
+	}
+}
+
+gov_mygo_morfonica_pact = {
+	ruler_title = RT_MYGO_PACT_REPRESENTATIVE
+	ruler_title_female = RT_MYGO_PACT_REPRESENTATIVE
+
+	possible = {
+		is_dictatorial_authority = yes
+		has_valid_civic = civic_environmentalist
+		has_valid_civic = civic_beastmasters
+	}
+
+	weight = {
+		base = @gov_civic_override_weight
+	}
+}
+
+gov_mygo_tsukinomori_board = {
+	ruler_title = RT_MYGO_BOARD_REPRESENTATIVE
+	ruler_title_female = RT_MYGO_BOARD_REPRESENTATIVE
+
+	possible = {
+		has_authority = auth_corporate
+		has_valid_civic = civic_indentured_assets
+		has_valid_civic = civic_corporate_crafters
+	}
+
+	weight = {
+		base = @gov_civic_override_weight
+	}
+}
+
+gov_mygo_ave_mujica_directorate = {
+	ruler_title = RT_MYGO_OBLIVIONIS
+	ruler_title_female = RT_MYGO_OBLIVIONIS
+
+	possible = {
+		is_dictatorial_authority = yes
+		has_valid_civic = civic_cutthroat_politics
+		has_valid_civic = civic_functional_architecture
+		has_country_flag = mygo_tsukinomori_ave_mujica
+	}
+
+	weight = {
+		base = @gov_ai_weight
+	}
+}
+
+gov_mygo_anon_tokyo_board = {
+	ruler_title = RT_MYGO_BOARD_REPRESENTATIVE
+	ruler_title_female = RT_MYGO_BOARD_REPRESENTATIVE
+
+	possible = {
+		has_authority = auth_corporate
+		has_valid_civic = civic_indentured_assets
+		has_valid_civic = civic_corporate_crafters
+		has_country_flag = mygo_tsukinomori_anon_tokyo
+	}
+
+	weight = {
+		base = @gov_ai_weight
+	}
+}

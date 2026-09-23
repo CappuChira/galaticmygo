@@ -1,0 +1,2 @@
+# The crew menu is exposed through the Contacts screen by the
+# mygo_internal_comms custom-diplomacy country.

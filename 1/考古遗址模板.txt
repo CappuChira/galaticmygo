@@ -1,0 +1,153 @@
+MyGO 星尘信标考古遗址结构化模板
+
+用途：
+把一个“星尘信标”写成可直接填充的多阶段考古链。文案组只需要按本模板提供 key 和文本；代码侧按固定位置复制块并替换编号。
+
+一、文件分工
+
+1. 遗址定义：
+common/archaeological_site_types/00_mygo_arc_sites.txt
+
+2. 阶段事件：
+events/mygo_events.txt
+
+3. 简体中文本地化：
+localisation/simp_chinese/mygo_l_simp_chinese.yml
+
+4. 生成顺序：
+common/scripted_effects/00_mygo_effects.txt
+
+第一信标由 mygo_spawn_stardust_home_site 生成在母星系。
+后续信标由 mygo_spawn_stardust_site 生成在新建星系。
+
+二、编号约定
+
+第一信标：mygo.1001 到 mygo.1006，本地化前缀 mygo_zero
+第二信标：mygo.1101 到 mygo.1106，本地化前缀 mygo_one
+第三信标：mygo.1201 到 mygo.1206，本地化前缀 mygo_two
+第四信标：mygo.1301 到 mygo.1307，本地化前缀 mygo_popy
+独立第五信标：已正式退役；mygo.1401 到 mygo.1406 仅作为历史预留，不得接入主线
+
+如果某个信标不是六阶段，只需要同步修改 stages 数量和 stage 块数量。
+
+三、文案提交格式
+
+site_xxx: "遗址标题"
+site_xxx_intro: "遗址描述。显示在情报日志/考古遗址说明中。"
+
+mygo_xxx.1.name: "第一阶段标题"
+mygo_xxx.1.desc: "第一阶段正文"
+mygo_xxx.1.a: "第一阶段按钮"
+
+mygo_xxx.2.name: "第二阶段标题"
+mygo_xxx.2.desc: "第二阶段正文"
+mygo_xxx.2.a: "第二阶段按钮"
+
+mygo_xxx.3.name: "第三阶段标题"
+mygo_xxx.3.desc: "第三阶段正文"
+mygo_xxx.3.a: "第三阶段按钮"
+
+mygo_xxx.4.name: "第四阶段标题"
+mygo_xxx.4.desc: "第四阶段正文"
+mygo_xxx.4.a: "第四阶段按钮"
+mygo_xxx.4.b: "可选第二按钮，没有就删掉"
+
+mygo_xxx.5.name: "第五阶段标题"
+mygo_xxx.5.desc: "第五阶段正文"
+mygo_xxx.5.a: "第五阶段按钮"
+
+mygo_xxx.6.name: "第六阶段标题"
+mygo_xxx.6.desc: "第六阶段正文"
+mygo_xxx.6.a: "第六阶段按钮"
+
+四、遗址定义模板
+
+mygo_stardust_xxx_site = {
+	desc = mygo_stardust_xxx_site_desc
+	picture = GFX_evt_archaeological_dig
+	stages = 6
+	weight = 0
+	max_instances = 1
+	situation_log_category = empire_concerns
+
+	allow = {
+		is_ship_class = shipclass_science_ship
+		exists = leader
+		owner = { has_origin = origin_mygo_eternal_return }
+	}
+
+	visible = {
+		default_site_visible_trigger = yes
+	}
+
+	on_roll_failed = {
+		from = {
+			standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = no_events }
+		}
+	}
+
+	stage = { difficulty = 1 icon = GFX_archaeology_runes_A2 event = mygo.XXXX1 }
+	stage = { difficulty = 1 icon = GFX_archaeology_runes_B2 event = mygo.XXXX2 }
+	stage = { difficulty = 1 icon = GFX_archaeology_runes_C2 event = mygo.XXXX3 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_D2 event = mygo.XXXX4 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_E2 event = mygo.XXXX5 }
+	stage = { difficulty = 2 icon = GFX_archaeology_runes_F2 event = mygo.XXXX6 }
+}
+
+五、普通阶段事件模板
+
+fleet_event = {
+	id = mygo.XXXX1
+	title = mygo_xxx.1.name
+	desc = mygo_xxx.1.desc
+	picture = GFX_evt_archaeological_dig
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_xxx.1.a
+		small_artifact_reward = yes
+	}
+}
+
+六、最终阶段事件模板
+
+fleet_event = {
+	id = mygo.XXXX6
+	title = mygo_xxx.6.name
+	desc = mygo_xxx.6.desc
+	picture = GFX_evt_synth_sabotage
+	show_sound = event_power_down
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_xxx.6.a
+		owner = {
+			mygo_collect_stardust_beacon = yes
+			set_country_flag = mygo_relic_xxx
+			mygo_reveal_next_stardust_signal = yes
+		}
+	}
+}
+
+七、本地化模板
+
+mygo_stardust_xxx_site:0 "遗址标题"
+mygo_stardust_xxx_site_desc:0 "遗址描述。"
+site_xxx:0 "遗址标题"
+site_xxx_intro:0 "遗址描述。"
+mygo_xxx.1.name:0 "第一阶段标题"
+mygo_xxx.1.desc:0 "第一阶段正文"
+mygo_xxx.1.a:0 "第一阶段按钮"
+
+注意：
+如果正文需要换行，在 yml 中使用 \n。
+如果详细考古链已经包含结尾反应，最终阶段不再额外触发 mygo.111 到 mygo.115 这类占位记忆排异弹窗。

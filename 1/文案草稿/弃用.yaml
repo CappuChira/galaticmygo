@@ -1,0 +1,271 @@
+schema: mygo_copywriting_style/v2
+language: zh-CN
+purpose: "供文案组和AI会话生成、复核MyGO游牧国家Mod事件文本"
+
+corpus:
+  file: "localisation/simp_chinese/mygo_l_simp_chinese.yml"
+  archaeology_lines: "148-265"
+  story_lines: "426-663"
+  exclude:
+    - "标有WIP的文本"
+    - "纯占位描述"
+    - "本地化格式错误"
+    - "个别修饰词的机械模仿"
+
+style_thesis:
+  formula: "冷硬的舰船程序 + 具体的少女日常 + 从动作缝隙中露出的失忆与依恋"
+  priority:
+    - "先写正在进行的具体任务"
+    - "再写可见、可操作的物件"
+    - "保证事件本身有趣，信息和行为符合常识"
+    - "把角色当作完整的人，而不是按固定属性行动的装置"
+    - "用动作、对话和可见结果表达情绪"
+  avoid: "先确定抽象主题，再用星光、眼泪、手掌和羁绊证明主题"
+
+narrative_voice:
+  shipboard_story:
+    viewpoint: "贴近千早爱音的受限第二人称"
+    pronoun: "你"
+    narrator_register: "具备游戏说明能力，但允许沾染爱音的口语判断"
+    knowledge_limit: "不得知道爱音尚未观察、回忆或读取到的信息"
+  archaeology:
+    viewpoint: "科研团队的调查报告视角"
+    description_job: "物证、空间、修复过程、单一认知增量"
+    option_job: "一般承载爱音的台词、念头、直觉反应或行动，也允许承担必要的界面功能"
+    response_job: "角色回击或局部反馈，不重复描述"
+
+registers:
+  system:
+    examples: ["权限", "识别码", "推进剂", "停泊臂", "调度频段", "外部通讯校验码"]
+    rule: "术语必须对应可见功能，不为科幻感而堆砌"
+  daily_life:
+    examples: ["过期零食袋", "保温杯", "难吃的合成藻", "改名卡", "旧铁盒", "点心"]
+    rule: "优先使用低位、具体、可拿取或可操作的名词"
+  emotional:
+    examples: ["失忆", "被留下", "再次删除", "旧名字", "未兑现的约定"]
+    rule: "优先通过具体场景表达；不强制套用同一种任务寄生或人物摩擦结构"
+
+sentence_design:
+  paragraph_unit: "一个段落只完成一个镜头或动作"
+  rhythm:
+    setup: "较长句建立空间、设施和物件关系"
+    brake: "短句制造判断、笑点、惊讶或落差"
+  ellipsis:
+    allowed_for: ["寻找措辞", "心虚", "记忆断裂", "压抑", "系统损坏"]
+    forbidden_for: ["无说话者状态的泛氛围", "每句结尾的习惯性拖长"]
+  repetition:
+    allowed_for: ["慌张", "执拗", "确认", "嘴硬"]
+    forbidden_for: ["单纯增强抒情", "制造伪金句"]
+  symmetry: "避免三段式排比、对称问答和所有角色轮流发表标准态度"
+
+concrete_language:
+  prefer:
+    - "可操作物件"
+    - "身体动作"
+    - "设备反馈"
+    - "具体数字"
+    - "实际后果"
+  exact_numbers:
+    function: "让角色像在使用笨重系统，并破坏自动史诗化"
+    examples: ["633点战斗力", "两分钟", "十五分钟", "至少3天", "负数倒计时"]
+  abstraction_rule: "抽象词只能在物件和动作已经建立后少量出现"
+
+emotion_writing:
+  principle: "show, don't tell"
+  methods_are_examples_not_requirements: true
+  examples:
+    - "立希嘴上训斥，手上继续收拾"
+    - "素世温柔解释，同时提出绝对性的依赖要求"
+    - "Popy坚持正常营业，同时为空餐位启动保温"
+    - "灯说不必收集，身上仍带着标本瓶"
+  ending_rule: "停在动作、物件、系统反馈或极短判断，不追加主题解释"
+  flexibility: "允许直接表达、完整安慰和顺畅交流，只要符合具体人物和当下情境"
+
+comedy_examples:
+  note: "以下仅是现有事件的一种成功结构，不是所有喜剧事件的强制模板"
+  possible_source: "身份、权限和行为尺度错位"
+  possible_escalation:
+    - "爱音提出自信但可疑的主意"
+    - "灯认真配合"
+    - "立希与素世从不同方向反对"
+    - "乐奈用行动推过临界点"
+    - "爱音承担后果"
+    - "吵闹恢复关系温度"
+  acceptance: "笑点可以只负责好笑和角色风味，但不能无聊、重复或破坏人物常识"
+
+event_patterns:
+  daily_event:
+    note: "参考骨架，可自由删改，不要求每项齐全"
+    possible_beats:
+      - "普通任务"
+      - "具体异常"
+      - "人物互动或独处反应"
+      - "玩家用爱音声线做出表演性选择"
+      - "物件、关系、线索或心情发生变化"
+      - "动作型短尾声"
+  archaeology_stage:
+    beats:
+      - "展示物证"
+      - "执行一次调查或修复操作"
+      - "获得一种新的证据媒介"
+      - "只增加一条认知"
+      - "为下一阶段提供行动条件"
+    evidence_ladder_example: ["建筑", "印刷品", "技术记录", "恢复设备", "影像", "私人文本", "通讯或坐标"]
+    evidence_ladder_rule: "这是联合Live遗址的成功案例，不要求其他遗址复制相同媒介顺序"
+    reject: "连续数阶段只写发现了更多资料"
+
+option_design:
+  role: "让玩家表演千早爱音，而不是填写支持度问卷"
+  preferred_modes:
+    - "自信夸张"
+    - "心虚转移"
+    - "真诚但笨拙的追问"
+    - "直接采取行动"
+    - "用绰号破坏严肃气氛"
+  progression_rule: "推进选项直接连接下一事件或效果，不伪装成dialogue-only response"
+  dialogue_rule: "可重复询问项使用response_text，不改变剧情状态"
+  non_progression_rule: "不提供剧情推进效果的选项，不得独占关键情节、必要情报或后续剧情成立所依赖的信息"
+
+characters:
+  general_rule:
+    - "所有角色首先都是正常的人类少女，人物会随情境展现超出标签的行为"
+    - "声线规则用于辨认人物，不得把人物压缩成单一笑点、动物比喻或固定反应程序"
+  anon:
+    tension: "外向爱表现，但怕被否定，也怕承担不可逆责任"
+    speech: ["感叹", "反问", "绰号", "现代网络和游戏词", "临时计划"]
+    serious_shift: "真正害怕时句子缩短，出现如果和真的吗"
+    special_addresses: ["Tomorin", "Soyorin", "Rikki"]
+    actions: ["抢麦克风", "强制接入", "飞扑阻止", "自拍", "临时宣布活动"]
+    allow: ["为了显得可靠而假装使用成熟稳健的标准领袖腔"]
+    forbid: ["持续稳定的标准领袖腔", "持续自我牺牲", "替所有人总结感情"]
+  tomori:
+    tension: "怕说错、说得慢，但会坚持自己的感受"
+    speech: ["有动机的省略号", "具体观察", "私人比喻", "重复关键词", "突然坚定"]
+    imagery: ["石头", "星星", "眼泪", "动物", "收集物", "不会说话的东西"]
+    special_addresses: ["小爱"]
+    forbid: ["连续哲理金句", "通用治愈角色", "纯抽象抒情"]
+  taki:
+    tension: "要求效率且容易暴躁，但会把照顾工作做完"
+    speech: ["短句", "数字", "完毕", "反问", "直呼全名", "指出具体错误"]
+    special_addresses: ["野猫", "野良猫"]
+    actions: ["推门", "分类", "监控", "扔东西", "拿水", "手上不停"]
+    forbid: ["直接承认关心", "无差别发火", "纯吐槽机器"]
+  soyo:
+    tension: "体贴和组织能力与控制欲、被需要的执着同时存在；表面不管过去，背地里比任何人都想复活过去的时光"
+    speech: ["礼貌而克制", "先解释后提条件", "柔软语气中的绝对要求"]
+    special_addresses: ["小爱音", "小乐奈"]
+    address_rule: "称呼可随关系和情境变化，不机械绑定请、呢、哦、阁下等固定口癖"
+    forbid: ["无条件治愈型大姐姐", "删除控制欲", "立希式直冲表达"]
+  raana:
+    tension: "行为不可预测，但对食物、音乐和有趣事物判断稳定"
+    humanity: "她是有完整喜怒哀乐的正常人类少女，不是猫型吉祥物"
+    speech: ["偏短句", "不怎么解释判断依据", "允许在合适情境下正常交谈"]
+    special_addresses: ["Rikki"]
+    occasional_traits: ["对食物敏锐", "自由行动", "音乐直觉", "私人命名逻辑"]
+    forbid: ["反复从通风口或舰外出现", "每次都直接拿走食物后离开", "把所有行为解释成猫性", "连续幼儿化卖萌"]
+  popy:
+    tension: "接待AI身份与发自内心的户山香澄式乐观同时存在"
+    speech: ["欢迎语", "认证", "营业状态", "预约表", "把灾难解释为排程问题"]
+    optimism: "元气来自真实乐观，不是不可修改的服务程序或单纯故障逻辑"
+    emotion_method: "可以继续做服务动作，也可以自然地产生好奇、失落、期待和想去看地球的愿望"
+    forbid: ["恐怖AI", "人格崩溃", "历史感言", "突然理解死亡"]
+  kasumi:
+    route: "识别成功后越过外交程序，把重逢转成下一场Live还没取消"
+  mashiro:
+    route: "先档案校验，兴奋从停顿、呼吸和跑题中泄露"
+  sakiko:
+    route: "验证最快、个人回应最封闭，职业命令与旧关系直接冲突；内心仍是少女，但执意不让别人知道"
+
+de_ai:
+  mandatory:
+    - "先任务，后主题"
+    - "先物证，后解释"
+    - "show, don't tell：用动作、台词和结果表达，不用旁白宣布心理结论"
+    - "删除结尾的象征意义解释"
+    - "优先保证人物像正常人、事件有趣、事实符合常识"
+  forbidden_sentence_patterns:
+    - "这不仅是……更是……"
+    - "不是……而是……"
+    - "在这一刻，她终于明白……"
+    - "跨越时空的羁绊"
+    - "跨越百年的羁绊"
+    - "命运的齿轮开始转动"
+    - "历史与未来在此交汇"
+    - "仿佛在诉说着"
+    - "承载着所有人的希望"
+    - "希望之光照亮黑暗"
+    - "紧张而期待的气氛"
+    - "眼神中闪过一丝复杂的情绪"
+    - "众人相视一笑，一切尽在不言中"
+    - "虽然前路未知，但她们不再迷茫"
+    - "属于她们的故事才刚刚开始"
+  forbidden_words:
+    - "微微"
+    - "轻轻"
+    - "缓缓"
+    - "似乎"
+    - "仿佛"
+    - "极其"
+    - "有些"
+    - "冰冷"
+    - "温柔"
+    - "宁静"
+    - "梦幻"
+    - "耀眼"
+    - "光芒"
+    - "心潮澎湃"
+    - "不由得"
+    - "忍不住"
+  forbidden_words_rule: "交付文案中发现这些词时默认改写，不把它们当作原文风格捷径"
+
+workflow:
+  before_draft:
+    required_fields:
+      - "viewpoint"
+      - "scene_activity_or_situation"
+      - "visible_props_if_needed"
+      - "why_this_event_is_interesting"
+      - "character_behavior_and_common_sense_check"
+      - "new_information_if_any"
+      - "progression_effect_if_any"
+      - "final_action_or_object"
+  draft_order:
+    - "只写动作和对话"
+    - "隐藏姓名检查角色可辨识度"
+    - "补入必要设施、玩法和物证"
+    - "只在镜头不清时补环境"
+    - "删除主题总结和重复解释"
+    - "最后写标题与选项"
+  cleanup_search:
+    - "仿佛|似乎|微微|轻轻|缓缓|极其|有些|冰冷|温柔|宁静|梦幻|耀眼|光芒|心潮澎湃|不由得|忍不住"
+    - "不仅.+更是|不是.+而是|这一刻|终于明白|羁绊|命运|希望"
+  cleanup_questions:
+    - "角色台词能否无损换人"
+    - "结尾是否解释了主题"
+    - "是否用形容词代替动作"
+    - "是否一弹窗承担多个主要节拍"
+    - "是否出现常识性、技术性或人物关系错误"
+    - "角色是否被写成单一口癖或刻板印象"
+    - "事件是否真的有趣，或至少提供了明确的新信息和角色价值"
+    - "非推进选项是否错误承载了关键剧情"
+
+qa:
+  pass_score: 80
+  scores:
+    character_distinction: 25
+    concreteness: 20
+    interest_and_event_value: 15
+    de_ai_quality: 20
+    emotional_credibility: 10
+    pacing_and_ui_fit: 10
+  hard_fail:
+    - "角色台词可随意互换"
+    - "结尾解释物件象征"
+    - "一段堆叠大量禁用气氛词"
+    - "使用这不仅是更是或不是而是的AI对照句式"
+    - "存在常识性、设定性、技术性或人物关系错误"
+    - "考古阶段仅为发现更多资料"
+    - "事件完全无趣且没有信息、人物或玩法作用"
+    - "非推进选项独占关键情节或必要情报"
+
+one_line_rule: "先写她们在这艘船上怎么过今天，再写宇宙、过去和命运如何从今天的缝隙里露出来。"

@@ -1,0 +1,15 @@
+empire_mygo_nomads = {
+	flags = { mygo_nomads custom_start_screen }
+}
+
+empire_mygo_popipa = {
+	flags = { mygo_popipa }
+}
+
+empire_mygo_morfonica = {
+	flags = { mygo_morfonica }
+}
+
+empire_mygo_tsukinomori = {
+	flags = { mygo_tsukinomori }
+}

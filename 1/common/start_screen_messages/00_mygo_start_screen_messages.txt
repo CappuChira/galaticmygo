@@ -1,0 +1,11 @@
+# MyGO nomad opening. This mirrors vanilla UNE/CM custom start-screen entries.
+part = {
+	location = 0
+	localization = "START_SCREEN_MYGO_NOMADS"
+
+	trigger = {
+		is_nomadic = yes
+		has_country_flag = mygo_nomads
+		has_country_flag = custom_start_screen
+	}
+}

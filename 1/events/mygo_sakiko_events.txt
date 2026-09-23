@@ -1,0 +1,763 @@
+namespace = mygo
+
+# Repairs global band targets and retries missed capital visits while the
+# arkship is already parked in one of the three home systems.
+country_event = {
+	id = mygo.648
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+	}
+
+	immediate = {
+		mygo_refresh_parallel_band_event_targets = yes
+		if = {
+			limit = {
+				NOT = { has_country_flag = mygo_visited_popipa_capital }
+				any_owned_fleet = {
+					is_arkship_fleet = yes
+					exists = solar_system
+					solar_system = {
+						has_star_flag = mygo_parallel_popipa_system
+					}
+				}
+			}
+			random_owned_fleet = {
+				limit = {
+					is_arkship_fleet = yes
+					exists = solar_system
+					solar_system = {
+						has_star_flag = mygo_parallel_popipa_system
+					}
+				}
+				fleet_event = { id = mygo.637 }
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = mygo_visited_morfonica_capital }
+				any_owned_fleet = {
+					is_arkship_fleet = yes
+					exists = solar_system
+					solar_system = {
+						has_star_flag = mygo_parallel_morfonica_system
+					}
+				}
+			}
+			random_owned_fleet = {
+				limit = {
+					is_arkship_fleet = yes
+					exists = solar_system
+					solar_system = {
+						has_star_flag = mygo_parallel_morfonica_system
+					}
+				}
+				fleet_event = { id = mygo.638 }
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = mygo_visited_tsukinomori_capital }
+				any_owned_fleet = {
+					is_arkship_fleet = yes
+					exists = solar_system
+					solar_system = {
+						has_star_flag = mygo_parallel_tsukinomori_system
+					}
+				}
+			}
+			random_owned_fleet = {
+				limit = {
+					is_arkship_fleet = yes
+					exists = solar_system
+					solar_system = {
+						has_star_flag = mygo_parallel_tsukinomori_system
+					}
+				}
+				fleet_event = { id = mygo.639 }
+			}
+		}
+	}
+}
+
+# Monthly/explicit compatibility router. The timed flag lets the route retry if
+# diplomacy changes during the 35-day delay.
+country_event = {
+	id = mygo.649
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_earth_tomb_complete
+		has_country_flag = mygo_renamed_to_mygo
+		has_country_flag = mygo_visited_tsukinomori_capital
+		NOT = { has_country_flag = mygo_story_650_seen }
+		NOT = { has_country_flag = mygo_sakiko_route_pending }
+		any_country = {
+			has_country_flag = mygo_tsukinomori
+			is_country_type = default
+			has_communications = root
+			is_subject = no
+			NOT = { is_at_war_with = root }
+		}
+	}
+
+	immediate = {
+		mygo_refresh_parallel_band_event_targets = yes
+		set_timed_country_flag = {
+			flag = mygo_sakiko_route_pending
+			days = 45
+		}
+		country_event = { id = mygo.650 days = 35 }
+	}
+}
+
+country_event = {
+	id = mygo.650
+	title = mygo_story.650.name
+	desc = mygo_story.650.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_650_seen }
+		exists = event_target:mygo_tsukinomori_country
+		has_communications = event_target:mygo_tsukinomori_country
+		event_target:mygo_tsukinomori_country = {
+			is_subject = no
+			NOT = { is_at_war_with = root }
+		}
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_650_seen
+		remove_country_flag = mygo_sakiko_route_pending
+	}
+
+	option = {
+		name = mygo_story.650.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.651 days = 2 } }
+	}
+}
+
+country_event = {
+	id = mygo.651
+	title = mygo_story.651.name
+	desc = mygo_story.651.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_651_seen }
+
+	option = {
+		name = mygo_story.651.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.652 days = 30 } }
+	}
+}
+
+country_event = {
+	id = mygo.652
+	title = mygo_story.652.name
+	desc = mygo_story.652.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_652_seen }
+
+	option = {
+		name = mygo_story.652.a
+		default_hide_option = yes
+		hidden_effect = {
+			event_target:mygo_tsukinomori_country.capital_scope = {
+				enable_special_project = {
+					name = MYGO_A3_A7_AUDIT_PROJECT
+					location = this
+					owner = root
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.653
+	title = mygo_story.653.name
+	desc = mygo_story.653.desc
+	diplomatic = yes
+	picture_event_data = { portrait = anon_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_653_seen }
+
+	option = {
+		name = mygo_story.653.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.654 days = 2 } }
+	}
+}
+
+country_event = {
+	id = mygo.654
+	title = mygo_story.654.name
+	desc = mygo_story.654.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_654_seen }
+
+	option = {
+		name = mygo_story.654.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.655 days = 3 } }
+	}
+}
+
+country_event = {
+	id = mygo.655
+	title = mygo_story.655.name
+	desc = mygo_story.655.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_655_seen }
+
+	option = {
+		name = mygo_story.655.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.656 days = 3 } }
+	}
+}
+
+country_event = {
+	id = mygo.656
+	title = mygo_story.656.name
+	desc = mygo_story.656.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_656_seen }
+
+	option = {
+		name = mygo_story.656.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.657 days = 3 } }
+	}
+}
+
+country_event = {
+	id = mygo.657
+	title = mygo_story.657.name
+	desc = mygo_story.657.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = mygo_story_657_seen
+		set_country_flag = mygo_sakiko_truth_revealed
+	}
+
+	option = {
+		name = mygo_story.657.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.659 days = 2 } }
+	}
+}
+
+country_event = {
+	id = mygo.659
+	title = mygo_story.659.name
+	desc = mygo_story.659.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_659_seen }
+
+	option = {
+		name = mygo_story.659.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.664 days = 2 } }
+	}
+	option = {
+		name = mygo_story.659.b
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.667 days = 2 } }
+	}
+	option = {
+		name = mygo_story.659.c
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.674 days = 2 } }
+	}
+}
+
+country_event = {
+	id = mygo.664
+	title = mygo_story.664.name
+	desc = mygo_story.664.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = mygo_story_664_seen
+		set_country_flag = mygo_return_route_preserved
+		set_country_flag = mygo_tsukinomori_reconciled
+	}
+	option = { name = mygo_story.664.a default_hide_option = yes }
+}
+
+country_event = {
+	id = mygo.667
+	title = mygo_story.667.name
+	desc = mygo_story.667.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_667_seen }
+	option = {
+		name = mygo_story.667.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.668 days = 3 } }
+	}
+}
+
+country_event = {
+	id = mygo.668
+	title = mygo_story.668.name
+	desc = mygo_story.668.desc
+	diplomatic = yes
+	picture_event_data = { portrait = anon_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_668_seen }
+	option = {
+		name = mygo_story.668.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.669 days = 2 } }
+	}
+}
+
+country_event = {
+	id = mygo.669
+	title = mygo_story.669.name
+	desc = mygo_story.669.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = mygo_story_669_seen
+		remove_country_flag = mygo_sakiko_negotiation_round1
+		remove_country_flag = mygo_sakiko_pressure_round1
+		remove_country_flag = mygo_sakiko_control_round1
+	}
+	option = {
+		name = mygo_story.669.a
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_sakiko_negotiation_round1
+			country_event = { id = mygo.670 days = 25 }
+		}
+	}
+	option = {
+		name = mygo_story.669.b
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_sakiko_pressure_round1
+			country_event = { id = mygo.670 days = 25 }
+		}
+	}
+	option = {
+		name = mygo_story.669.c
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_sakiko_control_round1
+			country_event = { id = mygo.670 days = 25 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.670
+	title = mygo_story.670.name
+	desc = mygo_story.670.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = mygo_story_670_seen
+		remove_country_flag = mygo_sakiko_negotiation_round2
+		remove_country_flag = mygo_sakiko_pressure_round2
+		remove_country_flag = mygo_sakiko_control_round2
+	}
+	option = {
+		name = mygo_story.670.a
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_sakiko_negotiation_round2
+			country_event = { id = mygo.671 days = 3 }
+		}
+	}
+	option = {
+		name = mygo_story.670.b
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_sakiko_pressure_round2
+			country_event = { id = mygo.671 days = 3 }
+		}
+	}
+	option = {
+		name = mygo_story.670.c
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_sakiko_control_round2
+			country_event = { id = mygo.671 days = 3 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.671
+	title = mygo_story.671.name
+	desc = mygo_story.671.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_671_seen }
+	option = {
+		name = mygo_story.671.a
+		default_hide_option = yes
+		hidden_effect = {
+			if = {
+				limit = {
+					OR = {
+						has_country_flag = mygo_sakiko_control_round1
+						has_country_flag = mygo_sakiko_control_round2
+					}
+				}
+				country_event = { id = mygo.674 }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = mygo_sakiko_pressure_round1
+					has_country_flag = mygo_sakiko_pressure_round2
+				}
+				event_target:mygo_tsukinomori_country = {
+					country_event = { id = mygo.682 scopes = { from = root } }
+				}
+			}
+			else = { country_event = { id = mygo.672 } }
+		}
+	}
+}
+
+# The Tsukinomori board weighs the ultimatum against MyGO's fleet strength.
+# ROOT = Tsukinomori, FROM = MyGO.
+country_event = {
+	id = mygo.682
+	title = mygo_story.673.name
+	desc = mygo_story.673.desc
+	picture = GFX_evt_nomad_default
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = yes
+		exists = from
+		from = { has_origin = origin_mygo_eternal_return }
+	}
+
+	# Submit. A pathetic Tsukinomori always yields; an inferior one usually does.
+	option = {
+		name = mygo_story.672.a
+		ai_chance = {
+			factor = 35
+			modifier = {
+				factor = 100
+				relative_power = {
+					who = from
+					category = fleet
+					value = pathetic
+				}
+			}
+			modifier = {
+				factor = 4
+				relative_power = {
+					who = from
+					category = fleet
+					value = inferior
+				}
+			}
+			modifier = {
+				factor = 0.25
+				relative_power = {
+					who = from
+					category = fleet
+					value = superior
+				}
+			}
+			modifier = {
+				factor = 0
+				relative_power = {
+					who = from
+					category = fleet
+					value = overwhelming
+				}
+			}
+		}
+		from = {
+			set_country_flag = mygo_tsukinomori_double_pressure_surrender
+			country_event = { id = mygo.672 }
+		}
+	}
+
+	# Refuse. This preserves the existing warning and 30-day mobilization window.
+	option = {
+		name = mygo_story.673.a
+		ai_chance = {
+			factor = 65
+			modifier = {
+				factor = 0
+				relative_power = {
+					who = from
+					category = fleet
+					value = pathetic
+				}
+			}
+			modifier = {
+				factor = 0.5
+				relative_power = {
+					who = from
+					category = fleet
+					value = inferior
+				}
+			}
+			modifier = {
+				factor = 2
+				relative_power = {
+					who = from
+					category = fleet
+					value = superior
+				}
+			}
+			modifier = {
+				factor = 100
+				relative_power = {
+					who = from
+					category = fleet
+					value = overwhelming
+				}
+			}
+		}
+		from = { country_event = { id = mygo.673 } }
+	}
+}
+
+country_event = {
+	id = mygo.672
+	title = mygo_story.672.name
+	desc = mygo_story.672.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_672_seen }
+	option = {
+		name = mygo_story.672.a
+		custom_tooltip = mygo_story.672.identity.tooltip
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_return_route_preserved
+			set_country_flag = mygo_tsukinomori_peaceful_subject
+			if = {
+				limit = { has_country_flag = mygo_tsukinomori_double_pressure_surrender }
+				remove_country_flag = mygo_tsukinomori_double_pressure_surrender
+				set_country_flag = mygo_tsukinomori_coerced_subject
+			}
+			else = { set_country_flag = mygo_tsukinomori_reconciled }
+			event_target:mygo_tsukinomori_country = {
+				set_country_flag = mygo_tsukinomori_peaceful_subject
+				if = {
+					limit = { root = { has_country_flag = mygo_tsukinomori_coerced_subject } }
+					set_country_flag = mygo_tsukinomori_coerced_subject
+				}
+				set_country_flag = mygo_tsukinomori_anon_tokyo
+				remove_country_flag = mygo_tsukinomori_ave_mujica
+				set_name = NAME_MyGO_AnonTokyo
+				if = {
+					limit = { root = { has_country_flag = mygo_tsukinomori_coerced_subject } }
+					set_subject_of = {
+						who = root
+						preset = preset_vassal
+					}
+				}
+				else = {
+					set_subject_of = {
+						who = root
+						preset = preset_tributary
+					}
+				}
+				country_event = { id = mygo.681 days = 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.673
+	title = mygo_story.673.name
+	desc = mygo_story.673.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_673_seen }
+	option = {
+		name = mygo_story.671.a
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.678 days = 30 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.678
+	title = mygo_story.673.name
+	desc = mygo_story.678.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_678_seen }
+	option = {
+		name = mygo_story.678.a
+		custom_tooltip = mygo_story.678.identity.tooltip
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_tsukinomori_subjugation_war_started
+			event_target:mygo_tsukinomori_country = {
+				set_country_flag = mygo_tsukinomori_ave_mujica
+				remove_country_flag = mygo_tsukinomori_anon_tokyo
+				set_name = NAME_MyGO_AveMujica
+				mygo_story_fix_parallel_band_portraits = yes
+			}
+			declare_war = {
+				target = event_target:mygo_tsukinomori_country
+				attacker_war_goal = wg_subjugation
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.674
+	title = mygo_story.674.name
+	desc = mygo_story.674.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_674_seen }
+	option = {
+		name = mygo_story.674.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.675 days = 2 } }
+	}
+}
+
+country_event = {
+	id = mygo.681
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = mygo_tsukinomori_peaceful_subject
+		NOT = { has_country_flag = mygo_tsukinomori_loyalty_granted }
+		is_subject = yes
+	}
+
+	immediate = {
+		set_country_flag = mygo_tsukinomori_loyalty_granted
+		random_agreement = {
+			add_loyalty = 200
+		}
+	}
+}
+
+country_event = {
+	id = mygo.675
+	title = mygo_story.675.name
+	desc = mygo_story.675.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_675_seen }
+	option = {
+		name = mygo_story.675.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.676 days = 25 } }
+	}
+}
+
+country_event = {
+	id = mygo.676
+	title = mygo_story.676.name
+	desc = mygo_story.676.desc
+	diplomatic = yes
+	picture_event_data = { portrait = anon_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_676_seen }
+	option = {
+		name = mygo_story.676.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.677 days = 3 } }
+	}
+}
+
+country_event = {
+	id = mygo.677
+	title = mygo_story.677.name
+	desc = mygo_story.677.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_677_seen }
+	option = {
+		name = mygo_story.677.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.680 days = 3 } }
+	}
+}
+
+country_event = {
+	id = mygo.680
+	title = mygo_story.680.name
+	desc = mygo_story.680.desc
+	diplomatic = yes
+	picture_event_data = { portrait = sakiko_leader_mygo_portrait room = event_target:mygo_tsukinomori_country.ruler }
+	is_triggered_only = yes
+	immediate = { set_country_flag = mygo_story_680_seen }
+	option = {
+		name = mygo_story.680.a
+		custom_tooltip = mygo_story.680.identity.tooltip
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_return_route_preserved
+			set_country_flag = mygo_tsukinomori_reconciled
+			set_country_flag = mygo_sakiko_controls_tsukinomori
+				add_opinion_modifier = {
+					who = event_target:mygo_tsukinomori_country
+					modifier = opinion_mygo_sakiko_reconciliation
+				}
+				event_target:mygo_tsukinomori_country = {
+					set_country_flag = mygo_sakiko_controls_tsukinomori
+					set_country_flag = mygo_tsukinomori_ave_mujica
+					remove_country_flag = mygo_tsukinomori_anon_tokyo
+					set_name = NAME_MyGO_AveMujica
+					mygo_story_fix_parallel_band_portraits = yes
+					add_opinion_modifier = {
+						who = root
+						modifier = opinion_mygo_sakiko_reconciliation
+					}
+				}
+		}
+	}
+}

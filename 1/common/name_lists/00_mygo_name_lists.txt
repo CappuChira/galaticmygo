@@ -1,0 +1,401 @@
+﻿MYGO_NOMADS = {
+	category = "Humanoid"
+	randomized = no
+	alias = "MYGO_NOMADS"
+
+	ship_names = {
+		corvette = { MYGO_N_SHIP_Haruhikage MYGO_N_SHIP_Utakotoba MYGO_N_SHIP_Mayoiuta MYGO_N_SHIP_Hitoshizuku MYGO_N_SHIP_Silhouette MYGO_N_SHIP_NoiseCache MYGO_N_SHIP_BrokenString MYGO_N_SHIP_StrayNote }
+		destroyer = { MYGO_N_SHIP_GravityEcho MYGO_N_SHIP_BlackGold MYGO_N_SHIP_RainMemory MYGO_N_SHIP_EmptyStage MYGO_N_SHIP_UnsentLetter MYGO_N_SHIP_NamelessPoem }
+		cruiser = { MYGO_N_SHIP_StardustBeacon MYGO_N_SHIP_LostObservatory MYGO_N_SHIP_AncientEncore MYGO_N_SHIP_Recurrence MYGO_N_SHIP_OneLifetime }
+		battleship = { MYGO_N_SHIP_Spica MYGO_N_SHIP_EternalReturn MYGO_N_SHIP_EarthTomb }
+		titan = { MYGO_N_SHIP_MayoiBoshi MYGO_N_SHIP_StarryRequiem MYGO_N_SHIP_LastMemory }
+		colossus = { MYGO_N_SHIP_FormatProtocol MYGO_N_SHIP_CosmicFeedback }
+		juggernaut = { MYGO_N_SHIP_WanderingLiveHouse MYGO_N_SHIP_StageWithoutHome }
+		science = { MYGO_N_SHIP_StoneCollector MYGO_N_SHIP_LostArchive MYGO_N_SHIP_SignalListener MYGO_N_SHIP_RainDetector MYGO_N_SHIP_CatScout MYGO_N_SHIP_StarDiary }
+		colonizer = { MYGO_N_SHIP_TemporaryHome MYGO_N_SHIP_NextStop MYGO_N_SHIP_BluePlanet MYGO_N_SHIP_Reunion }
+		sponsored_colonizer = { MYGO_N_SHIP_TemporaryHome MYGO_N_SHIP_NextStop MYGO_N_SHIP_BluePlanet MYGO_N_SHIP_Reunion }
+		constructor = { MYGO_N_SHIP_Stagehand MYGO_N_SHIP_StringCrew MYGO_N_SHIP_ArkMechanic MYGO_N_SHIP_RoadBuilder }
+		transport = { MYGO_N_SHIP_BackstagePass MYGO_N_SHIP_CrewBus MYGO_N_SHIP_EquipmentVan MYGO_N_SHIP_AudienceConvoy }
+		military_station_small = { MYGO_N_SHIP_GravityEcho MYGO_N_SHIP_BlackGold MYGO_N_SHIP_RainMemory MYGO_N_SHIP_EmptyStage }
+		ion_cannon = { MYGO_N_SHIP_Spica MYGO_N_SHIP_EternalReturn MYGO_N_SHIP_EarthTomb }
+	}
+
+	fleet_names = {
+		random_names = {
+			MYGO_FLEET_STARDUST_ROUTE MYGO_FLEET_RAINY_NIGHT MYGO_FLEET_STRAY_STAR
+			MYGO_FLEET_SPICA_ESCORT MYGO_FLEET_ENCORE MYGO_FLEET_BLUE_AQUARIUM
+			MYGO_FLEET_RETURN_COURSE
+		}
+		sequential_name = MYGO_N_FLEET
+	}
+	army_names = {
+		generic = {
+			random_names = {
+				MYGO_ARMY_PASSAGE_CLEARANCE MYGO_ARMY_COMPARTMENT_EMERGENCY MYGO_ARMY_SUPPLY_ESCORT
+				MYGO_ARMY_RESIDENT_EVACUATION MYGO_ARMY_EXTERNAL_OPERATIONS MYGO_ARMY_FACILITY_SECURITY
+				MYGO_ARMY_HULL_PATROL
+			}
+			sequential_name = MYGO_N_ARMY
+		}
+		defense_army = {
+			random_names = {
+				MYGO_DEFENSE_BRIDGE MYGO_DEFENSE_HABITAT_RING MYGO_DEFENSE_LIFE_SUPPORT
+				MYGO_DEFENSE_ENGINE_ROOM MYGO_DEFENSE_HYDROPONICS MYGO_DEFENSE_OUTER_DECK
+				MYGO_DEFENSE_STAGE
+			}
+			sequential_name = MYGO_N_DEFENSE
+		}
+		assault_army = {
+			random_names = {
+				MYGO_ASSAULT_HARUHIKAGE MYGO_ASSAULT_UTAKOTOBA MYGO_ASSAULT_MAYOIBOSHI
+				MYGO_ASSAULT_SAYORIKYOKU MYGO_ASSAULT_SILHOUETTE MYGO_ASSAULT_SHIZUKU
+				MYGO_ASSAULT_OUR_NOTES
+			}
+			sequential_name = MYGO_N_ASSAULT
+		}
+		robotic_army = {
+			random_names = {
+				MYGO_ROBOT_TEMPO MYGO_ROBOT_STAGE_ASSEMBLY MYGO_ROBOT_HULL_MAINTENANCE
+				MYGO_ROBOT_AIRTIGHT_MAINTENANCE MYGO_ROBOT_LIGHTING_CONTROL
+				MYGO_ROBOT_EQUIPMENT_TRANSPORT MYGO_ROBOT_BROADCAST_RELAY
+			}
+			sequential_name = MYGO_N_ROBOT
+		}
+		psionic_army = {
+			random_names = {
+				MYGO_PSIONIC_HEARTBEAT MYGO_PSIONIC_RAIN MYGO_PSIONIC_STELLAR_POEM
+				MYGO_PSIONIC_MEMORY MYGO_PSIONIC_EMPATHY MYGO_PSIONIC_DREAM_BEACON
+				MYGO_PSIONIC_ENSEMBLE
+			}
+			sequential_name = MYGO_N_PSIONIC
+		}
+		occupation_army = {
+			random_names = {
+				MYGO_OCCUPATION_PORT_ADMINISTRATION MYGO_OCCUPATION_RATION_RECOVERY
+				MYGO_OCCUPATION_CIVIL_ROUTE MYGO_OCCUPATION_PUBLIC_FACILITY
+				MYGO_OCCUPATION_RESIDENT_LIAISON MYGO_OCCUPATION_MEDICAL_SUPPORT
+				MYGO_OCCUPATION_VENUE_ADMINISTRATION
+			}
+			sequential_name = MYGO_N_OCCUPATION
+		}
+	}
+
+	planet_names = {
+		generic = { names = { MYGO_N_PLANET_MissingHarbor MYGO_N_PLANET_RainGarden MYGO_N_PLANET_StoneShore MYGO_N_PLANET_QuietPlatform MYGO_N_PLANET_Starway MYGO_N_PLANET_EmptyCiRCLE MYGO_N_PLANET_BlueAquarium MYGO_N_PLANET_ReturnPoint } }
+		pc_gaia = { names = { MYGO_N_PLANET_SpringSun MYGO_N_PLANET_OneLifetime MYGO_N_PLANET_HomeStage } }
+	}
+
+	character_names = {
+		names1 = {
+			weight = 100
+			first_names_male = { MYGO_CHR_Ren MYGO_CHR_Haru MYGO_CHR_Sora MYGO_CHR_Riku }
+			first_names_female = { MYGO_CHR_Anon MYGO_CHR_Tomori MYGO_CHR_Taki MYGO_CHR_Soyo MYGO_CHR_Rana MYGO_CHR_Ai MYGO_CHR_Hikari MYGO_CHR_Kanade }
+			second_names = { MYGO_CHR_Chihaya MYGO_CHR_Takamatsu MYGO_CHR_Shiina MYGO_CHR_Nagasaki MYGO_CHR_Kaname MYGO_CHR_Hoshino MYGO_CHR_Amamiya MYGO_CHR_Mizuno }
+			regnal_first_names_female = { MYGO_CHR_Anon MYGO_CHR_Tomori MYGO_CHR_Taki MYGO_CHR_Soyo MYGO_CHR_Rana }
+			regnal_second_names = { MYGO_CHR_Chihaya MYGO_CHR_Takamatsu MYGO_CHR_Shiina MYGO_CHR_Nagasaki MYGO_CHR_Kaname }
+		}
+	}
+}
+
+MYGO_POPIPA = {
+	category = "Humanoid"
+	randomized = no
+	alias = "MYGO_POPIPA"
+
+	ship_names = {
+		corvette = { MYGO_P_SHIP_StarBeat MYGO_P_SHIP_Tokimeki MYGO_P_SHIP_KizunaMusic MYGO_P_SHIP_Returns MYGO_P_SHIP_Initial MYGO_P_SHIP_CiRCLING MYGO_P_SHIP_LightDelight MYGO_P_SHIP_PoppinShuffle }
+		destroyer = { MYGO_P_SHIP_DoubleRainbow MYGO_P_SHIP_TiedToSky MYGO_P_SHIP_SparklingHoliday MYGO_P_SHIP_ChocoCornet MYGO_P_SHIP_ShootingStar MYGO_P_SHIP_PartyTrain }
+		cruiser = { MYGO_P_SHIP_PoppinParty MYGO_P_SHIP_CiRCLE MYGO_P_SHIP_Galaxy MYGO_P_SHIP_CommunityStage MYGO_P_SHIP_FivePointStar }
+		battleship = { MYGO_P_SHIP_KirakiraDokidoki MYGO_P_SHIP_PoppinDream MYGO_P_SHIP_StarryRoad MYGO_P_SHIP_EncoreForever }
+		titan = { MYGO_P_SHIP_OurDream MYGO_P_SHIP_UniversalStarBeat MYGO_P_SHIP_EndlessParty }
+		colossus = { MYGO_P_SHIP_WorldStage MYGO_P_SHIP_HeartResonance }
+		juggernaut = { MYGO_P_SHIP_MovingCiRCLE MYGO_P_SHIP_GalacticTourBus }
+		science = { MYGO_P_SHIP_ArisaNotebook MYGO_P_SHIP_TaeRabbit MYGO_P_SHIP_RimiChoco MYGO_P_SHIP_SaayaBakery MYGO_P_SHIP_KasumiCompass MYGO_P_SHIP_StarFinder }
+		colonizer = { MYGO_P_SHIP_Hanasakigawa MYGO_P_SHIP_Yamabuki MYGO_P_SHIP_NewCiRCLE MYGO_P_SHIP_ShiningTown }
+		sponsored_colonizer = { MYGO_P_SHIP_Hanasakigawa MYGO_P_SHIP_Yamabuki MYGO_P_SHIP_NewCiRCLE MYGO_P_SHIP_ShiningTown }
+		constructor = { MYGO_P_SHIP_StageBuilder MYGO_P_SHIP_LightCrew MYGO_P_SHIP_SoundCheck MYGO_P_SHIP_CommunityHands }
+		transport = { MYGO_P_SHIP_FanConvoy MYGO_P_SHIP_BakeryVan MYGO_P_SHIP_LightstickBus MYGO_P_SHIP_StaffShuttle }
+		military_station_small = { MYGO_P_SHIP_DoubleRainbow MYGO_P_SHIP_TiedToSky MYGO_P_SHIP_SparklingHoliday MYGO_P_SHIP_PartyTrain }
+		ion_cannon = { MYGO_P_SHIP_KirakiraDokidoki MYGO_P_SHIP_PoppinDream MYGO_P_SHIP_EncoreForever }
+	}
+
+	fleet_names = {
+		random_names = {
+			MYGO_P_FLEET_STAR_BEAT MYGO_P_FLEET_DOUBLE_RAINBOW MYGO_P_FLEET_CIRCLE
+			MYGO_P_FLEET_SPARKLING_HOLIDAY MYGO_P_FLEET_KIZUNA_MUSIC
+			MYGO_P_FLEET_POPPIN_TOUR MYGO_P_FLEET_FOREVER_ENCORE
+		}
+		sequential_name = MYGO_P_FLEET
+	}
+	army_names = {
+		generic = {
+			random_names = {
+				MYGO_P_ARMY_STAGE_CREW MYGO_P_ARMY_CIRCLE_AFFAIRS MYGO_P_ARMY_BAKERY_SUPPLY
+				MYGO_P_ARMY_RABBIT_SEARCH MYGO_P_ARMY_LIGHTING MYGO_P_ARMY_COMMUNITY_SUPPORT
+				MYGO_P_ARMY_INSTRUMENT_TRANSPORT
+			}
+			sequential_name = MYGO_P_ARMY
+		}
+		defense_army = {
+			random_names = {
+				MYGO_P_DEFENSE_CIRCLE MYGO_P_DEFENSE_RING MYGO_P_DEFENSE_HANASAKIGAWA
+				MYGO_P_DEFENSE_YAMABUKI MYGO_P_DEFENSE_STAR_TOWN MYGO_P_DEFENSE_BACKSTAGE
+				MYGO_P_DEFENSE_COMMUNITY_SQUARE
+			}
+			sequential_name = MYGO_P_DEFENSE
+		}
+		assault_army = {
+			random_names = {
+				MYGO_P_ASSAULT_STARLIGHT MYGO_P_ASSAULT_DOUBLE_RAINBOW MYGO_P_ASSAULT_SHOOTING_STAR
+				MYGO_P_ASSAULT_STAR_BEAT MYGO_P_ASSAULT_INITIAL MYGO_P_ASSAULT_RETURNS
+				MYGO_P_ASSAULT_POPPIN
+			}
+			sequential_name = MYGO_P_ASSAULT
+		}
+		robotic_army = {
+			random_names = {
+				MYGO_P_ROBOT_ACCOMPANIMENT MYGO_P_ROBOT_STAGE_LIGHTING MYGO_P_ROBOT_BAKERY_DELIVERY
+				MYGO_P_ROBOT_INSTRUMENT_TUNING MYGO_P_ROBOT_LIGHTSTICK_GUIDANCE
+				MYGO_P_ROBOT_CIRCLE_MAINTENANCE MYGO_P_ROBOT_TEMPO_CALIBRATION
+			}
+			sequential_name = MYGO_P_ROBOT
+		}
+		psionic_army = {
+			random_names = {
+				MYGO_P_PSIONIC_TOKIMEKI MYGO_P_PSIONIC_STAR_BEAT MYGO_P_PSIONIC_KIZUNA
+				MYGO_P_PSIONIC_KIRAKIRA MYGO_P_PSIONIC_RAINBOW MYGO_P_PSIONIC_DREAM
+				MYGO_P_PSIONIC_ENCORE
+			}
+			sequential_name = MYGO_P_PSIONIC
+		}
+		occupation_army = {
+			random_names = {
+				MYGO_P_OCCUPATION_COMMUNITY_LIAISON MYGO_P_OCCUPATION_SUPPLY_COORDINATION
+				MYGO_P_OCCUPATION_STAGE_RECOVERY MYGO_P_OCCUPATION_PORT_VOLUNTEERS
+				MYGO_P_OCCUPATION_BAKERY_RATIONS MYGO_P_OCCUPATION_RESIDENT_COOPERATION
+				MYGO_P_OCCUPATION_CIRCLE_AFFAIRS
+			}
+			sequential_name = MYGO_P_OCCUPATION
+		}
+	}
+
+	planet_names = {
+		generic = { names = { MYGO_P_PLANET_StarTown MYGO_P_PLANET_CiRCLEPrime MYGO_P_PLANET_ChocoHarbor MYGO_P_PLANET_RabbitGarden MYGO_P_PLANET_BakeryWorld MYGO_P_PLANET_SparkleSquare MYGO_P_PLANET_RainbowColony MYGO_P_PLANET_HeartStation } }
+		pc_gaia = { names = { MYGO_P_PLANET_KirakiraParadise MYGO_P_PLANET_DreamStage MYGO_P_PLANET_ForeverEncore } }
+	}
+
+	character_names = {
+		names1 = {
+			weight = 100
+			first_names_male = { MYGO_CHR_Ren MYGO_CHR_Haru MYGO_CHR_Sora MYGO_CHR_Riku }
+			first_names_female = { MYGO_CHR_Kasumi MYGO_CHR_Tae MYGO_CHR_Rimi MYGO_CHR_Saaya MYGO_CHR_Arisa MYGO_CHR_Kokoro MYGO_CHR_Hina MYGO_CHR_Aya }
+			second_names = { MYGO_CHR_Toyama MYGO_CHR_Hanazono MYGO_CHR_Ushigome MYGO_CHR_Yamabuki MYGO_CHR_Ichigaya MYGO_CHR_Tsurumaki MYGO_CHR_Hikawa MYGO_CHR_Maruyama }
+			regnal_first_names_female = { MYGO_CHR_Kasumi MYGO_CHR_Tae MYGO_CHR_Rimi MYGO_CHR_Saaya MYGO_CHR_Arisa }
+			regnal_second_names = { MYGO_CHR_Toyama MYGO_CHR_Hanazono MYGO_CHR_Ushigome MYGO_CHR_Yamabuki MYGO_CHR_Ichigaya }
+		}
+	}
+}
+
+MYGO_MORFONICA = {
+	category = "Humanoid"
+	randomized = no
+	alias = "MYGO_MORFONICA"
+
+	ship_names = {
+		corvette = { MYGO_M_SHIP_Daylight MYGO_M_SHIP_FlyWithNight MYGO_M_SHIP_Sonorous MYGO_M_SHIP_HarmonyDay MYGO_M_SHIP_FlameOfHope MYGO_M_SHIP_BloomBloom MYGO_M_SHIP_Melancholic MYGO_M_SHIP_Butterfly }
+		destroyer = { MYGO_M_SHIP_SilverFolio MYGO_M_SHIP_VioletNocturne MYGO_M_SHIP_WhiteQuill MYGO_M_SHIP_GlassViolin MYGO_M_SHIP_AzureSonata MYGO_M_SHIP_PoetryWing }
+		cruiser = { MYGO_M_SHIP_Morfonica MYGO_M_SHIP_ButterflyArchive MYGO_M_SHIP_ResonantLibrary MYGO_M_SHIP_FiveWingChamber MYGO_M_SHIP_LunarConcerto }
+		battleship = { MYGO_M_SHIP_Fortissimo MYGO_M_SHIP_EternalMovement MYGO_M_SHIP_GrandSymphony MYGO_M_SHIP_Metamorphosis }
+		titan = { MYGO_M_SHIP_Apotheosis MYGO_M_SHIP_CelestialOverture MYGO_M_SHIP_FinalCadence }
+		colossus = { MYGO_M_SHIP_SilentRequiem MYGO_M_SHIP_WorldCoda }
+		juggernaut = { MYGO_M_SHIP_WanderingOpera MYGO_M_SHIP_GrandConservatory }
+		science = { MYGO_M_SHIP_MashiroDiary MYGO_M_SHIP_TokoSketch MYGO_M_SHIP_NanamiMeasure MYGO_M_SHIP_TsukushiDesk MYGO_M_SHIP_RuiScore MYGO_M_SHIP_ArchiveSeeker }
+		colonizer = { MYGO_M_SHIP_TsukinomoriGarden MYGO_M_SHIP_ButterflyHaven MYGO_M_SHIP_NewAtelier MYGO_M_SHIP_PoetsShore }
+		sponsored_colonizer = { MYGO_M_SHIP_TsukinomoriGarden MYGO_M_SHIP_ButterflyHaven MYGO_M_SHIP_NewAtelier MYGO_M_SHIP_PoetsShore }
+		constructor = { MYGO_M_SHIP_OrchestraCrew MYGO_M_SHIP_ArchiveMason MYGO_M_SHIP_StageArchitect MYGO_M_SHIP_GardenKeeper }
+		transport = { MYGO_M_SHIP_EnsembleConvoy MYGO_M_SHIP_SalonShuttle MYGO_M_SHIP_ArchiveCourier MYGO_M_SHIP_ConcertCarriage }
+		military_station_small = { MYGO_M_SHIP_SilverFolio MYGO_M_SHIP_VioletNocturne MYGO_M_SHIP_WhiteQuill MYGO_M_SHIP_AzureSonata }
+		ion_cannon = { MYGO_M_SHIP_Fortissimo MYGO_M_SHIP_GrandSymphony MYGO_M_SHIP_FinalCadence }
+	}
+
+	fleet_names = {
+		random_names = {
+			MYGO_M_FLEET_BUTTERFLY MYGO_M_FLEET_DAYLIGHT MYGO_M_FLEET_SILVER_FOLIO
+			MYGO_M_FLEET_AZURE_SONATA MYGO_M_FLEET_CELESTIAL_OVERTURE
+			MYGO_M_FLEET_FIVE_WINGS MYGO_M_FLEET_METAMORPHOSIS
+		}
+		sequential_name = MYGO_M_FLEET
+	}
+	army_names = {
+		generic = {
+			random_names = {
+				MYGO_M_ARMY_ARCHIVE MYGO_M_ARMY_GARDEN MYGO_M_ARMY_SCORE_ESCORT
+				MYGO_M_ARMY_STAGE_DESIGN MYGO_M_ARMY_SALON MYGO_M_ARMY_ATELIER
+				MYGO_M_ARMY_STRING_MAINTENANCE
+			}
+			sequential_name = MYGO_M_ARMY
+		}
+		defense_army = {
+			random_names = {
+				MYGO_M_DEFENSE_SILVER_LIBRARY MYGO_M_DEFENSE_POETRY_GARDEN
+				MYGO_M_DEFENSE_AZURE_HALL MYGO_M_DEFENSE_VIOLIN_SHORE
+				MYGO_M_DEFENSE_ARCHIVE_MOON MYGO_M_DEFENSE_FIVE_WING_HALL
+				MYGO_M_DEFENSE_QUIET_ATELIER
+			}
+			sequential_name = MYGO_M_DEFENSE
+		}
+		assault_army = {
+			random_names = {
+				MYGO_M_ASSAULT_DAYLIGHT MYGO_M_ASSAULT_BUTTERFLY MYGO_M_ASSAULT_FLAME_OF_HOPE
+				MYGO_M_ASSAULT_SONOROUS MYGO_M_ASSAULT_BLOOM_BLOOM
+				MYGO_M_ASSAULT_AZURE_SONATA MYGO_M_ASSAULT_CELESTIAL_OVERTURE
+			}
+			sequential_name = MYGO_M_ASSAULT
+		}
+		robotic_army = {
+			random_names = {
+				MYGO_M_ROBOT_STRINGS MYGO_M_ROBOT_ARCHIVE_TRANSPORT MYGO_M_ROBOT_SCORE_SORTING
+				MYGO_M_ROBOT_STAGE_SCENERY MYGO_M_ROBOT_GARDEN_MAINTENANCE
+				MYGO_M_ROBOT_VIOLIN_TUNING MYGO_M_ROBOT_SALON_SERVICE
+			}
+			sequential_name = MYGO_M_ROBOT
+		}
+		psionic_army = {
+			random_names = {
+				MYGO_M_PSIONIC_IMAGERY MYGO_M_PSIONIC_BUTTERFLY MYGO_M_PSIONIC_MOVEMENT
+				MYGO_M_PSIONIC_POETRY MYGO_M_PSIONIC_STRINGS MYGO_M_PSIONIC_AZURE_DREAM
+				MYGO_M_PSIONIC_CADENCE
+			}
+			sequential_name = MYGO_M_PSIONIC
+		}
+		occupation_army = {
+			random_names = {
+				MYGO_M_OCCUPATION_PEACE_LIAISON MYGO_M_OCCUPATION_ARCHIVE_RECEPTION
+				MYGO_M_OCCUPATION_PUBLIC_FACILITIES MYGO_M_OCCUPATION_RESIDENT_LIFE
+				MYGO_M_OCCUPATION_HERITAGE MYGO_M_OCCUPATION_TEMPORARY_SALON
+				MYGO_M_OCCUPATION_CONCERT_HALL
+			}
+			sequential_name = MYGO_M_OCCUPATION
+		}
+	}
+
+	planet_names = {
+		generic = { names = { MYGO_M_PLANET_ButterflyVale MYGO_M_PLANET_SilverLibrary MYGO_M_PLANET_ViolinShore MYGO_M_PLANET_PoetryGarden MYGO_M_PLANET_AzureHall MYGO_M_PLANET_QuietAtelier MYGO_M_PLANET_SonataColony MYGO_M_PLANET_ArchiveMoon } }
+		pc_gaia = { names = { MYGO_M_PLANET_ParadiseMovement MYGO_M_PLANET_EternalSpring MYGO_M_PLANET_PerfectHarmony } }
+	}
+
+	character_names = {
+		names1 = {
+			weight = 100
+			first_names_male = { MYGO_CHR_Ren MYGO_CHR_Haru MYGO_CHR_Sora MYGO_CHR_Riku }
+			first_names_female = { MYGO_CHR_Mashiro MYGO_CHR_Toko MYGO_CHR_Nanami MYGO_CHR_Tsukushi MYGO_CHR_Rui MYGO_CHR_Shiori MYGO_CHR_Kanade MYGO_CHR_Hikari }
+			second_names = { MYGO_CHR_Kurata MYGO_CHR_Kirigaya MYGO_CHR_Hiromachi MYGO_CHR_Futaba MYGO_CHR_Yashio MYGO_CHR_Shirasagi MYGO_CHR_Mizuno MYGO_CHR_Amamiya }
+			regnal_first_names_female = { MYGO_CHR_Mashiro MYGO_CHR_Toko MYGO_CHR_Nanami MYGO_CHR_Tsukushi MYGO_CHR_Rui }
+			regnal_second_names = { MYGO_CHR_Kurata MYGO_CHR_Kirigaya MYGO_CHR_Hiromachi MYGO_CHR_Futaba MYGO_CHR_Yashio }
+		}
+	}
+}
+
+MYGO_TSUKINOMORI = {
+	category = "Humanoid"
+	randomized = no
+	alias = "MYGO_TSUKINOMORI"
+
+	ship_names = {
+		corvette = { MYGO_T_SHIP_BlackBirthday MYGO_T_SHIP_Masquerade MYGO_T_SHIP_CryChic MYGO_T_SHIP_Obscura MYGO_T_SHIP_Doloris MYGO_T_SHIP_Mortis MYGO_T_SHIP_Timoris MYGO_T_SHIP_Amoris }
+		destroyer = { MYGO_T_SHIP_BlackGold MYGO_T_SHIP_MoonContract MYGO_T_SHIP_SilentLedger MYGO_T_SHIP_ColdEncore MYGO_T_SHIP_SealedScore MYGO_T_SHIP_ObsidianWing }
+		cruiser = { MYGO_T_SHIP_Tsukinomori MYGO_T_SHIP_AveMujica MYGO_T_SHIP_CRYCHICArchive MYGO_T_SHIP_LunarBoardroom MYGO_T_SHIP_ExecutiveStage }
+		battleship = { MYGO_T_SHIP_Imperatrix MYGO_T_SHIP_Dominus MYGO_T_SHIP_MoonlitOrder MYGO_T_SHIP_PerfectContract }
+		titan = { MYGO_T_SHIP_GrandMasquerade MYGO_T_SHIP_AbsoluteTempo MYGO_T_SHIP_FinalSettlement }
+		colossus = { MYGO_T_SHIP_Liquidation MYGO_T_SHIP_Blackout }
+		juggernaut = { MYGO_T_SHIP_MobileHeadquarters MYGO_T_SHIP_MoonlitTheater }
+		science = { MYGO_T_SHIP_SakikoLedger MYGO_T_SHIP_MutsumiGarden MYGO_T_SHIP_UikaBeacon MYGO_T_SHIP_UmiriSurvey MYGO_T_SHIP_NyamuLens MYGO_T_SHIP_ContractAuditor }
+		colonizer = { MYGO_T_SHIP_MoonEstate MYGO_T_SHIP_BlackRoseColony MYGO_T_SHIP_NewConsortium MYGO_T_SHIP_OrderedHaven }
+		sponsored_colonizer = { MYGO_T_SHIP_MoonEstate MYGO_T_SHIP_BlackRoseColony MYGO_T_SHIP_NewConsortium MYGO_T_SHIP_OrderedHaven }
+		constructor = { MYGO_T_SHIP_Contractor MYGO_T_SHIP_StageEngineer MYGO_T_SHIP_AssetBuilder MYGO_T_SHIP_LunarArchitect }
+		transport = { MYGO_T_SHIP_ExecutiveShuttle MYGO_T_SHIP_SecurityConvoy MYGO_T_SHIP_EquipmentLease MYGO_T_SHIP_StaffTransfer }
+		military_station_small = { MYGO_T_SHIP_BlackGold MYGO_T_SHIP_MoonContract MYGO_T_SHIP_ColdEncore MYGO_T_SHIP_ObsidianWing }
+		ion_cannon = { MYGO_T_SHIP_Imperatrix MYGO_T_SHIP_GrandMasquerade MYGO_T_SHIP_FinalSettlement }
+	}
+
+	fleet_names = {
+		random_names = {
+			MYGO_T_FLEET_BOARD_DIRECT MYGO_T_FLEET_JOINT_CAPITAL MYGO_T_FLEET_ASSET_PATROL
+			MYGO_T_FLEET_BLACK_GOLD_CONTRACT MYGO_T_FLEET_FINANCIAL_ROUTE
+			MYGO_T_FLEET_CORPORATE_EXPEDITION MYGO_T_FLEET_SHAREHOLDER_INTEREST
+		}
+		sequential_name = MYGO_T_FLEET
+	}
+	army_names = {
+		generic = {
+			random_names = {
+				MYGO_T_ARMY_ASSET_SECURITY MYGO_T_ARMY_COMPLIANCE_INSPECTION
+				MYGO_T_ARMY_FACILITY_MANAGEMENT MYGO_T_ARMY_CONTRACT_AFFAIRS
+				MYGO_T_ARMY_CORPORATE_SECURITY MYGO_T_ARMY_CAPITAL_ROUTE
+				MYGO_T_ARMY_BOARD_DISPATCH
+			}
+			sequential_name = MYGO_T_ARMY
+		}
+		defense_army = {
+			random_names = {
+				MYGO_T_DEFENSE_HEADQUARTERS_ASSETS MYGO_T_DEFENSE_BOARD_DISTRICT
+				MYGO_T_DEFENSE_CONSORTIUM MYGO_T_DEFENSE_CONTRACT_PORT
+				MYGO_T_DEFENSE_OBSIDIAN_CAPITAL MYGO_T_DEFENSE_DATA_CENTER
+				MYGO_T_DEFENSE_MOON_ESTATE
+			}
+			sequential_name = MYGO_T_DEFENSE
+		}
+		assault_army = {
+			random_names = {
+				MYGO_T_ASSAULT_ENFORCED_PERFORMANCE MYGO_T_ASSAULT_ASSET_RECOVERY
+				MYGO_T_ASSAULT_CONTRACT_ENFORCEMENT MYGO_T_ASSAULT_FINANCIAL_INTEREST
+				MYGO_T_ASSAULT_ACQUISITION MYGO_T_ASSAULT_BLACK_GOLD_CLAUSE
+				MYGO_T_ASSAULT_BOARD_SPECIAL
+			}
+			sequential_name = MYGO_T_ASSAULT
+		}
+		robotic_army = {
+			random_names = {
+				MYGO_T_ROBOT_PERFORMANCE MYGO_T_ROBOT_ASSET_INVENTORY
+				MYGO_T_ROBOT_COMPLIANCE MYGO_T_ROBOT_CONTRACT_ARCHIVE
+				MYGO_T_ROBOT_EQUITY_REGISTRY MYGO_T_ROBOT_PORT_TAKEOVER
+				MYGO_T_ROBOT_FINANCIAL_SECURITY
+			}
+			sequential_name = MYGO_T_ROBOT
+		}
+		psionic_army = {
+			random_names = {
+				MYGO_T_PSIONIC_LUNAR_AUDIT MYGO_T_PSIONIC_COLLECTIVE_CALIBRATION
+				MYGO_T_PSIONIC_CONTRACT_TESTIMONY MYGO_T_PSIONIC_DECISION_FORECAST
+				MYGO_T_PSIONIC_BOARD_LIAISON MYGO_T_PSIONIC_BLACK_GOLD_IMAGERY
+				MYGO_T_PSIONIC_COMPLIANCE_ASSESSMENT
+			}
+			sequential_name = MYGO_T_PSIONIC
+		}
+		occupation_army = {
+			random_names = {
+				MYGO_T_OCCUPATION_TAKEOVER_COMMITTEE MYGO_T_OCCUPATION_ASSET_MANAGEMENT
+				MYGO_T_OCCUPATION_CORPORATE_ORDER MYGO_T_OCCUPATION_CONTRACT_REGISTRY
+				MYGO_T_OCCUPATION_PORT_TRANSFER MYGO_T_OCCUPATION_EMPLOYMENT_COORDINATION
+				MYGO_T_OCCUPATION_PUBLIC_UTILITY_TRUST
+			}
+			sequential_name = MYGO_T_OCCUPATION
+		}
+	}
+
+	planet_names = {
+		generic = { names = { MYGO_T_PLANET_MoonEstate MYGO_T_PLANET_BlackRose MYGO_T_PLANET_ContractPort MYGO_T_PLANET_ObsidianCapital MYGO_T_PLANET_SilentGarden MYGO_T_PLANET_GildedStage MYGO_T_PLANET_LedgerWorld MYGO_T_PLANET_MasqueradeHall } }
+		pc_gaia = { names = { MYGO_T_PLANET_PerfectOrder MYGO_T_PLANET_EternalMoon MYGO_T_PLANET_GrandEstate } }
+	}
+
+	character_names = {
+		names1 = {
+			weight = 100
+			first_names_male = { MYGO_CHR_Ren MYGO_CHR_Haru MYGO_CHR_Sora MYGO_CHR_Riku }
+			first_names_female = { MYGO_CHR_Sakiko MYGO_CHR_Mutsumi MYGO_CHR_Uika MYGO_CHR_Umiri MYGO_CHR_Nyamu MYGO_CHR_Tomori MYGO_CHR_Hikari MYGO_CHR_Shiori }
+			second_names = { MYGO_CHR_Togawa MYGO_CHR_Wakaba MYGO_CHR_Misumi MYGO_CHR_Yahata MYGO_CHR_Yutenji MYGO_CHR_Takamatsu MYGO_CHR_Amamiya MYGO_CHR_Shirasagi }
+			regnal_first_names_female = { MYGO_CHR_Sakiko MYGO_CHR_Mutsumi MYGO_CHR_Uika MYGO_CHR_Umiri MYGO_CHR_Nyamu }
+			regnal_second_names = { MYGO_CHR_Togawa MYGO_CHR_Wakaba MYGO_CHR_Misumi MYGO_CHR_Yahata MYGO_CHR_Yutenji }
+		}
+	}
+}

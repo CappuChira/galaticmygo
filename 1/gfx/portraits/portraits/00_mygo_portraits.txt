@@ -1,0 +1,29 @@
+portraits = {
+	anon_leader_mygo_portrait = {
+		texturefile = "gfx/portraits/characters/anon.png"
+	}
+	soyo_leader_mygo_portrait = {
+		texturefile = "gfx/portraits/characters/soyo.png"
+	}
+	tomori_leader_mygo_portrait = {
+		texturefile = "gfx/portraits/characters/tomori.png"
+	}
+	taki_leader_mygo_portrait = {
+		texturefile = "gfx/portraits/characters/taki.png"
+	}
+	rana_leader_mygo_portrait = {
+		texturefile = "gfx/portraits/characters/rana.png"
+	}
+	sakiko_leader_mygo_portrait = {
+		texturefile = "gfx/portraits/characters/sakiko.png"
+	}
+	mutsumi_leader_mygo_portrait = {
+		texturefile = "gfx/portraits/characters/mutsumi.png"
+	}
+	kasumi_leader_mygo_portrait = {
+		texturefile = "gfx/portraits/characters/kasumi.png"
+	}
+	mashiro_leader_mygo_portrait = {
+		texturefile = "gfx/portraits/characters/mashiro.png"
+	}
+}

@@ -1,0 +1,15 @@
+resolution_category_mygo_galactic_tour = {
+	group = politics_culture
+	icon = "GFX_resolution_community_champions"
+
+	resolution_types = {
+		"resolution_mygo_galactic_tour_repeal_1"
+		"resolution_mygo_galactic_tour_repeal_2"
+		"resolution_mygo_galactic_tour_repeal_3"
+		"resolution_mygo_galactic_tour_repeal_4"
+		"resolution_mygo_galactic_tour_planet_initiative"
+		"resolution_mygo_galactic_tour_mutual_benefit"
+		"resolution_mygo_galactic_tour_public_stage_fund"
+		"resolution_mygo_galactic_tour_universal_mandate"
+	}
+}

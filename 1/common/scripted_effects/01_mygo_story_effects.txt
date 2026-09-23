@@ -1,0 +1,649 @@
+mygo_story_ensure_internal_comms_contact = {
+	if = {
+		limit = {
+			NOT = {
+				any_country = {
+					has_country_flag = mygo_internal_comms_contact
+				}
+			}
+		}
+		create_country = {
+			name = "NAME_mygo_internal_comms"
+			type = mygo_internal_comms
+			auto_delete = no
+			flag = {
+				icon = {
+					category = "special"
+					file = "ai_01.dds"
+				}
+				background = {
+					category = "backgrounds"
+					file = "00_solid.dds"
+				}
+				colors = {
+					"blue"
+					"black"
+					"null"
+					"null"
+				}
+			}
+			effect = {
+				set_country_flag = mygo_internal_comms_contact
+			}
+		}
+	}
+
+	every_country = {
+		limit = {
+			has_country_flag = mygo_internal_comms_contact
+		}
+		if = {
+			limit = { NOT = { exists = ruler } }
+			# Custom-diplomacy contacts need a ruler-backed profile, as in vanilla Gray.
+			create_leader = {
+				class = official
+				species = root
+				name = NAME_mygo_internal_comms
+				event_leader = yes
+				skill = 1
+				set_age = 18
+				hide_age = yes
+				randomize_traits = no
+				skip_background_generation = yes
+			}
+			set_leader = last_created_leader
+		}
+		establish_communications_no_message = root
+	}
+}
+
+mygo_story_ensure_fixed_star_seekers_civic = {
+	if = {
+		limit = {
+			has_valid_civic = civic_star_seekers
+			NOT = { has_valid_civic = civic_mygo_star_seekers }
+		}
+		force_remove_civic = civic_star_seekers
+		force_add_civic = civic_mygo_star_seekers
+	}
+}
+
+mygo_story_enable_starting_council_reform = {
+	# The vanilla council has finished initializing by the time mygo.2 fires.
+	# Clearing the cooldown lets the player immediately replace vanilla seats
+	# with MyGO seats, or keep any vanilla positions they prefer.
+	set_government_cooldown = no
+	set_country_flag = mygo_starting_council_reform_enabled
+}
+
+mygo_story_upgrade_anon_leader = {
+	change_leader_portrait = anon_leader_mygo_portrait
+	change_background_job = entertainer
+	change_background_ethic = ethic_xenophile
+	set_leader_tier = leader_tier_legendary
+	set_skill = 10
+	set_immortal = yes
+	set_age = 18
+	remove_all_negative_traits = yes
+	if = {
+		limit = { NOT = { has_trait = leader_trait_mygo_anon } }
+		add_trait = leader_trait_mygo_anon
+	}
+	set_leader_flag = mygo_story_anon
+	set_leader_flag = mygo_legendary_leader
+	set_leader_flag = legendary_leader
+	set_leader_flag = immune_to_negative_traits
+}
+
+mygo_story_upgrade_soyo_leader = {
+	change_leader_portrait = soyo_leader_mygo_portrait
+	change_background_job = manager
+	change_background_ethic = ethic_authoritarian
+	set_leader_tier = leader_tier_legendary
+	set_skill = 10
+	set_immortal = yes
+	set_age = 18
+	remove_all_negative_traits = yes
+	if = {
+		limit = { NOT = { has_trait = leader_trait_mygo_soyo } }
+		add_trait = leader_trait_mygo_soyo
+	}
+	set_leader_flag = mygo_story_soyo
+	set_leader_flag = mygo_legendary_leader
+	set_leader_flag = legendary_leader
+	set_leader_flag = immune_to_negative_traits
+	set_leader_flag = leader_death_events_blocked
+}
+
+mygo_story_upgrade_tomori_leader = {
+	change_leader_portrait = tomori_leader_mygo_portrait
+	change_background_job = researcher
+	change_background_ethic = ethic_materialist
+	set_leader_tier = leader_tier_legendary
+	set_skill = 10
+	set_immortal = yes
+	set_age = 18
+	remove_all_negative_traits = yes
+	if = {
+		limit = { NOT = { has_trait = leader_trait_mygo_tomori } }
+		add_trait = leader_trait_mygo_tomori
+	}
+	set_leader_flag = mygo_story_tomori
+	set_leader_flag = mygo_legendary_leader
+	set_leader_flag = legendary_leader
+	set_leader_flag = immune_to_negative_traits
+	set_leader_flag = leader_death_events_blocked
+}
+
+mygo_story_upgrade_taki_leader = {
+	change_leader_portrait = taki_leader_mygo_portrait
+	change_background_job = commanding_officer
+	change_background_ethic = ethic_authoritarian
+	set_leader_tier = leader_tier_legendary
+	set_skill = 10
+	set_immortal = yes
+	set_age = 18
+	remove_all_negative_traits = yes
+	if = {
+		limit = { NOT = { has_trait = leader_trait_mygo_taki } }
+		add_trait = leader_trait_mygo_taki
+	}
+	set_leader_flag = mygo_story_taki
+	set_leader_flag = mygo_legendary_leader
+	set_leader_flag = legendary_leader
+	set_leader_flag = immune_to_negative_traits
+	set_leader_flag = leader_death_events_blocked
+}
+
+mygo_story_upgrade_rana_leader = {
+	change_leader_portrait = rana_leader_mygo_portrait
+	change_background_job = entertainer
+	change_background_ethic = ethic_xenophile
+	set_leader_tier = leader_tier_legendary
+	set_skill = 10
+	set_immortal = yes
+	set_age = 18
+	remove_all_negative_traits = yes
+	if = {
+		limit = { NOT = { has_trait = leader_trait_mygo_rana } }
+		add_trait = leader_trait_mygo_rana
+	}
+	set_leader_flag = mygo_story_rana
+	set_leader_flag = mygo_legendary_leader
+	set_leader_flag = legendary_leader
+	set_leader_flag = immune_to_negative_traits
+	set_leader_flag = leader_death_events_blocked
+}
+
+mygo_story_upgrade_existing_band_leaders = {
+	ruler = {
+		mygo_story_upgrade_anon_leader = yes
+	}
+	every_owned_leader = {
+		if = {
+			limit = { has_leader_flag = mygo_story_soyo }
+			mygo_story_upgrade_soyo_leader = yes
+		}
+		if = {
+			limit = { has_leader_flag = mygo_story_tomori }
+			mygo_story_upgrade_tomori_leader = yes
+		}
+		if = {
+			limit = { has_leader_flag = mygo_story_taki }
+			mygo_story_upgrade_taki_leader = yes
+		}
+		if = {
+			limit = { has_leader_flag = mygo_story_rana }
+			mygo_story_upgrade_rana_leader = yes
+		}
+	}
+}
+
+mygo_story_fix_anon_portrait = {
+	ruler = {
+		change_leader_portrait = anon_leader_mygo_portrait
+		mygo_story_upgrade_anon_leader = yes
+		save_event_target_as = mygo_story_anon_leader
+	}
+	every_owned_leader = {
+		limit = { has_leader_flag = mygo_story_anon }
+		change_leader_portrait = anon_leader_mygo_portrait
+		mygo_story_upgrade_anon_leader = yes
+	}
+}
+
+# Species modification can regenerate a leader portrait. Restore only portraits
+# here so leader level, experience, traits and assignment stay untouched.
+mygo_story_restore_player_band_portraits = {
+	ruler = {
+		if = {
+			limit = { has_leader_flag = mygo_story_anon }
+			change_leader_portrait = anon_leader_mygo_portrait
+		}
+	}
+	every_owned_leader = {
+		if = {
+			limit = { has_leader_flag = mygo_story_anon }
+			change_leader_portrait = anon_leader_mygo_portrait
+		}
+		if = {
+			limit = { has_leader_flag = mygo_story_soyo }
+			change_leader_portrait = soyo_leader_mygo_portrait
+		}
+		if = {
+			limit = { has_leader_flag = mygo_story_tomori }
+			change_leader_portrait = tomori_leader_mygo_portrait
+		}
+		if = {
+			limit = { has_leader_flag = mygo_story_taki }
+			change_leader_portrait = taki_leader_mygo_portrait
+		}
+		if = {
+			limit = { has_leader_flag = mygo_story_rana }
+			change_leader_portrait = rana_leader_mygo_portrait
+		}
+	}
+}
+
+mygo_story_apply_minimal_leader_backgrounds = {
+	ruler = {
+		if = {
+			limit = { has_leader_flag = mygo_story_anon }
+			change_background_job = entertainer
+			change_background_ethic = ethic_xenophile
+		}
+	}
+	every_owned_leader = {
+		if = {
+			limit = { has_leader_flag = mygo_story_anon }
+			change_background_job = entertainer
+			change_background_ethic = ethic_xenophile
+		}
+		if = {
+			limit = { has_leader_flag = mygo_story_soyo }
+			change_background_job = manager
+			change_background_ethic = ethic_authoritarian
+		}
+		if = {
+			limit = { has_leader_flag = mygo_story_tomori }
+			change_background_job = researcher
+			change_background_ethic = ethic_materialist
+		}
+		if = {
+			limit = { has_leader_flag = mygo_story_taki }
+			change_background_job = commanding_officer
+			change_background_ethic = ethic_authoritarian
+		}
+		if = {
+			limit = { has_leader_flag = mygo_story_rana }
+			change_background_job = entertainer
+			change_background_ethic = ethic_xenophile
+		}
+	}
+}
+
+mygo_story_fix_parallel_band_portraits = {
+	every_country = {
+		limit = {
+			OR = {
+				has_country_flag = mygo_popipa
+				has_country_flag = mygo_morfonica
+				has_country_flag = mygo_tsukinomori
+			}
+		}
+		if = {
+			limit = { has_country_flag = mygo_popipa }
+			clear_ethos = yes
+			country_add_ethic = ethic_fanatic_xenophile
+			country_add_ethic = ethic_pacifist
+			change_government = {
+				authority = auth_dictatorial
+				remove_invalid_civics = yes
+				civics = {
+					civic = civic_free_haven
+					civic = civic_environmentalist
+				}
+			}
+			set_ai_personality = federation_builders
+			ruler = {
+				set_name = PRESCRIPTED_ruler_name_kasumi
+				change_leader_portrait = kasumi_leader_mygo_portrait
+				set_immortal = yes
+				set_age = 18
+				set_leader_flag = mygo_parallel_fixed_ruler
+				set_leader_flag = mygo_parallel_kasumi
+			}
+			}
+			else_if = {
+				limit = { has_country_flag = mygo_morfonica }
+				clear_ethos = yes
+				country_add_ethic = ethic_fanatic_spiritualist
+				country_add_ethic = ethic_pacifist
+				change_government = {
+					authority = auth_dictatorial
+					remove_invalid_civics = yes
+					civics = {
+						civic = civic_environmentalist
+						civic = civic_beastmasters
+					}
+				}
+				set_ai_personality = erudite_explorers
+				ruler = {
+					set_name = PRESCRIPTED_ruler_name_mashiro
+				change_leader_portrait = mashiro_leader_mygo_portrait
+				set_immortal = yes
+				set_age = 18
+				set_leader_flag = mygo_parallel_fixed_ruler
+					set_leader_flag = mygo_parallel_mashiro
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = mygo_tsukinomori }
+				clear_ethos = yes
+				country_add_ethic = ethic_authoritarian
+				country_add_ethic = ethic_fanatic_materialist
+
+				# Preserve the original Sakiko before corporate elections can replace her.
+				if = {
+					limit = {
+						NOT = {
+							any_owned_leader = { has_leader_flag = mygo_parallel_sakiko }
+						}
+					}
+					ruler = {
+						set_name = PRESCRIPTED_ruler_name_sakiko
+						change_leader_portrait = sakiko_leader_mygo_portrait
+						set_immortal = yes
+						set_age = 18
+						set_leader_flag = mygo_parallel_fixed_ruler
+						set_leader_flag = mygo_parallel_sakiko
+					}
+				}
+
+				if = {
+					limit = { has_country_flag = mygo_tsukinomori_ave_mujica }
+					if = {
+						limit = {
+							OR = {
+								NOT = { has_authority = auth_dictatorial }
+								NOT = { has_civic = civic_cutthroat_politics }
+								NOT = { has_civic = civic_functional_architecture }
+							}
+						}
+						change_government = {
+							authority = auth_dictatorial
+							remove_invalid_civics = yes
+							civics = {
+								civic = civic_cutthroat_politics
+								civic = civic_functional_architecture
+							}
+						}
+					}
+					set_name = NAME_MyGO_AveMujica
+				}
+				else = {
+					if = {
+						limit = {
+							OR = {
+								NOT = { has_authority = auth_corporate }
+								NOT = { has_civic = civic_indentured_assets }
+								NOT = { has_civic = civic_corporate_crafters }
+							}
+						}
+						change_government = {
+							authority = auth_corporate
+							remove_invalid_civics = yes
+							civics = {
+								civic = civic_indentured_assets
+								civic = civic_corporate_crafters
+							}
+						}
+					}
+					if = {
+						limit = { has_country_flag = mygo_tsukinomori_anon_tokyo }
+						set_name = NAME_MyGO_AnonTokyo
+					}
+				}
+
+				# Corporate elections may pick another CEO; restore the marked Sakiko only when needed.
+				if = {
+					limit = {
+						any_owned_leader = { has_leader_flag = mygo_parallel_sakiko }
+						ruler = {
+							NOT = { has_leader_flag = mygo_parallel_sakiko }
+						}
+					}
+					random_owned_leader = {
+						limit = { has_leader_flag = mygo_parallel_sakiko }
+						save_event_target_as = mygo_parallel_sakiko_ruler
+					}
+					set_leader = event_target:mygo_parallel_sakiko_ruler
+				}
+				set_ai_personality = ruthless_capitalists
+				ruler = {
+					set_name = PRESCRIPTED_ruler_name_sakiko
+					change_leader_portrait = sakiko_leader_mygo_portrait
+					set_immortal = yes
+					set_age = 18
+				set_leader_flag = mygo_parallel_fixed_ruler
+				set_leader_flag = mygo_parallel_sakiko
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = mygo_story_mutsumi_recruited }
+					NOT = {
+						any_owned_leader = { has_leader_flag = mygo_story_mutsumi }
+					}
+				}
+				create_leader = {
+					class = official
+					species = owner_main_species
+					name = NAME_mygo_mutsumi
+					skill = 10
+					immortal = yes
+					set_age = 18
+					hide_age = yes
+					event_leader = yes
+					randomize_traits = no
+					skip_background_generation = yes
+					background_job = entertainer
+					background_ethic = ethic_materialist
+					gender = female
+					effect = {
+						change_leader_portrait = mutsumi_leader_mygo_portrait
+						set_leader_tier = leader_tier_legendary
+						set_leader_flag = mygo_story_mutsumi
+						set_leader_flag = mygo_legendary_leader
+						set_leader_flag = legendary_leader
+						set_leader_flag = immune_to_negative_traits
+					}
+				}
+			}
+			if = {
+				limit = {
+					any_owned_leader = { has_leader_flag = mygo_story_mutsumi }
+				}
+				set_country_flag = mygo_story_mutsumi_recruited
+			}
+			every_owned_leader = {
+				limit = { has_leader_flag = mygo_story_mutsumi }
+				change_leader_portrait = mutsumi_leader_mygo_portrait
+				set_leader_tier = leader_tier_legendary
+				set_leader_flag = immune_to_negative_traits
+			}
+		}
+	}
+}
+
+mygo_story_grant_soyo_official = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = mygo_story_soyo_recruited }
+			NOT = {
+				any_owned_leader = { has_leader_flag = mygo_story_soyo }
+			}
+		}
+		create_leader = {
+			class = official
+			species = owner_main_species
+			name = NAME_mygo_soyo
+			skill = 10
+			immortal = yes
+			set_age = 18
+			hide_age = yes
+			event_leader = yes
+			randomize_traits = no
+			skip_background_generation = yes
+			background_job = manager
+			background_ethic = ethic_authoritarian
+			gender = female
+			traits = {
+				trait = leader_trait_mygo_soyo
+			}
+			effect = {
+				change_leader_portrait = soyo_leader_mygo_portrait
+				mygo_story_upgrade_soyo_leader = yes
+				save_event_target_as = mygo_story_soyo_leader
+			}
+		}
+		set_country_flag = mygo_story_soyo_recruited
+	}
+	else = {
+		set_country_flag = mygo_story_soyo_recruited
+	}
+}
+
+mygo_story_grant_tomori_scientist = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = mygo_story_tomori_recruited }
+			NOT = {
+				any_owned_leader = { has_leader_flag = mygo_story_tomori }
+			}
+		}
+		create_leader = {
+			class = scientist
+			species = owner_main_species
+			name = NAME_mygo_tomori
+			skill = 10
+			immortal = yes
+			set_age = 18
+			hide_age = yes
+			event_leader = yes
+			randomize_traits = no
+			skip_background_generation = yes
+			background_job = researcher
+			background_ethic = ethic_materialist
+			gender = female
+			traits = {
+				trait = leader_trait_mygo_tomori
+			}
+			effect = {
+				change_leader_portrait = tomori_leader_mygo_portrait
+				mygo_story_upgrade_tomori_leader = yes
+				save_event_target_as = mygo_story_tomori_leader
+			}
+		}
+		set_country_flag = mygo_story_tomori_recruited
+	}
+	else = {
+		set_country_flag = mygo_story_tomori_recruited
+	}
+}
+
+mygo_story_grant_taki_commander = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = mygo_story_taki_recruited }
+			NOT = {
+				any_owned_leader = { has_leader_flag = mygo_story_taki }
+			}
+		}
+		create_leader = {
+			class = commander
+			species = owner_main_species
+			name = NAME_mygo_taki
+			skill = 10
+			immortal = yes
+			set_age = 18
+			hide_age = yes
+			event_leader = yes
+			randomize_traits = no
+			skip_background_generation = yes
+			background_job = commanding_officer
+			background_ethic = ethic_authoritarian
+			gender = female
+			traits = {
+				trait = leader_trait_mygo_taki
+			}
+			effect = {
+				change_leader_portrait = taki_leader_mygo_portrait
+				mygo_story_upgrade_taki_leader = yes
+				save_event_target_as = mygo_story_taki_leader
+			}
+		}
+		set_country_flag = mygo_story_taki_recruited
+	}
+	else = {
+		set_country_flag = mygo_story_taki_recruited
+	}
+}
+
+# Compatibility shim for imported Gemini drafts.
+unlock_taki_leader_effect = {
+	mygo_story_grant_taki_commander = yes
+}
+
+mygo_story_grant_rana_scientist = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = mygo_story_rana_recruited }
+			NOT = {
+				any_owned_leader = { has_leader_flag = mygo_story_rana }
+			}
+		}
+		create_leader = {
+			class = scientist
+			species = owner_main_species
+			name = NAME_mygo_rana
+			skill = 10
+			immortal = yes
+			set_age = 18
+			hide_age = yes
+			event_leader = yes
+			randomize_traits = no
+			skip_background_generation = yes
+			background_job = entertainer
+			background_ethic = ethic_xenophile
+			gender = female
+			traits = {
+				trait = leader_trait_mygo_rana
+			}
+			effect = {
+				change_leader_portrait = rana_leader_mygo_portrait
+				mygo_story_upgrade_rana_leader = yes
+				save_event_target_as = mygo_story_rana_leader
+			}
+		}
+		set_country_flag = mygo_story_rana_recruited
+	}
+	else = {
+		set_country_flag = mygo_story_rana_recruited
+	}
+}
+
+# Compatibility shim for imported Gemini drafts.
+unlock_rana_leader_effect = {
+	mygo_story_grant_rana_scientist = yes
+}
+
+mygo_story_reveal_first_stardust_signal = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = mygo_active_stardust_signal }
+			NOT = { has_country_flag = mygo_relic_string }
+		}
+		mygo_spawn_stardust_home_site = { SITE = mygo_stardust_string_site }
+		set_country_flag = mygo_stardust_signal_string
+	}
+}

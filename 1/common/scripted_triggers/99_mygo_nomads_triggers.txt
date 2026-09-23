@@ -1,0 +1,11 @@
+# Extend the vanilla Star Seekers gate instead of copying the festival system.
+# Keeping the original four civics here preserves vanilla behavior for all empires.
+is_star_seeker_empire = {
+	OR = {
+		has_valid_civic = civic_star_seekers
+		has_valid_civic = civic_hive_star_seekers
+		has_valid_civic = civic_machine_star_seekers
+		has_valid_civic = civic_corporate_star_seekers
+		has_valid_civic = civic_mygo_star_seekers
+	}
+}

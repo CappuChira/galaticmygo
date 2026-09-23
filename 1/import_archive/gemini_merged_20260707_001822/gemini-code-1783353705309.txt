@@ -1,0 +1,73 @@
+# ==========================================
+# 阶段一：初遇迷路的变形虫
+# ==========================================
+country_event = {
+	id = mygo.490
+	title = mygo_story.490.name
+	desc = mygo_story.490.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.490.a
+		response_text = mygo_story.490.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.490.b
+		# 【结构变更】不写 response，直接无缝切入下一阶段
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.491 } }
+	}
+}
+
+# ==========================================
+# 阶段二：三方会谈的命名分歧
+# ==========================================
+country_event = {
+	id = mygo.491
+	title = mygo_story.491.name
+	desc = mygo_story.491.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.491.a
+		response_text = mygo_story.491.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.491.b
+		response_text = mygo_story.491.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.491.c
+		# 【结构变更】不写 response，直接无缝切入投票阶段
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.492 } }
+	}
+}
+
+# ==========================================
+# 阶段三：全舰表决与无效多数
+# ==========================================
+country_event = {
+	id = mygo.492
+	title = mygo_story.492.name
+	desc = mygo_story.492.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.492.a
+		response_text = mygo_story.492.a.response
+		hidden_effect = {
+			# 最终获得太空变形虫作为方舟吉祥物
+			set_country_flag = mygo_has_amoeba_pet
+		}
+	}
+}

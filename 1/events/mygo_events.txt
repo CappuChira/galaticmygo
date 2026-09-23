@@ -1,0 +1,2937 @@
+namespace = mygo
+
+# MyGO Live output supplement. The vanilla approach contributes +100%; this
+# timed modifier adds +900% so the combined job output bonus is +1000%.
+ship_event = {
+	id = mygo.8
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		owner? = {
+			has_valid_civic = civic_mygo_star_seekers
+		}
+	}
+
+	immediate = {
+		owner = {
+			add_modifier = {
+				modifier = mygo_live_output_boost
+				days = 180
+			}
+		}
+	}
+}
+
+ship_event = {
+	id = mygo.9
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		owner? = {
+			has_modifier = mygo_live_output_boost
+		}
+	}
+
+	immediate = {
+		owner = {
+			remove_modifier = mygo_live_output_boost
+		}
+	}
+}
+
+country_event = {
+	id = mygo.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_initialized }
+	}
+
+	immediate = {
+		set_country_flag = mygo_initialized
+		set_country_flag = mygo_phase_1
+		set_country_flag = mygo_relics_collected_0
+		mygo_story_ensure_fixed_star_seekers_civic = yes
+		mygo_story_fix_anon_portrait = yes
+		begin_event_chain = {
+			event_chain = mygo_stardust_beacons_chain
+			target = root
+		}
+		mygo_sync_stardust_analysis = yes
+		set_country_flag = mygo_stardust_analysis_initialized
+		country_event = { id = mygo.2 days = 1 }
+		country_event = { id = mygo.400 days = 1 }
+		country_event = { id = mygo.410 days = 3 }
+	}
+}
+
+# One-shot old-save bridge. Formal archaeology endings keep the situation in
+# sync afterwards, so this does not need to run every month once initialized.
+country_event = {
+	id = mygo.11
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_stardust_analysis_initialized }
+	}
+
+	immediate = {
+		mygo_sync_stardust_analysis = yes
+		set_country_flag = mygo_stardust_analysis_initialized
+	}
+}
+
+# Restore fixed portraits after species changes; the monthly call is also a
+# fallback for scripted species swaps that do not fire vanilla modification on_actions.
+country_event = {
+	id = mygo.12
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+	}
+
+	immediate = {
+		mygo_story_restore_player_band_portraits = yes
+	}
+}
+
+# One-shot bridge for leaders created before fixed background metadata existed.
+country_event = {
+	id = mygo.14
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_leader_backgrounds_initialized }
+	}
+
+	immediate = {
+		mygo_story_apply_minimal_leader_backgrounds = yes
+		set_country_flag = mygo_leader_backgrounds_initialized
+	}
+}
+
+country_event = {
+	id = mygo.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+	}
+
+	immediate = {
+		mygo_story_ensure_fixed_star_seekers_civic = yes
+		mygo_story_fix_anon_portrait = yes
+		mygo_story_fix_parallel_band_portraits = yes
+		mygo_story_upgrade_existing_band_leaders = yes
+		if = {
+			limit = {
+				has_country_flag = mygo_relic_black_gold
+				NOT = { has_country_flag = mygo_relic_record }
+				NOT = { has_country_flag = mygo_post_black_gold_story_scheduled }
+				NOT = { has_country_flag = mygo_story_500_seen }
+			}
+			set_country_flag = mygo_post_black_gold_story_scheduled
+			country_event = { id = mygo.500 days = 1 }
+		}
+		mygo_story_enable_starting_council_reform = yes
+	}
+}
+
+country_event = {
+	id = mygo.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_parallel_ark_colony
+		NOT = { has_country_flag = mygo_parallel_colony_initialized }
+	}
+
+	immediate = {
+		set_country_flag = mygo_parallel_colony_initialized
+		mygo_story_fix_parallel_band_portraits = yes
+		if = {
+			limit = { has_country_flag = mygo_popipa }
+			set_ai_personality = federation_builders
+			add_modifier = { modifier = mygo_parallel_popipa_legacy days = -1 }
+		}
+		if = {
+			limit = { has_country_flag = mygo_morfonica }
+			set_ai_personality = erudite_explorers
+			add_modifier = { modifier = mygo_parallel_morfonica_legacy days = -1 }
+		}
+		if = {
+			limit = { has_country_flag = mygo_tsukinomori }
+			set_ai_personality = ruthless_capitalists
+			add_modifier = { modifier = mygo_parallel_tsukinomori_legacy days = -1 }
+		}
+		every_country = {
+			limit = { has_origin = origin_mygo_eternal_return }
+			add_opinion_modifier = {
+				who = root
+				modifier = opinion_mygo_parallel_ark_kinship
+			}
+			root = {
+				add_opinion_modifier = {
+					who = prev
+					modifier = opinion_mygo_parallel_ark_kinship
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_country_flag = mygo_popipa
+			has_country_flag = mygo_morfonica
+			has_country_flag = mygo_tsukinomori
+		}
+	}
+
+	immediate = {
+		mygo_story_fix_parallel_band_portraits = yes
+	}
+}
+
+country_event = {
+	id = mygo.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = yes
+		can_issue_contracts_trigger = yes
+		count_issued_contracts = 0
+		OR = {
+			has_country_flag = mygo_popipa
+			has_country_flag = mygo_morfonica
+			has_country_flag = mygo_tsukinomori
+		}
+		NOT = { has_country_flag = mygo_contract_active }
+		NOT = { has_country_flag = mygo_composition_contract_recently_issued }
+		any_relation = {
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+			has_communications = prev
+			NOT = { is_at_war_with = prev }
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_country_flag = mygo_morfonica }
+			random_list = {
+				70 = {}
+				30 = {
+					random_relation = {
+						limit = {
+							has_origin = origin_mygo_eternal_return
+							is_nomadic = yes
+							has_communications = prev
+							NOT = { is_at_war_with = prev }
+						}
+						save_event_target_as = mygo_composition_contract_operator
+					}
+					if = {
+						limit = { exists = event_target:mygo_composition_contract_operator }
+						issue_contract = {
+							contract = contract_mygo_composition
+							location = capital_scope
+						}
+						set_timed_country_flag = {
+							flag = mygo_composition_contract_recently_issued
+							days = 1800
+						}
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = mygo_popipa }
+			random_list = {
+				85 = {}
+				15 = {
+					random_relation = {
+						limit = {
+							has_origin = origin_mygo_eternal_return
+							is_nomadic = yes
+							has_communications = prev
+							NOT = { is_at_war_with = prev }
+						}
+						save_event_target_as = mygo_composition_contract_operator
+					}
+					if = {
+						limit = { exists = event_target:mygo_composition_contract_operator }
+						issue_contract = {
+							contract = contract_mygo_composition
+							location = capital_scope
+						}
+						set_timed_country_flag = {
+							flag = mygo_composition_contract_recently_issued
+							days = 1800
+						}
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = mygo_tsukinomori }
+			random_list = {
+				95 = {}
+				5 = {
+					random_relation = {
+						limit = {
+							has_origin = origin_mygo_eternal_return
+							is_nomadic = yes
+							has_communications = prev
+							NOT = { is_at_war_with = prev }
+						}
+						save_event_target_as = mygo_composition_contract_operator
+					}
+					if = {
+						limit = { exists = event_target:mygo_composition_contract_operator }
+						issue_contract = {
+							contract = contract_mygo_composition
+							location = capital_scope
+						}
+						set_timed_country_flag = {
+							flag = mygo_composition_contract_recently_issued
+							days = 1800
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		can_issue_contracts_trigger = yes
+		count_issued_contracts = 0
+		NOT = { has_country_flag = mygo_contract_active }
+		NOT = { has_country_flag = mygo_tour_contract_recently_issued }
+		NOT = {
+			any_country = {
+				OR = {
+					has_country_flag = mygo_tour_contract_open
+					AND = {
+						has_origin = origin_mygo_eternal_return
+						has_event_chain = contract_mygo_tour_chain
+					}
+				}
+			}
+		}
+		any_relation = {
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+			has_country_flag = mygo_tour_unlocked
+			has_communications = prev
+			NOT = { is_at_war_with = prev }
+		}
+		any_owned_planet = {
+			is_colony = yes
+			is_under_colonization = no
+			planet = {
+				NOT = { has_planet_flag = mygo_tour_visited }
+			}
+			OR = {
+				is_capital = yes
+				pop_amount >= 200
+			}
+		}
+	}
+
+	immediate = {
+		random_list = {
+			1 = {}
+			999 = {
+				modifier = {
+					factor = 3
+					has_country_flag = mygo_tsukinomori
+				}
+				modifier = {
+					factor = 2
+					OR = {
+						has_country_flag = mygo_popipa
+						has_country_flag = mygo_morfonica
+					}
+				}
+				random_relation = {
+					limit = {
+						has_origin = origin_mygo_eternal_return
+						is_nomadic = yes
+						has_country_flag = mygo_tour_unlocked
+						has_communications = prev
+						NOT = { is_at_war_with = prev }
+					}
+					save_event_target_as = mygo_tour_contract_operator
+				}
+				if = {
+					limit = { exists = event_target:mygo_tour_contract_operator }
+					if = {
+						limit = {
+							any_owned_planet = {
+								is_colony = yes
+								is_under_colonization = no
+								is_capital = yes
+								planet = {
+									NOT = { has_planet_flag = mygo_tour_visited }
+								}
+								solar_system = {
+									event_target:mygo_tour_contract_operator = {
+										contract_target_system_reachable = { SYSTEM = prev }
+									}
+								}
+							}
+						}
+						ordered_owned_planet = {
+							limit = {
+								is_colony = yes
+								is_under_colonization = no
+								is_capital = yes
+								planet = {
+									NOT = { has_planet_flag = mygo_tour_visited }
+								}
+								solar_system = {
+									event_target:mygo_tour_contract_operator = {
+										contract_target_system_reachable = { SYSTEM = prev }
+									}
+								}
+							}
+							position = 0
+							order_by = trigger:pop_amount
+							save_event_target_as = mygo_tour_contract_target_planet
+							solar_system = { save_event_target_as = mygo_tour_contract_target_system }
+						}
+					}
+					else = {
+						ordered_owned_planet = {
+							limit = {
+								is_colony = yes
+								is_under_colonization = no
+								pop_amount >= 200
+								planet = {
+									NOT = { has_planet_flag = mygo_tour_visited }
+								}
+								solar_system = {
+									event_target:mygo_tour_contract_operator = {
+										contract_target_system_reachable = { SYSTEM = prev }
+									}
+								}
+							}
+							position = 0
+							order_by = trigger:pop_amount
+							save_event_target_as = mygo_tour_contract_target_planet
+							solar_system = { save_event_target_as = mygo_tour_contract_target_system }
+						}
+					}
+					if = {
+						limit = {
+							exists = event_target:mygo_tour_contract_target_system
+							event_target:mygo_tour_contract_operator = {
+								contract_target_system_reachable = { SYSTEM = event_target:mygo_tour_contract_target_system }
+							}
+						}
+						issue_contract = {
+							contract = contract_mygo_tour
+							location = event_target:mygo_tour_contract_target_system
+						}
+						if = {
+							limit = {
+								is_galactic_community_member = yes
+								OR = {
+									is_active_resolution = "resolution_mygo_galactic_tour_planet_initiative"
+									is_active_resolution = "resolution_mygo_galactic_tour_mutual_benefit"
+									is_active_resolution = "resolution_mygo_galactic_tour_public_stage_fund"
+									is_active_resolution = "resolution_mygo_galactic_tour_universal_mandate"
+								}
+							}
+							set_timed_country_flag = {
+								flag = mygo_tour_contract_recently_issued
+								days = 1200
+							}
+						}
+						else = {
+							set_timed_country_flag = {
+								flag = mygo_tour_contract_recently_issued
+								days = 1800
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.7
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = yes
+		has_country_flag = mygo_contract_active
+		count_issued_contracts = 0
+	}
+
+	immediate = {
+		remove_country_flag = mygo_contract_active
+	}
+}
+
+country_event = {
+	id = mygo.10
+	title = mygo.10.name
+	desc = mygo.10.desc
+	picture = GFX_evt_arkship_in_orbit
+	show_sound = event_arkship_bridge
+	is_triggered_only = yes
+
+	option = {
+		name = mygo.10.a
+		hidden_effect = {
+			mygo_reveal_next_stardust_signal = yes
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.101
+	title = mygo.101.name
+	desc = mygo.101.desc
+	picture = GFX_evt_baol_datacrystals
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo.arcsite.a
+		owner = {
+			mygo_collect_stardust_beacon = yes
+			set_country_flag = mygo_relic_string
+			add_monthly_resource_mult = {
+				resource = physics_research
+				value = 6
+				min = @tier1researchmin
+				max = @tier1researchmax
+			}
+			mygo_sync_stardust_analysis = yes
+			mygo_story_ensure_internal_comms_contact = yes
+			mygo_reveal_next_stardust_signal = yes
+			country_event = { id = mygo.111 }
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.1001
+	title = mygo_zero.1.name
+	desc = mygo_zero.1.desc
+	picture = GFX_evt_archaeological_dig
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_zero.1.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1002
+	title = mygo_zero.2.name
+	desc = mygo_zero.2.desc
+	picture = GFX_evt_archaeological_dig
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_zero.2.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1003
+	title = mygo_zero.3.name
+	desc = mygo_zero.3.desc
+	picture = GFX_evt_mysterious_signal
+	show_sound = event_mysterious_signal
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_zero.3.a
+		small_artifact_reward = yes
+		owner = {
+			country_event = { id = mygo.430 days = 25 }
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.1004
+	title = mygo_zero.4.name
+	desc = mygo_zero.4.desc
+	picture = GFX_evt_mysterious_signal
+	show_sound = event_mysterious_signal
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_zero.4.a
+		small_artifact_reward = yes
+	}
+	option = {
+		name = mygo_zero.4.b
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1005
+	title = mygo_zero.5.name
+	desc = mygo_zero.5.desc
+	picture = GFX_evt_synth_sabotage
+	show_sound = event_power_down
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_zero.5.a
+		small_artifact_reward = yes
+		owner = {
+			country_event = { id = mygo.440 days = 25 }
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.1006
+	title = mygo_zero.6.name
+	desc = mygo_zero.6.desc
+	picture = GFX_evt_synth_sabotage
+	show_sound = event_power_down
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_zero.6.a
+		owner = {
+			mygo_collect_stardust_beacon = yes
+			set_country_flag = mygo_relic_string
+			mygo_story_ensure_internal_comms_contact = yes
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.1101
+	title = mygo_one.1.name
+	desc = mygo_one.1.desc
+	picture = GFX_evt_archaeological_dig
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_one.1.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1102
+	title = mygo_one.2.name
+	desc = mygo_one.2.desc
+	picture = GFX_evt_archaeological_dig
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_one.2.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1103
+	title = mygo_one.3.name
+	desc = mygo_one.3.desc
+	picture = GFX_evt_archaeological_dig
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_one.3.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1104
+	title = mygo_one.4.name
+	desc = mygo_one.4.desc
+	picture = GFX_evt_mysterious_signal
+	show_sound = event_mysterious_signal
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_one.4.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1105
+	title = mygo_one.5.name
+	desc = mygo_one.5.desc
+	picture = GFX_evt_mysterious_signal
+	show_sound = event_mysterious_signal
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_one.5.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1106
+	title = mygo_one.6.name
+	desc = mygo_one.6.desc
+	picture = GFX_evt_synth_sabotage
+	show_sound = event_power_down
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_one.6.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1107
+	title = mygo_one.7.name
+	desc = mygo_one.7.desc
+	picture = GFX_evt_synth_sabotage
+	show_sound = event_power_down
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_one.7.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1108
+	title = mygo_one.8.name
+	desc = mygo_one.8.desc
+	picture = GFX_evt_synth_sabotage
+	show_sound = event_power_down
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_one.8.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1109
+	title = mygo_one.9.name
+	desc = mygo_one.9.desc
+	picture = GFX_evt_synth_sabotage
+	show_sound = event_power_down
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_one.9.a
+		owner = {
+			mygo_collect_stardust_beacon = yes
+			set_country_flag = mygo_relic_black_gold
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier1researchreward
+				min = @tier1researchmin
+				max = @tier1researchmax
+			}
+			mygo_sync_stardust_analysis = yes
+			set_country_flag = mygo_post_black_gold_story_scheduled
+			country_event = { id = mygo.500 days = 30 }
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.1201
+	title = mygo_two.1.name
+	desc = mygo_two.1.desc
+	picture = GFX_evt_archaeological_dig
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_two.1.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1202
+	title = mygo_two.2.name
+	desc = mygo_two.2.desc
+	picture = GFX_evt_archaeological_dig
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_two.2.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1203
+	title = mygo_two.3.name
+	desc = mygo_two.3.desc
+	picture = GFX_evt_archaeological_dig
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_two.3.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1204
+	title = mygo_two.4.name
+	desc = mygo_two.4.desc
+	picture = GFX_evt_mysterious_signal
+	show_sound = event_mysterious_signal
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_two.4.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1205
+	title = mygo_two.5.name
+	desc = mygo_two.5.desc
+	picture = GFX_evt_baol_datacrystals
+	show_sound = event_mysterious_signal
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_two.5.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1206
+	title = mygo_two.6.name
+	desc = mygo_two.6.desc
+	picture = GFX_evt_synth_sabotage
+	show_sound = event_power_down
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_two.6.a
+		custom_tooltip = mygo_two.6.a.tooltip
+		owner = {
+			mygo_collect_stardust_beacon = yes
+			set_country_flag = mygo_relic_record
+			set_country_flag = mygo_relic_joint_live
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier1researchreward
+				min = @tier1researchmin
+				max = @tier1researchmax
+			}
+			mygo_sync_stardust_analysis = yes
+			mygo_force_establish_communications_with_bands = yes
+			country_event = { id = mygo.1220 days = 1 }
+		}
+	}
+}
+
+# Old saves that completed the joint Live before this bridge existed enter it
+# once, without replaying any first-contact event.
+country_event = {
+	id = mygo.549
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_relic_joint_live
+		has_country_flag = mygo_band_communications_restored
+		NOT = { has_country_flag = mygo_popy_route_accepted }
+		NOT = { has_country_flag = mygo_relic_popy_station }
+		OR = {
+			AND = {
+				NOT = { has_country_flag = mygo_joint_live_opening_scheduled }
+				NOT = { has_country_flag = mygo_joint_live_opening_complete }
+				NOT = { has_country_flag = mygo_story_550_seen }
+			}
+			AND = {
+				has_country_flag = mygo_joint_live_opening_complete
+				NOT = { has_country_flag = mygo_joint_live_bridge_scheduled }
+				NOT = { has_country_flag = mygo_story_554_seen }
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_country_flag = mygo_joint_live_opening_complete }
+			set_country_flag = mygo_joint_live_bridge_scheduled
+			country_event = { id = mygo.554 days = 1 }
+		}
+		else = {
+			set_country_flag = mygo_joint_live_opening_scheduled
+			country_event = { id = mygo.550 days = 1 }
+		}
+	}
+}
+
+# Archaeological contact route. Each bridge event points vanilla action.1 at
+# a newly contacted country. Existing contacts use a normal diplomatic event.
+country_event = {
+	id = mygo.1211
+	title = mygo_contact.relic.popipa.name
+	desc = mygo_contact.relic.popipa.known_desc
+	diplomatic = yes
+	is_triggered_only = yes
+
+	picture_event_data = {
+		portrait = event_target:mygo_popipa_country.ruler
+		planet_background = event_target:mygo_popipa_country
+		graphical_culture = event_target:mygo_popipa_country
+		city_level = event_target:mygo_popipa_country
+		room = event_target:mygo_popipa_country.ruler
+	}
+
+	option = { name = mygo_contact.relic.popipa.a }
+}
+
+country_event = {
+	id = mygo.1212
+	title = mygo_contact.relic.morfonica.name
+	desc = mygo_contact.relic.morfonica.known_desc
+	diplomatic = yes
+	is_triggered_only = yes
+
+	picture_event_data = {
+		portrait = event_target:mygo_morfonica_country.ruler
+		planet_background = event_target:mygo_morfonica_country
+		graphical_culture = event_target:mygo_morfonica_country
+		city_level = event_target:mygo_morfonica_country
+		room = event_target:mygo_morfonica_country.ruler
+	}
+
+	option = { name = mygo_contact.relic.morfonica.a }
+}
+
+country_event = {
+	id = mygo.1213
+	title = mygo_contact.relic.tsukinomori.name
+	desc = mygo_contact.relic.tsukinomori.known_desc
+	diplomatic = yes
+	is_triggered_only = yes
+
+	picture_event_data = {
+		portrait = event_target:mygo_tsukinomori_country.ruler
+		planet_background = event_target:mygo_tsukinomori_country
+		graphical_culture = event_target:mygo_tsukinomori_country
+		city_level = event_target:mygo_tsukinomori_country
+		room = event_target:mygo_tsukinomori_country.ruler
+	}
+
+	option = { name = mygo_contact.relic.tsukinomori.a }
+}
+
+country_event = {
+	id = mygo.1220
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { has_country_flag = mygo_relic_first_contact_popipa }
+			event_target:mygo_popipa_country = { save_global_event_target_as = contact_empire }
+			set_timed_country_flag = { flag = mygo_relic_contact_route days = 1 }
+			country_event = { id = action.1 }
+		}
+		else = {
+			country_event = { id = mygo.1211 }
+		}
+		country_event = { id = mygo.1221 days = 2 }
+	}
+}
+
+country_event = {
+	id = mygo.1221
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { has_country_flag = mygo_relic_first_contact_morfonica }
+			event_target:mygo_morfonica_country = { save_global_event_target_as = contact_empire }
+			set_timed_country_flag = { flag = mygo_relic_contact_route days = 1 }
+			country_event = { id = action.1 }
+		}
+		else = {
+			country_event = { id = mygo.1212 }
+		}
+		country_event = { id = mygo.1222 days = 2 }
+	}
+}
+
+country_event = {
+	id = mygo.1222
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { has_country_flag = mygo_relic_first_contact_tsukinomori }
+			event_target:mygo_tsukinomori_country = { save_global_event_target_as = contact_empire }
+			set_timed_country_flag = { flag = mygo_relic_contact_route days = 1 }
+			country_event = { id = action.1 }
+		}
+		else = {
+			country_event = { id = mygo.1213 }
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = mygo_joint_live_opening_scheduled }
+				NOT = { has_country_flag = mygo_story_550_seen }
+			}
+			set_country_flag = mygo_joint_live_opening_scheduled
+			country_event = { id = mygo.550 days = 35 }
+		}
+	}
+}
+
+# Retired standalone route kept as historical compatibility material.
+# The active reviewed bridge is mygo.567; do not reconnect or delete this entry.
+country_event = {
+	id = mygo.1230
+	title = mygo_popy.route.name
+	desc = mygo_popy.route.desc
+	diplomatic = yes
+	is_triggered_only = yes
+
+	picture_event_data = {
+		portrait = mashiro_leader_mygo_portrait
+		room = root
+	}
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_relic_record
+		has_country_flag = mygo_joint_live_bridge_complete
+		NOT = { has_country_flag = mygo_relic_popy_station }
+		NOT = { has_country_flag = mygo_active_stardust_signal }
+		NOT = { has_country_flag = mygo_popy_route_accepted }
+	}
+
+	option = {
+		name = mygo_popy.route.ask
+		response_text = mygo_popy.route.ask.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_popy.route.live
+		response_text = mygo_popy.route.live.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_popy.route.accept
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_popy_route_accepted
+			mygo_spawn_popy_rest_stop_site = yes
+			set_country_flag = mygo_stardust_signal_popy_station
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.1301
+	title = mygo_popy.1.name
+	desc = mygo_popy.1.desc
+	picture = GFX_evt_space_debris
+	show_sound = event_mysterious_signal
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_popy.1.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1302
+	title = mygo_popy.2.name
+	desc = mygo_popy.2.desc
+	picture = GFX_evt_space_station
+	show_sound = event_mysterious_signal
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_popy.2.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.1303
+	title = mygo_popy.3.name
+	desc = mygo_popy.3.desc
+	picture = GFX_evt_caravaneers
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_popy.3.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier1researchreward
+				min = @tier1researchmin
+				max = @tier1researchmax
+			}
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.1304
+	title = mygo_popy.4.name
+	desc = mygo_popy.4.desc
+	picture = GFX_evt_synth_sabotage
+	show_sound = event_mysterious_signal
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_popy.4.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1305
+	title = mygo_popy.5.name
+	desc = mygo_popy.5.desc
+	picture = GFX_evt_arkship_in_orbit
+	show_sound = event_mysterious_signal
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_popy.5.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier2unityreward
+				min = @tier2unitymin
+				max = @tier2unitymax
+			}
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.1306
+	title = mygo_popy.6.name
+	desc = mygo_popy.6.desc
+	picture = GFX_evt_space_station
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_popy.6.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.1307
+	title = mygo_popy.7.name
+	desc = mygo_popy.7.desc
+	picture = GFX_evt_mysterious_signal
+	show_sound = event_mysterious_signal
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_popy.7.a
+		custom_tooltip = mygo_popy.7.a.tooltip
+		owner = {
+			mygo_collect_stardust_beacon = yes
+			set_country_flag = mygo_relic_popy_station
+			set_country_flag = mygo_relic_notebook
+			set_country_flag = mygo_relic_crychic
+			set_country_flag = mygo_has_popy_core_copy
+			set_country_flag = mygo_earth_coordinates_revealed
+			add_monthly_resource_mult = {
+				resource = physics_research
+				value = @tier1researchreward
+				min = @tier1researchmin
+				max = @tier1researchmax
+			}
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier1researchreward
+				min = @tier1researchmin
+				max = @tier1researchmax
+			}
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier1researchreward
+				min = @tier1researchmin
+				max = @tier1researchmax
+			}
+			mygo_sync_stardust_analysis = yes
+			country_event = { id = mygo.120 }
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.104
+	title = mygo.104.name
+	desc = mygo.104.desc
+	picture = GFX_evt_archaeological_dig
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo.arcsite.a
+		owner = {
+			mygo_collect_stardust_beacon = yes
+			set_country_flag = mygo_relic_notebook
+			mygo_reveal_next_stardust_signal = yes
+			country_event = { id = mygo.114 }
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.105
+	title = mygo.105.name
+	desc = mygo.105.desc
+	picture = GFX_evt_relic_world
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo.arcsite.a
+		owner = {
+			mygo_collect_stardust_beacon = yes
+			set_country_flag = mygo_relic_crychic
+			country_event = { id = mygo.120 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.111
+	title = mygo.memory_rejection.name
+	desc = mygo.111.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo.memory_rejection.a }
+}
+
+country_event = {
+	id = mygo.112
+	title = mygo.memory_rejection.name
+	desc = mygo.112.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = soyo_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo.memory_rejection.a }
+}
+
+country_event = {
+	id = mygo.113
+	title = mygo.memory_rejection.name
+	desc = mygo.113.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = taki_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo.memory_rejection.a }
+}
+
+country_event = {
+	id = mygo.114
+	title = mygo.memory_rejection.name
+	desc = mygo.114.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = rana_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo.memory_rejection.a }
+}
+
+country_event = {
+	id = mygo.120
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		remove_country_flag = mygo_phase_1
+		set_country_flag = mygo_phase_2
+		end_event_chain = mygo_stardust_beacons_chain
+		begin_event_chain = {
+			event_chain = mygo_earth_tomb_chain
+			target = root
+		}
+		mygo_spawn_earth_tomb_site = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.201
+	title = mygo.201.name
+	desc = mygo.201.desc
+	picture = GFX_evt_tomb_world
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo.201.a
+		owner = { add_monthly_resource_mult = { resource = society_research value = @tier1researchreward min = @tier1researchmin max = @tier1researchmax } }
+	}
+}
+
+fleet_event = {
+	id = mygo.202
+	title = mygo.202.name
+	desc = mygo.202.desc
+	picture = GFX_evt_tomb_world
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo.202.a
+		owner = { add_monthly_resource_mult = { resource = unity value = @tier2unityreward min = @tier2unitymin max = @tier2unitymax } }
+	}
+}
+
+fleet_event = {
+	id = mygo.203
+	title = mygo.203.name
+	desc = mygo.203.desc
+	picture = GFX_evt_tomb_world
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo.203.a
+		small_artifact_reward = yes
+	}
+}
+
+fleet_event = {
+	id = mygo.204
+	title = mygo.204.name
+	desc = mygo.204.desc
+	picture = GFX_evt_relic_world_street
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo.204.a
+		owner = {
+			add_monthly_resource_mult = { resource = engineering_research value = @tier2researchreward min = @tier2researchmin max = @tier2researchmax }
+			country_event = { id = mygo.207 days = 2 }
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.205
+	title = mygo.205.name
+	desc = mygo.205.desc
+	picture = GFX_evt_tomb_world
+	show_sound = event_dig_site
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo.205.a
+		owner = { add_monthly_resource_mult = { resource = unity value = @tier3unityreward min = @tier3unitymin max = @tier3unitymax } }
+	}
+}
+
+fleet_event = {
+	id = mygo.206
+	title = mygo.206.name
+	desc = mygo.206.desc
+	picture = GFX_evt_arkship_in_orbit
+	show_sound = event_mysterious_signal
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo.206.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = physics_research
+				value = @tier2researchreward
+				min = @tier2researchmin
+				max = @tier2researchmax
+			}
+			country_event = { id = mygo.220 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.220
+	title = mygo.220.name
+	desc = mygo.220.desc
+	picture = GFX_evt_arkship_in_orbit
+	show_sound = event_arkship_bridge
+	is_triggered_only = yes
+
+	option = {
+		name = mygo.220.a
+		custom_tooltip = mygo.220.a.tooltip
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_earth_tomb_complete
+			set_country_flag = mygo_tour_unlocked
+			mygo_sync_stardust_analysis = yes
+			end_event_chain = mygo_earth_tomb_chain
+			country_event = { id = mygo.640 days = 45 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.600
+	title = mygo.600.name
+	desc = mygo.600.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = anon_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = mygo.600.old
+		response_text = mygo.600.old.response
+		hidden_effect = {
+			remove_country_flag = mygo_tour_style_new
+			remove_country_flag = mygo_tour_style_experimental
+			set_country_flag = mygo_tour_style_old
+		}
+	}
+	option = {
+		name = mygo.600.new
+		response_text = mygo.600.new.response
+		hidden_effect = {
+			remove_country_flag = mygo_tour_style_old
+			remove_country_flag = mygo_tour_style_experimental
+			set_country_flag = mygo_tour_style_new
+		}
+	}
+	option = {
+		name = mygo.600.experimental
+		response_text = mygo.600.experimental.response
+		hidden_effect = {
+			remove_country_flag = mygo_tour_style_old
+			remove_country_flag = mygo_tour_style_new
+			set_country_flag = mygo_tour_style_experimental
+		}
+	}
+}
+
+country_event = {
+	id = mygo.601
+	title = mygo.601.name
+	desc = mygo.601.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_popipa_country.ruler
+		room = event_target:mygo_popipa_country.ruler
+	}
+	is_triggered_only = yes
+	option = { name = mygo.601.a }
+}
+
+country_event = {
+	id = mygo.602
+	title = mygo.602.name
+	desc = mygo.602.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_morfonica_country.ruler
+		room = event_target:mygo_morfonica_country.ruler
+	}
+	is_triggered_only = yes
+	option = { name = mygo.602.a }
+}
+
+country_event = {
+	id = mygo.603
+	title = mygo.603.name
+	desc = mygo.603.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_tsukinomori_country.ruler
+		room = event_target:mygo_tsukinomori_country.ruler
+	}
+	is_triggered_only = yes
+	option = { name = mygo.603.a }
+}
+
+country_event = {
+	id = mygo.604
+	title = mygo.604.name
+	desc = mygo.604.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_popipa_country.ruler
+		room = event_target:mygo_popipa_country.ruler
+	}
+	is_triggered_only = yes
+	option = { name = mygo.604.a }
+}
+
+country_event = {
+	id = mygo.605
+	title = mygo.605.name
+	desc = mygo.605.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_morfonica_country.ruler
+		room = event_target:mygo_morfonica_country.ruler
+	}
+	is_triggered_only = yes
+	option = { name = mygo.605.a }
+}
+
+country_event = {
+	id = mygo.606
+	title = mygo.606.name
+	desc = mygo.606.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_tsukinomori_country.ruler
+		room = event_target:mygo_tsukinomori_country.ruler
+	}
+	is_triggered_only = yes
+	option = { name = mygo.606.a }
+}
+
+country_event = {
+	id = mygo.607
+	title = mygo.607.name
+	desc = mygo.607.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = kasumi_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo_popipa_contract_accept.a }
+}
+
+country_event = {
+	id = mygo.608
+	title = mygo.608.name
+	desc = mygo.608.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = kasumi_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo_popipa_contract_accept.a }
+}
+
+country_event = {
+	id = mygo.609
+	title = mygo.609.name
+	desc = mygo.609.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = kasumi_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo_popipa_contract_accept.a }
+}
+
+country_event = {
+	id = mygo.616
+	title = mygo.616.name
+	desc = mygo_morfonica_composition_accept.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = mashiro_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo_parallel_contract_accept.a }
+}
+
+country_event = {
+	id = mygo.617
+	title = mygo.617.name
+	desc = mygo_morfonica_performance_accept.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = mashiro_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo_parallel_contract_accept.a }
+}
+
+country_event = {
+	id = mygo.618
+	title = mygo.618.name
+	desc = mygo_morfonica_tour_accept.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = mashiro_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo_parallel_contract_accept.a }
+}
+
+country_event = {
+	id = mygo.619
+	title = mygo.619.name
+	desc = mygo_tsukinomori_composition_accept.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = sakiko_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo_parallel_contract_accept.a }
+}
+
+country_event = {
+	id = mygo.620
+	title = mygo.620.name
+	desc = mygo_tsukinomori_performance_accept.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = sakiko_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo_parallel_contract_accept.a }
+}
+
+country_event = {
+	id = mygo.621
+	title = mygo.621.name
+	desc = mygo_tsukinomori_tour_accept.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = sakiko_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = { name = mygo_parallel_contract_accept.a }
+}
+
+# Tracks wars between MyGO and Poppin'Party. The first declaration is already
+# covered by the diplomatic action phrase; only the first repeat war gets an event.
+country_event = {
+	id = mygo.610
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		from = {
+			any_war_participant = {
+				has_country_flag = mygo_popipa
+				is_at_war_with = root
+			}
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_country_flag = mygo_popipa_war_seen
+				NOT = { has_country_flag = mygo_popipa_second_war_seen }
+			}
+			set_country_flag = mygo_popipa_second_war_seen
+			country_event = { id = mygo.611 days = 1 }
+		}
+		else_if = {
+			limit = { NOT = { has_country_flag = mygo_popipa_war_seen } }
+			set_country_flag = mygo_popipa_war_seen
+		}
+	}
+}
+
+country_event = {
+	id = mygo.611
+	title = mygo.611.name
+	desc = mygo.611.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_popipa_country.ruler
+		room = event_target:mygo_popipa_country.ruler
+	}
+	is_triggered_only = yes
+	option = { name = mygo_popipa_war_event.a }
+}
+
+country_event = {
+	id = mygo.612
+	title = mygo.612.name
+	desc = mygo.612.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_popipa_country.ruler
+		room = event_target:mygo_popipa_country.ruler
+	}
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		from = { has_country_flag = mygo_popipa }
+		NOT = { has_country_flag = mygo_popipa_first_war_resolved }
+	}
+	immediate = {
+		set_country_flag = mygo_popipa_first_war_resolved
+		set_country_flag = mygo_popipa_war_resolution_pending
+	}
+	option = {
+		name = mygo_popipa_war_event.a
+		hidden_effect = { remove_country_flag = mygo_popipa_war_resolution_pending }
+	}
+}
+
+country_event = {
+	id = mygo.613
+	title = mygo.613.name
+	desc = mygo.613.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_popipa_country.ruler
+		room = event_target:mygo_popipa_country.ruler
+	}
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		from = { has_country_flag = mygo_popipa }
+		NOT = { has_country_flag = mygo_popipa_first_war_resolved }
+	}
+	immediate = {
+		set_country_flag = mygo_popipa_first_war_resolved
+		set_country_flag = mygo_popipa_war_resolution_pending
+	}
+	option = {
+		name = mygo_popipa_war_event.a
+		hidden_effect = { remove_country_flag = mygo_popipa_war_resolution_pending }
+	}
+}
+
+country_event = {
+	id = mygo.614
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			AND = {
+				fromfrom = { has_origin = origin_mygo_eternal_return }
+				fromfromfrom = { has_country_flag = mygo_popipa }
+			}
+			AND = {
+				fromfrom = { has_country_flag = mygo_popipa }
+				fromfromfrom = { has_origin = origin_mygo_eternal_return }
+			}
+		}
+	}
+	immediate = {
+		if = {
+			limit = { fromfrom = { has_origin = origin_mygo_eternal_return } }
+			fromfrom = {
+					if = {
+						limit = { NOT = { has_country_flag = mygo_popipa_first_war_resolved } }
+						set_country_flag = mygo_popipa_first_war_resolved
+						set_country_flag = mygo_popipa_war_resolution_pending
+						country_event = { id = mygo.615 days = 1 }
+					}
+			}
+		}
+		else = {
+			fromfromfrom = {
+					if = {
+						limit = { NOT = { has_country_flag = mygo_popipa_first_war_resolved } }
+						set_country_flag = mygo_popipa_first_war_resolved
+						set_country_flag = mygo_popipa_war_resolution_pending
+						country_event = { id = mygo.615 days = 1 }
+					}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.615
+	title = mygo.615.name
+	desc = mygo.615.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_popipa_country.ruler
+		room = event_target:mygo_popipa_country.ruler
+	}
+	is_triggered_only = yes
+	immediate = { remove_country_flag = mygo_popipa_war_resolution_pending }
+	option = { name = mygo_popipa_war_event.a }
+}
+
+# Tracks wars between MyGO and Morfonica. The first declaration is already
+# covered by the diplomatic action phrase; only the first repeat war gets an event.
+country_event = {
+	id = mygo.622
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		from = {
+			any_war_participant = {
+				has_country_flag = mygo_morfonica
+				is_at_war_with = root
+			}
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_country_flag = mygo_morfonica_war_seen
+				NOT = { has_country_flag = mygo_morfonica_second_war_seen }
+			}
+			set_country_flag = mygo_morfonica_second_war_seen
+			country_event = { id = mygo.623 days = 1 }
+		}
+		else_if = {
+			limit = { NOT = { has_country_flag = mygo_morfonica_war_seen } }
+			set_country_flag = mygo_morfonica_war_seen
+		}
+	}
+}
+
+country_event = {
+	id = mygo.623
+	title = mygo.623.name
+	desc = mygo_morfonica_second_war.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_morfonica_country.ruler
+		room = event_target:mygo_morfonica_country.ruler
+	}
+	is_triggered_only = yes
+	option = { name = mygo_parallel_war_event.a }
+}
+
+country_event = {
+	id = mygo.624
+	title = mygo.624.name
+	desc = mygo_morfonica_war_lost_first.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_morfonica_country.ruler
+		room = event_target:mygo_morfonica_country.ruler
+	}
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		from = { has_country_flag = mygo_morfonica }
+		NOT = { has_country_flag = mygo_morfonica_first_war_resolved }
+	}
+	immediate = {
+		set_country_flag = mygo_morfonica_first_war_resolved
+		set_country_flag = mygo_morfonica_war_resolution_pending
+	}
+	option = {
+		name = mygo_parallel_war_event.a
+		hidden_effect = { remove_country_flag = mygo_morfonica_war_resolution_pending }
+	}
+}
+
+country_event = {
+	id = mygo.625
+	title = mygo.625.name
+	desc = mygo_morfonica_war_won_first.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_morfonica_country.ruler
+		room = event_target:mygo_morfonica_country.ruler
+	}
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		from = { has_country_flag = mygo_morfonica }
+		NOT = { has_country_flag = mygo_morfonica_first_war_resolved }
+	}
+	immediate = {
+		set_country_flag = mygo_morfonica_first_war_resolved
+		set_country_flag = mygo_morfonica_war_resolution_pending
+	}
+	option = {
+		name = mygo_parallel_war_event.a
+		hidden_effect = { remove_country_flag = mygo_morfonica_war_resolution_pending }
+	}
+}
+
+country_event = {
+	id = mygo.626
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			AND = {
+				fromfrom = { has_origin = origin_mygo_eternal_return }
+				fromfromfrom = { has_country_flag = mygo_morfonica }
+			}
+			AND = {
+				fromfrom = { has_country_flag = mygo_morfonica }
+				fromfromfrom = { has_origin = origin_mygo_eternal_return }
+			}
+		}
+	}
+	immediate = {
+		if = {
+			limit = { fromfrom = { has_origin = origin_mygo_eternal_return } }
+			fromfrom = {
+					if = {
+						limit = { NOT = { has_country_flag = mygo_morfonica_first_war_resolved } }
+						set_country_flag = mygo_morfonica_first_war_resolved
+						set_country_flag = mygo_morfonica_war_resolution_pending
+						country_event = { id = mygo.627 days = 1 }
+					}
+			}
+		}
+		else = {
+			fromfromfrom = {
+					if = {
+						limit = { NOT = { has_country_flag = mygo_morfonica_first_war_resolved } }
+						set_country_flag = mygo_morfonica_first_war_resolved
+						set_country_flag = mygo_morfonica_war_resolution_pending
+						country_event = { id = mygo.627 days = 1 }
+					}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.627
+	title = mygo.627.name
+	desc = mygo_morfonica_war_status_quo_first.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_morfonica_country.ruler
+		room = event_target:mygo_morfonica_country.ruler
+	}
+	is_triggered_only = yes
+	immediate = { remove_country_flag = mygo_morfonica_war_resolution_pending }
+	option = { name = mygo_parallel_war_event.a }
+}
+
+# Tracks wars between MyGO and Tsukinomori. The first declaration is already
+# covered by the diplomatic action phrase; only the first repeat war gets an event.
+country_event = {
+	id = mygo.628
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		from = {
+			any_war_participant = {
+				has_country_flag = mygo_tsukinomori
+				is_at_war_with = root
+			}
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_country_flag = mygo_tsukinomori_war_seen
+				NOT = { has_country_flag = mygo_tsukinomori_second_war_seen }
+			}
+			set_country_flag = mygo_tsukinomori_second_war_seen
+			country_event = { id = mygo.629 days = 1 }
+		}
+		else_if = {
+			limit = { NOT = { has_country_flag = mygo_tsukinomori_war_seen } }
+			set_country_flag = mygo_tsukinomori_war_seen
+		}
+	}
+}
+
+country_event = {
+	id = mygo.629
+	title = mygo.629.name
+	desc = mygo_tsukinomori_second_war.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_tsukinomori_country.ruler
+		room = event_target:mygo_tsukinomori_country.ruler
+	}
+	is_triggered_only = yes
+	option = { name = mygo_parallel_war_event.a }
+}
+
+country_event = {
+	id = mygo.630
+	title = mygo.630.name
+	desc = mygo_tsukinomori_war_lost_first.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_tsukinomori_country.ruler
+		room = event_target:mygo_tsukinomori_country.ruler
+	}
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		from = { has_country_flag = mygo_tsukinomori }
+		NOT = { has_country_flag = mygo_tsukinomori_first_war_resolved }
+	}
+	immediate = {
+		set_country_flag = mygo_tsukinomori_first_war_resolved
+		set_country_flag = mygo_tsukinomori_war_resolution_pending
+	}
+	option = {
+		name = mygo_parallel_war_event.a
+		hidden_effect = { remove_country_flag = mygo_tsukinomori_war_resolution_pending }
+	}
+}
+
+country_event = {
+	id = mygo.631
+	title = mygo.631.name
+	desc = mygo_tsukinomori_war_won_first.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_tsukinomori_country.ruler
+		room = event_target:mygo_tsukinomori_country.ruler
+	}
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		from = { has_country_flag = mygo_tsukinomori }
+		NOT = { has_country_flag = mygo_tsukinomori_first_war_resolved }
+	}
+	immediate = {
+		set_country_flag = mygo_tsukinomori_first_war_resolved
+		set_country_flag = mygo_tsukinomori_war_resolution_pending
+	}
+	option = {
+		name = mygo_parallel_war_event.a
+		hidden_effect = { remove_country_flag = mygo_tsukinomori_war_resolution_pending }
+	}
+}
+
+country_event = {
+	id = mygo.632
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			AND = {
+				fromfrom = { has_origin = origin_mygo_eternal_return }
+				fromfromfrom = { has_country_flag = mygo_tsukinomori }
+			}
+			AND = {
+				fromfrom = { has_country_flag = mygo_tsukinomori }
+				fromfromfrom = { has_origin = origin_mygo_eternal_return }
+			}
+		}
+	}
+	immediate = {
+		if = {
+			limit = { fromfrom = { has_origin = origin_mygo_eternal_return } }
+			fromfrom = {
+					if = {
+						limit = { NOT = { has_country_flag = mygo_tsukinomori_first_war_resolved } }
+						set_country_flag = mygo_tsukinomori_first_war_resolved
+						set_country_flag = mygo_tsukinomori_war_resolution_pending
+						country_event = { id = mygo.633 days = 1 }
+					}
+			}
+		}
+		else = {
+			fromfromfrom = {
+					if = {
+						limit = { NOT = { has_country_flag = mygo_tsukinomori_first_war_resolved } }
+						set_country_flag = mygo_tsukinomori_first_war_resolved
+						set_country_flag = mygo_tsukinomori_war_resolution_pending
+						country_event = { id = mygo.633 days = 1 }
+					}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.633
+	title = mygo.633.name
+	desc = mygo_tsukinomori_war_status_quo_first.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:mygo_tsukinomori_country.ruler
+		room = event_target:mygo_tsukinomori_country.ruler
+	}
+	is_triggered_only = yes
+	immediate = { remove_country_flag = mygo_tsukinomori_war_resolution_pending }
+	option = { name = mygo_parallel_war_event.a }
+}
+
+fleet_event = {
+	id = mygo.634
+	title = mygo.634.name
+	desc = mygo.634.desc
+	picture = GFX_evt_forever_cruise
+	show_sound = event_announcement
+	location = root.solar_system
+	event_chain = contract_mygo_tour_chain
+	is_triggered_only = yes
+
+	trigger = {
+		owner = {
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+			has_event_chain = contract_mygo_tour_chain
+		}
+		is_arkship_fleet = yes
+		from = { has_star_flag = mygo_tour_current_system@root.owner }
+	}
+
+	immediate = {
+		owner = { save_event_target_as = mygo_tour_operator_country }
+		from = {
+			save_event_target_as = mygo_tour_current_system
+			remove_star_flag = mygo_tour_current_system@root.owner
+			random_system_planet = {
+				limit = { has_carrier_flag = mygo_tour_current_stop@root.owner }
+				save_event_target_as = mygo_tour_current_planet
+				remove_carrier_flag = mygo_tour_current_stop@root.owner
+				owner = { save_event_target_as = mygo_tour_current_issuer }
+			}
+		}
+		event_target:mygo_tour_current_planet = {
+			mygo_apply_tour_stop_effect = yes
+		}
+		owner = {
+			remove_point_of_interest = mygo_tour_stop_poi
+			change_variable = { which = mygo_tour_stops_completed value = 1 }
+		}
+		if = {
+			limit = {
+				owner = { check_variable = { which = mygo_tour_stops_completed value >= 3 } }
+			}
+			owner = { mygo_complete_tour_route = yes }
+		}
+		else_if = {
+			limit = {
+				event_target:mygo_tour_current_issuer = {
+					any_owned_planet = {
+						is_colony = yes
+						is_under_colonization = no
+						planet = {
+							NOT = { has_planet_flag = mygo_tour_visited }
+						}
+						OR = {
+							is_capital = yes
+							pop_amount >= 200
+						}
+						solar_system = {
+							event_target:mygo_tour_operator_country = {
+								contract_target_system_reachable = { SYSTEM = prev }
+							}
+						}
+					}
+				}
+			}
+			event_target:mygo_tour_current_issuer = {
+				country_event = { id = mygo.635 scopes = { from = event_target:mygo_tour_operator_country } }
+			}
+		}
+		else = {
+			owner = {
+				set_country_flag = mygo_tour_skip_route_complete_event
+				mygo_complete_tour_route = yes
+			}
+		}
+	}
+
+	option = {
+		name = mygo.634.a
+	}
+}
+
+country_event = {
+	id = mygo.635
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_country_type = default
+		has_country_flag = mygo_contract_active
+		from = {
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+			has_event_chain = contract_mygo_tour_chain
+		}
+	}
+
+	immediate = {
+		from = {
+			remove_point_of_interest = mygo_tour_stop_poi
+			abort_special_project = { type = MYGO_CONTRACT_TOUR_PROJECT }
+		}
+		if = {
+			limit = {
+				any_owned_planet = {
+					is_colony = yes
+					is_under_colonization = no
+					is_capital = yes
+					planet = {
+						NOT = { has_planet_flag = mygo_tour_visited }
+					}
+					solar_system = {
+						from = { contract_target_system_reachable = { SYSTEM = prev } }
+					}
+				}
+			}
+			ordered_owned_planet = {
+				limit = {
+					is_colony = yes
+					is_under_colonization = no
+					is_capital = yes
+					planet = {
+						NOT = { has_planet_flag = mygo_tour_visited }
+					}
+					solar_system = {
+						from = { contract_target_system_reachable = { SYSTEM = prev } }
+					}
+				}
+				position = 0
+				order_by = trigger:pop_amount
+				planet = {
+					set_carrier_flag = mygo_tour_current_stop@from
+				}
+				solar_system = {
+					set_star_flag = mygo_tour_current_system@from
+					save_event_target_as = mygo_tour_next_system
+				}
+				from = {
+					mygo_create_tour_stop_poi = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				any_owned_planet = {
+					is_colony = yes
+					is_under_colonization = no
+					planet = {
+						NOT = { has_planet_flag = mygo_tour_visited }
+					}
+					pop_amount >= 200
+					solar_system = {
+						from = { contract_target_system_reachable = { SYSTEM = prev } }
+					}
+				}
+			}
+			ordered_owned_planet = {
+				limit = {
+					is_colony = yes
+					is_under_colonization = no
+					planet = {
+						NOT = { has_planet_flag = mygo_tour_visited }
+					}
+					pop_amount >= 200
+					solar_system = {
+						from = { contract_target_system_reachable = { SYSTEM = prev } }
+					}
+				}
+				position = 0
+				order_by = trigger:pop_amount
+				planet = {
+					set_carrier_flag = mygo_tour_current_stop@from
+				}
+				solar_system = {
+					set_star_flag = mygo_tour_current_system@from
+					save_event_target_as = mygo_tour_next_system
+				}
+				from = {
+					mygo_create_tour_stop_poi = yes
+				}
+			}
+		}
+		else = {
+			from = {
+				set_country_flag = mygo_tour_skip_route_complete_event
+				mygo_complete_tour_route = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.636
+	title = mygo.636.name
+	desc = mygo.636.desc
+	picture = GFX_evt_forever_cruise
+	show_sound = event_announcement
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+	}
+
+	option = {
+		name = mygo.636.a
+	}
+}
+
+# One-time peaceful visits to the three parallel-ark home capitals.
+# Fired by on_entering_system_fleet; root = fleet, from = entered system.
+fleet_event = {
+	id = mygo.637
+	title = mygo.637.name
+	desc = mygo.637.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = kasumi_leader_mygo_portrait
+		room = owner
+	}
+	show_sound = event_arkship_bridge
+	location = root.solar_system
+	is_triggered_only = yes
+
+	trigger = {
+		is_arkship_fleet = yes
+		owner = {
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+			NOT = { has_country_flag = mygo_visited_popipa_capital }
+			any_relation = {
+				has_country_flag = mygo_popipa
+				has_communications = prev
+				NOT = { is_at_war_with = prev }
+			}
+		}
+		solar_system = {
+			has_star_flag = mygo_parallel_popipa_system
+			any_system_planet = {
+				is_capital = yes
+				has_ground_combat = no
+				owner = {
+					has_country_flag = mygo_popipa
+				}
+				controller = { has_country_flag = mygo_popipa }
+			}
+		}
+	}
+
+	immediate = {
+		owner = { set_country_flag = mygo_visited_popipa_capital }
+	}
+
+	option = { name = mygo.637.a }
+}
+
+fleet_event = {
+	id = mygo.638
+	title = mygo.638.name
+	desc = mygo.638.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = mashiro_leader_mygo_portrait
+		room = owner
+	}
+	show_sound = event_arkship_bridge
+	location = root.solar_system
+	is_triggered_only = yes
+
+	trigger = {
+		is_arkship_fleet = yes
+		owner = {
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+			NOT = { has_country_flag = mygo_visited_morfonica_capital }
+			any_relation = {
+				has_country_flag = mygo_morfonica
+				has_communications = prev
+				NOT = { is_at_war_with = prev }
+			}
+		}
+		solar_system = {
+			has_star_flag = mygo_parallel_morfonica_system
+			any_system_planet = {
+				is_capital = yes
+				has_ground_combat = no
+				owner = {
+					has_country_flag = mygo_morfonica
+				}
+				controller = { has_country_flag = mygo_morfonica }
+			}
+		}
+	}
+
+	immediate = {
+		owner = { set_country_flag = mygo_visited_morfonica_capital }
+	}
+
+	option = { name = mygo.638.a }
+}
+
+fleet_event = {
+	id = mygo.639
+	title = mygo.639.name
+	desc = mygo.639.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = sakiko_leader_mygo_portrait
+		room = owner
+	}
+	show_sound = event_arkship_bridge
+	location = root.solar_system
+	is_triggered_only = yes
+
+	trigger = {
+		is_arkship_fleet = yes
+		owner = {
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+			NOT = { has_country_flag = mygo_visited_tsukinomori_capital }
+			any_relation = {
+				has_country_flag = mygo_tsukinomori
+				has_communications = prev
+				NOT = { is_at_war_with = prev }
+			}
+		}
+		solar_system = {
+			has_star_flag = mygo_parallel_tsukinomori_system
+			any_system_planet = {
+				is_capital = yes
+				has_ground_combat = no
+				owner = {
+					has_country_flag = mygo_tsukinomori
+				}
+				controller = { has_country_flag = mygo_tsukinomori }
+			}
+		}
+	}
+
+	immediate = {
+		owner = {
+			set_country_flag = mygo_visited_tsukinomori_capital
+			country_event = { id = mygo.649 }
+		}
+	}
+
+	option = { name = mygo.639.a }
+}
+
+country_event = {
+	id = mygo.298
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		OR = {
+			AND = {
+				has_country_flag = mygo_relic_string
+				NOT = {
+					any_country = {
+						has_country_flag = mygo_internal_comms_contact
+						has_communications = root
+					}
+				}
+			}
+			AND = {
+				has_country_flag = mygo_relic_string
+				any_country = {
+					has_country_flag = mygo_internal_comms_contact
+					has_communications = root
+					NOT = { exists = ruler }
+				}
+			}
+			AND = {
+				NOT = { has_country_flag = mygo_relic_string }
+				any_country = {
+					has_country_flag = mygo_internal_comms_contact
+					has_communications = root
+				}
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_country_flag = mygo_relic_string }
+			mygo_story_ensure_internal_comms_contact = yes
+		}
+		else = {
+			every_country = {
+				limit = {
+					has_country_flag = mygo_internal_comms_contact
+					has_communications = root
+				}
+				remove_communications = root
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.299
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_relic_string
+		from = {
+			is_country_type = mygo_internal_comms
+			has_country_flag = mygo_internal_comms_contact
+		}
+	}
+
+	immediate = {
+		country_event = { id = mygo.300 }
+	}
+}
+
+country_event = {
+	id = mygo.300
+	title = mygo.300.name
+	desc = {
+		trigger = { has_country_flag = mygo_tour_unlocked }
+		text = mygo.300.desc.tour
+	}
+	desc = {
+		trigger = {
+			has_country_flag = mygo_phase_2
+			NOT = { has_country_flag = mygo_tour_unlocked }
+		}
+		text = mygo.300.desc.phase_2
+	}
+	desc = {
+		trigger = {
+			has_country_flag = mygo_phase_1
+			NOT = { has_country_flag = mygo_tour_unlocked }
+		}
+		text = mygo.300.desc.phase_1
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = anon_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = mygo.300.tomori
+		hidden_effect = { country_event = { id = mygo.301 } }
+	}
+	option = {
+		name = mygo.300.taki
+		hidden_effect = { country_event = { id = mygo.302 } }
+	}
+	option = {
+		name = mygo.300.soyo
+		hidden_effect = { country_event = { id = mygo.303 } }
+	}
+	option = {
+		name = mygo.300.rana
+		hidden_effect = { country_event = { id = mygo.304 } }
+	}
+	option = {
+		name = mygo.300.anon
+		hidden_effect = { country_event = { id = mygo.305 } }
+	}
+	option = {
+		name = mygo.300.restore_portraits
+		hidden_effect = { country_event = { id = mygo.12 } }
+	}
+	option = {
+		name = mygo.300.restore_leaders
+		custom_tooltip = mygo.300.restore_leaders.tooltip
+		hidden_effect = { country_event = { id = mygo_resurrection.9 } }
+	}
+	option = {
+		name = mygo.300.close
+		default_hide_option = yes
+	}
+}
+
+country_event = {
+	id = mygo.301
+	title = mygo.300.tomori
+	desc = {
+		trigger = { has_country_flag = mygo_tour_unlocked }
+		text = mygo.300.tomori.response.tour
+	}
+	desc = {
+		trigger = {
+			has_country_flag = mygo_phase_2
+			NOT = { has_country_flag = mygo_tour_unlocked }
+		}
+		text = mygo.300.tomori.response.phase_2
+	}
+	desc = {
+		trigger = {
+			has_country_flag = mygo_phase_1
+			NOT = { has_country_flag = mygo_tour_unlocked }
+		}
+		text = mygo.300.tomori.response
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = {
+		name = mygo.300.back
+		hidden_effect = { country_event = { id = mygo.300 } }
+	}
+}
+
+country_event = {
+	id = mygo.302
+	title = mygo.300.taki
+	desc = {
+		trigger = { has_country_flag = mygo_tour_unlocked }
+		text = mygo.300.taki.response.tour
+	}
+	desc = {
+		trigger = {
+			has_country_flag = mygo_phase_2
+			NOT = { has_country_flag = mygo_tour_unlocked }
+		}
+		text = mygo.300.taki.response.phase_2
+	}
+	desc = {
+		trigger = {
+			has_country_flag = mygo_phase_1
+			NOT = { has_country_flag = mygo_tour_unlocked }
+		}
+		text = mygo.300.taki.response
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = taki_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = {
+		name = mygo.300.back
+		hidden_effect = { country_event = { id = mygo.300 } }
+	}
+}
+
+country_event = {
+	id = mygo.303
+	title = mygo.300.soyo
+	desc = {
+		trigger = { has_country_flag = mygo_tour_unlocked }
+		text = mygo.300.soyo.response.tour
+	}
+	desc = {
+		trigger = {
+			has_country_flag = mygo_phase_2
+			NOT = { has_country_flag = mygo_tour_unlocked }
+		}
+		text = mygo.300.soyo.response.phase_2
+	}
+	desc = {
+		trigger = {
+			has_country_flag = mygo_phase_1
+			NOT = { has_country_flag = mygo_tour_unlocked }
+		}
+		text = mygo.300.soyo.response
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = soyo_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = {
+		name = mygo.300.back
+		hidden_effect = { country_event = { id = mygo.300 } }
+	}
+}
+
+country_event = {
+	id = mygo.304
+	title = mygo.300.rana
+	desc = {
+		trigger = { has_country_flag = mygo_tour_unlocked }
+		text = mygo.300.rana.response.tour
+	}
+	desc = {
+		trigger = {
+			has_country_flag = mygo_phase_2
+			NOT = { has_country_flag = mygo_tour_unlocked }
+		}
+		text = mygo.300.rana.response.phase_2
+	}
+	desc = {
+		trigger = {
+			has_country_flag = mygo_phase_1
+			NOT = { has_country_flag = mygo_tour_unlocked }
+		}
+		text = mygo.300.rana.response
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = rana_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = {
+		name = mygo.300.back
+		hidden_effect = { country_event = { id = mygo.300 } }
+	}
+}
+
+country_event = {
+	id = mygo.305
+	title = mygo.300.anon
+	desc = {
+		trigger = { has_country_flag = mygo_tour_unlocked }
+		text = mygo.300.anon.response.tour
+	}
+	desc = {
+		trigger = {
+			has_country_flag = mygo_phase_2
+			NOT = { has_country_flag = mygo_tour_unlocked }
+		}
+		text = mygo.300.anon.response.phase_2
+	}
+	desc = {
+		trigger = {
+			has_country_flag = mygo_phase_1
+			NOT = { has_country_flag = mygo_tour_unlocked }
+		}
+		text = mygo.300.anon.response
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = anon_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+	option = {
+		name = mygo.300.back
+		hidden_effect = { country_event = { id = mygo.300 } }
+	}
+}

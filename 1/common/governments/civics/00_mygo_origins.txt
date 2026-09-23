@@ -1,0 +1,67 @@
+origin_mygo_eternal_return = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_default_nomads.dds"
+	picture = GFX_origin_nomad_default
+
+	non_colonizable_planet_class_neighbor = yes
+
+	flags = {
+		custom_start_screen
+	}
+
+	playable = {
+		has_nomads_dlc = yes
+	}
+	ai_playable = {
+		has_nomads_dlc = yes
+	}
+
+	possible = {
+		is_nomadic = yes
+	}
+
+	modifier = {
+		arkship_action_speed = 0.10
+		science_ship_survey_speed = 0.10
+		megastructure_waystation_megastructure_build_speed_mult = 0.10
+	}
+
+	random_weight = {
+		base = 0
+	}
+
+	description = "origin_mygo_eternal_return_effects"
+	advanced_start = yes
+}
+
+origin_mygo_parallel_ark_colony = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_default.dds"
+	picture = GFX_evt_metropolis
+
+	possible = {
+	}
+
+	random_weight = {
+		base = 0
+	}
+
+	# These bonuses stack on top of difficulty and advanced-start modifiers.
+	# They are intentionally strong enough to keep the three story empires near
+	# the top of an all-Grand-Admiral, all-advanced-start galaxy.
+	modifier = {
+		all_technology_research_speed = 0.50
+		planet_jobs_produces_mult = 0.50
+		bonus_pop_growth_mult = 0.25
+		empire_size_mult = -0.25
+
+		country_naval_cap_mult = 1.00
+		starbase_shipyard_build_cost_mult = -0.50
+		ships_upkeep_mult = -0.50
+		starbase_shipyard_build_speed_mult = 1.00
+		ship_fire_rate_mult = 0.25
+	}
+
+	description = "origin_mygo_parallel_ark_colony_effects"
+	advanced_start = yes
+}

@@ -1,0 +1,618 @@
+@mygo_resolution_weight_disliked = 4
+@mygo_resolution_weight_unpopular = 5
+@mygo_resolution_weight_popular = 6.5
+@mygo_resolution_weight_loved = 7
+
+@mygo_resolution_cost_t1 = 100
+@mygo_resolution_cost_t2 = 150
+@mygo_resolution_cost_t3 = 200
+@mygo_resolution_cost_t4 = 250
+
+resolution_mygo_galactic_tour_repeal_1 = {
+	icon = "GFX_repeal_blue"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @mygo_resolution_cost_t1
+		}
+	}
+	target = no
+	fire_and_forget = yes
+
+	effect = {
+		custom_tooltip = resolution_mygo_galactic_tour_repeal_1_effect_success
+		hidden_effect = {
+			cancel_resolution = "resolution_mygo_galactic_tour_planet_initiative"
+			mygo_resolution_vote_passed_effect = yes
+			every_playable_country = {
+				every_owned_planet = {
+					limit = { has_modifier = mygo_resolution_tour_planet_bonus }
+					remove_modifier = mygo_resolution_tour_planet_bonus
+				}
+			}
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			mygo_resolution_vote_failed_effect = yes
+		}
+	}
+
+	potential = {
+		is_active_resolution = "resolution_mygo_galactic_tour_planet_initiative"
+	}
+
+	ai_weight = {
+		base = @mygo_resolution_weight_unpopular
+		modifier = {
+			factor = 0.5
+			has_country_flag = mygo_tour_first_completed
+			desc = mygo_resolution_ai_completed_tour
+		}
+		modifier = {
+			factor = 1.5
+			is_xenophobe = yes
+			desc = ethic_xenophobe
+		}
+	}
+}
+
+resolution_mygo_galactic_tour_repeal_2 = {
+	icon = "GFX_repeal_blue"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @mygo_resolution_cost_t2
+		}
+	}
+	target = no
+	fire_and_forget = yes
+
+	effect = {
+		custom_tooltip = resolution_mygo_galactic_tour_repeal_2_effect_success
+		hidden_effect = {
+			cancel_resolution = "resolution_mygo_galactic_tour_mutual_benefit"
+			mygo_resolution_vote_passed_effect = yes
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			mygo_resolution_vote_failed_effect = yes
+		}
+	}
+
+	potential = {
+		is_active_resolution = "resolution_mygo_galactic_tour_mutual_benefit"
+	}
+
+	modifier = {
+		resolution_mygo_galactic_tour_planet_initiative = 1
+	}
+
+	ai_weight = {
+		base = @mygo_resolution_weight_unpopular
+		modifier = {
+			factor = 0.25
+			has_country_flag = mygo_tour_first_completed
+			desc = mygo_resolution_ai_completed_tour
+		}
+		modifier = {
+			factor = 2
+			NOT = { has_country_flag = mygo_tour_first_completed }
+			desc = mygo_resolution_ai_not_completed_tour
+		}
+	}
+}
+
+resolution_mygo_galactic_tour_repeal_3 = {
+	icon = "GFX_repeal_blue"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @mygo_resolution_cost_t3
+		}
+	}
+	target = no
+	fire_and_forget = yes
+
+	effect = {
+		custom_tooltip = resolution_mygo_galactic_tour_repeal_3_effect_success
+		hidden_effect = {
+			cancel_resolution = "resolution_mygo_galactic_tour_public_stage_fund"
+			mygo_resolution_vote_passed_effect = yes
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			mygo_resolution_vote_failed_effect = yes
+		}
+	}
+
+	potential = {
+		is_active_resolution = "resolution_mygo_galactic_tour_public_stage_fund"
+	}
+
+	modifier = {
+		resolution_mygo_galactic_tour_planet_initiative = 1
+	}
+
+	triggered_modifier = {
+		potential = {
+			has_country_flag = mygo_tour_first_completed
+		}
+		modifier = {
+			mygo_resolution_tour_host_country = 1
+		}
+	}
+
+	triggered_modifier = {
+		potential = {
+			has_origin = origin_mygo_eternal_return
+			has_event_chain = contract_mygo_tour_chain
+		}
+		modifier = {
+			mygo_resolution_tour_route_guarantee = 1
+		}
+	}
+
+	ai_weight = {
+		base = @mygo_resolution_weight_unpopular
+		modifier = {
+			factor = 0.5
+			is_megacorp = yes
+			desc = auth_corporate
+		}
+		modifier = {
+			factor = 0.75
+			has_country_flag = mygo_tour_first_completed
+			desc = mygo_resolution_ai_completed_tour
+		}
+	}
+}
+
+resolution_mygo_galactic_tour_repeal_4 = {
+	icon = "GFX_repeal_blue"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @mygo_resolution_cost_t4
+		}
+	}
+	target = no
+	fire_and_forget = yes
+
+	effect = {
+		custom_tooltip = resolution_mygo_galactic_tour_repeal_4_effect_success
+		hidden_effect = {
+			cancel_resolution = "resolution_mygo_galactic_tour_universal_mandate"
+			mygo_resolution_vote_passed_effect = yes
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			mygo_resolution_vote_failed_effect = yes
+		}
+	}
+
+	potential = {
+		is_active_resolution = "resolution_mygo_galactic_tour_universal_mandate"
+	}
+
+	modifier = {
+		resolution_mygo_galactic_tour_planet_initiative = 1
+		resolution_mygo_galactic_tour_public_stage_fund = 1
+	}
+
+	triggered_modifier = {
+		potential = {
+			has_country_flag = mygo_tour_first_completed
+		}
+		modifier = {
+			mygo_resolution_tour_host_country = 1
+		}
+	}
+
+	triggered_modifier = {
+		potential = {
+			has_origin = origin_mygo_eternal_return
+			has_event_chain = contract_mygo_tour_chain
+		}
+		modifier = {
+			mygo_resolution_tour_route_guarantee = 1
+		}
+	}
+
+	ai_weight = {
+		base = @mygo_resolution_weight_popular
+		modifier = {
+			factor = 0.25
+			has_country_flag = mygo_tour_first_completed
+			desc = mygo_resolution_ai_completed_tour
+		}
+		modifier = {
+			factor = 10
+			NOT = { has_country_flag = mygo_tour_first_completed }
+			desc = mygo_resolution_ai_not_completed_tour
+		}
+	}
+}
+
+resolution_mygo_galactic_tour_planet_initiative = {
+	icon = "GFX_resolution_community_champions"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @mygo_resolution_cost_t1
+		}
+	}
+	target = no
+	level = 1
+
+	modifier = {
+		resolution_mygo_galactic_tour_planet_initiative = 1
+	}
+
+	effect = {
+		custom_tooltip = resolution_mygo_galactic_tour_planet_initiative_tooltip
+		hidden_effect = {
+			mygo_resolution_vote_passed_effect = yes
+			every_playable_country = {
+				limit = {
+					is_galactic_community_member = yes
+				}
+				every_owned_planet = {
+					planet = {
+						if = {
+							limit = {
+								has_planet_flag = mygo_tour_visited
+								NOT = { has_modifier = mygo_resolution_tour_planet_bonus }
+							}
+							add_modifier = {
+								modifier = mygo_resolution_tour_planet_bonus
+								days = -1
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			mygo_resolution_vote_failed_effect = yes
+		}
+	}
+
+	potential = {
+		any_country = {
+			has_origin = origin_mygo_eternal_return
+			has_country_flag = mygo_tour_unlocked
+			is_galactic_community_member = yes
+		}
+	}
+
+	allow = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_tour_unlocked
+		custom_tooltip = {
+			fail_text = resolution_already_active
+			NOR = {
+				is_active_resolution = "resolution_mygo_galactic_tour_planet_initiative"
+				is_active_resolution = "resolution_mygo_galactic_tour_mutual_benefit"
+				is_active_resolution = "resolution_mygo_galactic_tour_public_stage_fund"
+				is_active_resolution = "resolution_mygo_galactic_tour_universal_mandate"
+			}
+		}
+	}
+
+	ai_weight = {
+		base = @mygo_resolution_weight_loved
+		modifier = {
+			factor = 2
+			is_xenophile = yes
+			desc = ethic_xenophile
+		}
+		modifier = {
+			factor = 1.5
+			is_egalitarian = yes
+			desc = ethic_egalitarian
+		}
+		modifier = {
+			factor = 1.5
+			is_megacorp = yes
+			desc = auth_corporate
+		}
+		modifier = {
+			factor = 0.5
+			is_xenophobe = yes
+			desc = ethic_xenophobe
+		}
+	}
+}
+
+resolution_mygo_galactic_tour_mutual_benefit = {
+	icon = "GFX_resolution_community_champions"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @mygo_resolution_cost_t2
+		}
+	}
+	target = no
+	level = 2
+
+	modifier = {
+		resolution_mygo_galactic_tour_planet_initiative = 1
+	}
+
+	triggered_modifier = {
+		potential = {
+			has_country_flag = mygo_tour_first_completed
+		}
+		modifier = {
+			mygo_resolution_tour_host_country = 1
+		}
+	}
+
+	triggered_modifier = {
+		potential = {
+			has_origin = origin_mygo_eternal_return
+			has_event_chain = contract_mygo_tour_chain
+		}
+		modifier = {
+			mygo_resolution_tour_route_guarantee = 1
+		}
+	}
+
+	effect = {
+		custom_tooltip = resolution_mygo_galactic_tour_mutual_benefit_tooltip
+		hidden_effect = {
+			mygo_resolution_vote_passed_effect = yes
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			mygo_resolution_vote_failed_effect = yes
+		}
+	}
+
+	potential = {
+		any_country = {
+			has_origin = origin_mygo_eternal_return
+			has_country_flag = mygo_tour_unlocked
+			is_galactic_community_member = yes
+		}
+	}
+
+	allow = {
+		is_active_resolution = "resolution_mygo_galactic_tour_planet_initiative"
+	}
+
+	ai_weight = {
+		base = @mygo_resolution_weight_popular
+		modifier = {
+			factor = 2
+			has_country_flag = mygo_tour_first_completed
+			desc = mygo_resolution_ai_completed_tour
+		}
+		modifier = {
+			factor = 1.5
+			is_xenophile = yes
+			desc = ethic_xenophile
+		}
+		modifier = {
+			factor = 0.75
+			is_xenophobe = yes
+			desc = ethic_xenophobe
+		}
+	}
+}
+
+resolution_mygo_galactic_tour_public_stage_fund = {
+	icon = "GFX_resolution_community_champions"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @mygo_resolution_cost_t3
+		}
+	}
+	target = no
+	level = 3
+
+	modifier = {
+		resolution_mygo_galactic_tour_planet_initiative = 1
+		resolution_mygo_galactic_tour_public_stage_fund = 1
+	}
+
+	triggered_modifier = {
+		potential = {
+			has_country_flag = mygo_tour_first_completed
+		}
+		modifier = {
+			mygo_resolution_tour_host_country = 1
+		}
+	}
+
+	triggered_modifier = {
+		potential = {
+			has_origin = origin_mygo_eternal_return
+			has_event_chain = contract_mygo_tour_chain
+		}
+		modifier = {
+			mygo_resolution_tour_route_guarantee = 1
+		}
+	}
+
+	effect = {
+		custom_tooltip = resolution_mygo_galactic_tour_public_stage_fund_tooltip
+		hidden_effect = {
+			mygo_resolution_vote_passed_effect = yes
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			mygo_resolution_vote_failed_effect = yes
+		}
+	}
+
+	potential = {
+		any_country = {
+			has_origin = origin_mygo_eternal_return
+			has_country_flag = mygo_tour_unlocked
+			is_galactic_community_member = yes
+		}
+	}
+
+	allow = {
+		is_active_resolution = "resolution_mygo_galactic_tour_mutual_benefit"
+	}
+
+	ai_weight = {
+		base = @mygo_resolution_weight_popular
+		modifier = {
+			factor = 1.5
+			is_megacorp = yes
+			desc = auth_corporate
+		}
+		modifier = {
+			factor = 1.25
+			is_xenophile = yes
+			desc = ethic_xenophile
+		}
+		modifier = {
+			factor = 0.75
+			is_gestalt = yes
+			desc = ethic_gestalt_consciousness
+		}
+	}
+}
+
+resolution_mygo_galactic_tour_universal_mandate = {
+	icon = "GFX_resolution_community_champions"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @mygo_resolution_cost_t4
+		}
+	}
+	target = no
+	level = 4
+
+	modifier = {
+		resolution_mygo_galactic_tour_planet_initiative = 1
+		resolution_mygo_galactic_tour_public_stage_fund = 1
+	}
+
+	triggered_modifier = {
+		potential = {
+			has_country_flag = mygo_tour_first_completed
+		}
+		modifier = {
+			mygo_resolution_tour_host_country = 1
+		}
+	}
+
+	triggered_modifier = {
+		potential = {
+			has_origin = origin_mygo_eternal_return
+			has_event_chain = contract_mygo_tour_chain
+		}
+		modifier = {
+			mygo_resolution_tour_route_guarantee = 1
+		}
+	}
+
+	effect = {
+		custom_tooltip = resolution_mygo_galactic_tour_universal_mandate_tooltip
+		hidden_effect = {
+			mygo_resolution_vote_passed_effect = yes
+			set_global_flag = resolution_with_breach_effect_passed
+			every_playable_country = {
+				limit = {
+					is_galactic_community_member = yes
+					NOT = { has_origin = origin_mygo_eternal_return }
+					NOT = { has_country_flag = mygo_tour_first_completed }
+				}
+				set_country_flag = mygo_tour_law_grace_assigned
+				set_timed_country_flag = {
+					flag = mygo_tour_law_grace
+					days = 3600
+				}
+			}
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			mygo_resolution_vote_failed_effect = yes
+		}
+	}
+
+	potential = {
+		any_country = {
+			has_origin = origin_mygo_eternal_return
+			has_country_flag = mygo_tour_unlocked
+			is_galactic_community_member = yes
+		}
+	}
+
+	allow = {
+		is_active_resolution = "resolution_mygo_galactic_tour_public_stage_fund"
+	}
+
+	breach = {
+		NOT = { has_country_flag = constitutional_immunity }
+		NOT = { has_origin = origin_mygo_eternal_return }
+		NOT = { has_country_flag = mygo_tour_first_completed }
+		NOT = { has_country_flag = mygo_tour_law_grace }
+		has_country_flag = mygo_tour_law_grace_assigned
+		any_owned_planet = {
+			is_colony = yes
+			is_under_colonization = no
+		}
+		any_country = {
+			has_origin = origin_mygo_eternal_return
+			has_country_flag = mygo_tour_unlocked
+			is_galactic_community_member = yes
+		}
+	}
+
+	ai_weight = {
+		base = @mygo_resolution_weight_disliked
+		modifier = {
+			factor = 2
+			has_country_flag = mygo_tour_first_completed
+			desc = mygo_resolution_ai_completed_tour
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { has_country_flag = mygo_tour_first_completed }
+			desc = mygo_resolution_ai_not_completed_tour
+		}
+		modifier = {
+			factor = 1.5
+			is_xenophile = yes
+			desc = ethic_xenophile
+		}
+		modifier = {
+			factor = 0.5
+			is_xenophobe = yes
+			desc = ethic_xenophobe
+		}
+	}
+}

@@ -1,0 +1,68 @@
+# ==========================================
+# 阶段一：驶入蓝色荧光星云
+# ==========================================
+country_event = {
+	id = mygo.493
+	title = mygo_story.493.name
+	desc = mygo_story.493.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.493.a
+		response_text = mygo_story.493.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.493.b
+		# 无缝推进至下一阶段
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.494 } }
+	}
+}
+
+# ==========================================
+# 阶段二：深空中的水族馆
+# ==========================================
+country_event = {
+	id = mygo.494
+	title = mygo_story.494.name
+	desc = mygo_story.494.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.494.a
+		response_text = mygo_story.494.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.494.b
+		# 无缝推进至下一阶段
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.495 } }
+	}
+}
+
+# ==========================================
+# 阶段三：一期一会的星光
+# ==========================================
+country_event = {
+	id = mygo.495
+	title = mygo_story.495.name
+	desc = mygo_story.495.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.495.a
+		response_text = mygo_story.495.a.response
+		hidden_effect = {
+			# 浪漫的唯美经历，短暂提供大量幸福度与凝聚力
+			add_resource = { unity = 200 }
+		}
+	}
+}

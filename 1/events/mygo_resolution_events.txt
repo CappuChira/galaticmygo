@@ -1,0 +1,25 @@
+namespace = mygo_resolution
+
+# Assigns the ten-year compliance grace period to countries that join the
+# Galactic Community after the universal touring mandate has already passed.
+country_event = {
+	id = mygo_resolution.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_galactic_community_member = yes
+		is_active_resolution = "resolution_mygo_galactic_tour_universal_mandate"
+		NOT = { has_origin = origin_mygo_eternal_return }
+		NOT = { has_country_flag = mygo_tour_first_completed }
+		NOT = { has_country_flag = mygo_tour_law_grace_assigned }
+	}
+
+	immediate = {
+		set_country_flag = mygo_tour_law_grace_assigned
+		set_timed_country_flag = {
+			flag = mygo_tour_law_grace
+			days = 3600
+		}
+	}
+}

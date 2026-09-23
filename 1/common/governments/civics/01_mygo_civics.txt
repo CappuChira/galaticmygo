@@ -1,0 +1,29 @@
+civic_mygo_star_seekers = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_star_seekers.dds"
+	playable = { has_nomads_dlc = yes }
+	ai_playable = { has_nomads_dlc = yes }
+
+	potential = {
+		authority = { NOT = { value = auth_corporate } }
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+
+	possible = {
+		is_nomadic = yes
+		origin = { value = origin_mygo_eternal_return }
+	}
+
+	description = "civic_mygo_star_seekers_effect_tooltip"
+
+	random_weight = {
+		base = 0
+	}
+	ai_weight = {
+		base = 0
+	}
+
+	modifier = {
+		ship_speed_mult = 0.20
+	}
+}

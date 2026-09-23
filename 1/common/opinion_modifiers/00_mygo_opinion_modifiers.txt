@@ -1,0 +1,11 @@
+opinion_mygo_parallel_ark_kinship = {
+	opinion = {
+		base = 35
+	}
+}
+
+opinion_mygo_sakiko_reconciliation = {
+	opinion = {
+		base = 300
+	}
+}

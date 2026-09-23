@@ -1,0 +1,255 @@
+mygo_nomads = {
+	name = "EMPIRE_DESIGN_mygo_nomads"
+	adjective = "PRESCRIPTED_adjective_mygo_nomads"
+	spawn_enabled = no
+	ignore_portrait_duplication = yes
+
+	ship_prefix = "PRESCRIPTED_ship_prefix_mygo_nomads"
+
+	species = {
+		class = "HUM"
+		portrait = "human"
+		name = "PRESCRIPTED_species_name_mygo_nomads"
+		plural = "PRESCRIPTED_species_plural_mygo_nomads"
+		adjective = "PRESCRIPTED_species_adjective_mygo_nomads"
+		name_list = "MYGO_NOMADS"
+		trait = "trait_organic"
+		trait = "trait_adaptive"
+		trait = "trait_nomadic"
+		trait = "trait_wasteful"
+	}
+
+	authority = "auth_dictatorial"
+	government = "gov_mygo_spica_command"
+	civics = { "civic_philosopher_king" "civic_mygo_star_seekers" }
+
+	ethic = "ethic_authoritarian"
+	ethic = "ethic_xenophile"
+	ethic = "ethic_materialist"
+
+	origin = "origin_mygo_eternal_return"
+
+	flag = empire_mygo_nomads
+	is_nomadic = yes
+	room = "nomads_science_room"
+
+	planet_name = "NAME_Spica"
+	planet_class = "pc_ark"
+	ship_size = "science_arkship_tier_1"
+	system_name = "NAME_MyGO_Vela"
+	initializer = "vela_system"
+
+	playable = has_nomads_dlc
+
+	graphical_culture = "mammalian_01"
+	city_graphical_culture = "mammalian_01"
+
+	empire_flag = {
+		icon = {
+			category = "human"
+			file = "flag_mygo_nomads.dds"
+		}
+		background = {
+			category = "backgrounds"
+			file = "00_solid.dds"
+		}
+		colors = {
+			"blue"
+			"black"
+			"null"
+			"null"
+		}
+	}
+
+	ruler = {
+		name = "PRESCRIPTED_ruler_name_anon"
+		gender = female
+		portrait = "anon_leader_mygo_portrait"
+		leader_class = scientist
+	}
+
+	spawn_as_fallen = no
+}
+
+mygo_popipa_commonwealth = {
+	name = "EMPIRE_DESIGN_popipa_commonwealth"
+	adjective = "PRESCRIPTED_adjective_popipa_commonwealth"
+	# Spawned conditionally by the MyGO-origin system initializers.
+	spawn_enabled = no
+	ignore_portrait_duplication = yes
+
+	ship_prefix = "PRESCRIPTED_ship_prefix_popipa_commonwealth"
+
+	species = {
+		class = "HUM"
+		portrait = "human"
+		name = "PRESCRIPTED_species_name_band_humans"
+		plural = "PRESCRIPTED_species_plural_band_humans"
+		adjective = "PRESCRIPTED_species_adjective_band_humans"
+		name_list = "MYGO_POPIPA"
+		trait = "trait_organic"
+		trait = "trait_adaptive"
+	}
+
+	authority = "auth_dictatorial"
+	government = gov_mygo_popipa_commonwealth
+	civics = { "civic_free_haven" "civic_environmentalist" }
+
+	ethic = "ethic_fanatic_xenophile"
+	ethic = "ethic_pacifist"
+
+	origin = "origin_mygo_parallel_ark_colony"
+	flag = empire_mygo_popipa
+	planet_name = "NAME_MyGO_Popipa_Homeworld"
+	planet_class = "pc_tropical"
+	initializer = ""
+	system_name = "NAME_MyGO_Popipa_System"
+	graphical_culture = "mammalian_01"
+	city_graphical_culture = "mammalian_01"
+
+	empire_flag = {
+		icon = {
+			category = "human"
+			file = "flag_mygo_popipa.dds"
+		}
+		background = {
+			category = "backgrounds"
+			file = "00_solid.dds"
+		}
+		colors = {
+			"red"
+			"yellow"
+			"null"
+			"null"
+		}
+	}
+
+	ruler = {
+		name = "PRESCRIPTED_ruler_name_kasumi"
+		gender = female
+		portrait = "kasumi_leader_mygo_portrait"
+		leader_class = official
+	}
+}
+
+mygo_morfonica_pact = {
+	name = "EMPIRE_DESIGN_morfonica_pact"
+	adjective = "PRESCRIPTED_adjective_morfonica_pact"
+	# Spawned conditionally by the MyGO-origin system initializers.
+	spawn_enabled = no
+	ignore_portrait_duplication = yes
+
+	ship_prefix = "PRESCRIPTED_ship_prefix_morfonica_pact"
+
+	species = {
+		class = "HUM"
+		portrait = "human"
+		name = "PRESCRIPTED_species_name_band_humans"
+		plural = "PRESCRIPTED_species_plural_band_humans"
+		adjective = "PRESCRIPTED_species_adjective_band_humans"
+		name_list = "MYGO_MORFONICA"
+		trait = "trait_organic"
+		trait = "trait_traditional"
+	}
+
+	authority = "auth_dictatorial"
+	government = gov_mygo_morfonica_pact
+	civics = { "civic_environmentalist" "civic_beastmasters" }
+
+	ethic = "ethic_fanatic_spiritualist"
+	ethic = "ethic_pacifist"
+
+	origin = "origin_mygo_parallel_ark_colony"
+	flag = empire_mygo_morfonica
+	planet_name = "NAME_MyGO_Morfonica_Homeworld"
+	planet_class = "pc_alpine"
+	initializer = ""
+	system_name = "NAME_MyGO_Morfonica_System"
+	graphical_culture = "mammalian_01"
+	city_graphical_culture = "mammalian_01"
+
+	empire_flag = {
+		icon = {
+			category = "human"
+			file = "flag_mygo_morfonica.dds"
+		}
+		background = {
+			category = "backgrounds"
+			file = "00_solid.dds"
+		}
+		colors = {
+			"blue"
+			"teal"
+			"null"
+			"null"
+		}
+	}
+
+	ruler = {
+		name = "PRESCRIPTED_ruler_name_mashiro"
+		gender = female
+		portrait = "mashiro_leader_mygo_portrait"
+		leader_class = official
+	}
+}
+
+mygo_tsukinomori_alliance = {
+	name = "EMPIRE_DESIGN_tsukinomori_alliance"
+	adjective = "PRESCRIPTED_adjective_tsukinomori_alliance"
+	# Spawned conditionally by the MyGO-origin system initializers.
+	spawn_enabled = no
+	ignore_portrait_duplication = yes
+
+	ship_prefix = "PRESCRIPTED_ship_prefix_tsukinomori_alliance"
+
+	species = {
+		class = "HUM"
+		portrait = "human"
+		name = "PRESCRIPTED_species_name_band_humans"
+		plural = "PRESCRIPTED_species_plural_band_humans"
+		adjective = "PRESCRIPTED_species_adjective_band_humans"
+		name_list = "MYGO_TSUKINOMORI"
+		trait = "trait_organic"
+		trait = "trait_intelligent"
+	}
+
+	authority = "auth_corporate"
+	government = gov_mygo_tsukinomori_board
+	civics = { "civic_indentured_assets" "civic_corporate_crafters" }
+
+	ethic = "ethic_authoritarian"
+	ethic = "ethic_fanatic_materialist"
+
+	origin = "origin_mygo_parallel_ark_colony"
+	flag = empire_mygo_tsukinomori
+	planet_name = "NAME_MyGO_Tsukinomori_Homeworld"
+	planet_class = "pc_arctic"
+	initializer = ""
+	system_name = "NAME_MyGO_Tsukinomori_System"
+	graphical_culture = "mammalian_01"
+	city_graphical_culture = "mammalian_01"
+
+	empire_flag = {
+		icon = {
+			category = "human"
+			file = "flag_mygo_tsukinomori.dds"
+		}
+		background = {
+			category = "backgrounds"
+			file = "00_solid.dds"
+		}
+		colors = {
+			"purple"
+			"black"
+			"null"
+			"null"
+		}
+	}
+
+	ruler = {
+		name = "PRESCRIPTED_ruler_name_sakiko"
+		gender = female
+		portrait = "sakiko_leader_mygo_portrait"
+		leader_class = official
+	}
+}

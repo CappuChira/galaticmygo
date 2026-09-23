@@ -1,0 +1,61 @@
+# Country creation evaluates AI personalities repeatedly while origin, authority
+# and ethics are still being assigned. Vanilla personalities can all reject that
+# temporary state, which aborts create_country before its effect saves the target.
+# This origin-scoped fallback keeps the three parallel-ark countries valid during
+# initialization; each initializer replaces it with the band's final personality.
+mygo_parallel_ark_initializing = {
+	aggressiveness = 1.0
+	trade_willingness = 1.0
+	bravery = 1.0
+	combat_bravery = 1.0
+
+	military_spending = 1.0
+	colony_spending = 1.0
+
+	federation_acceptance = 0
+	nap_acceptance = 0
+	commercial_pact_acceptance = 0
+	research_agreement_acceptance = 0
+	defensive_pact_acceptance = 0
+	migration_pact_acceptance = 0
+	loyalty_acceptance = 1.0
+
+	advanced_start_chance = 100
+
+	weapon_preferences = weapon_type_energy
+	armor_ratio = 0.4
+	shields_ratio = 0.5
+	hull_ratio = 0.1
+
+	threat_modifier = 1.0
+	threat_others_modifier = 1.0
+	friction_modifier = 1.0
+	claims_modifier = 1.0
+
+	behaviour = {
+		conqueror = yes
+		subjugator = yes
+		liberator = no
+		opportunist = yes
+		slaver = no
+		uplifter = yes
+		purger = no
+		displacer = no
+		dominator = no
+		infiltrator = yes
+		robot_exploiter = yes
+		robot_liberator = no
+		propagator = no
+		multispecies = yes
+		crisis_fighter = yes
+	}
+
+	allow = {
+		is_country_type = default
+		has_origin = origin_mygo_parallel_ark_colony
+	}
+
+	weight_modifier = {
+		weight = 10000
+	}
+}

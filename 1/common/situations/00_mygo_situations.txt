@@ -1,0 +1,98 @@
+situation_mygo_stardust_analysis = {
+	picture = GFX_evt_arkship_in_orbit
+	category = positive
+	initial_progress = 0
+	complete_icon_frame = GFX_situation_outcome_frame_green
+	complete_icon = GFX_situation_outcome_positive
+	situation_log_category = empire_concerns
+
+	potential = {
+		has_origin = origin_mygo_eternal_return
+		is_ai = no
+	}
+
+	on_start = {
+		set_situation_locked = yes
+	}
+
+	# Progress comes only from the four formal Stardust Beacons and Earth Tomb.
+	monthly_progress = {
+		base = 0
+	}
+
+	stages = {
+		mygo_stardust_analysis_stage_unresolved = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_blue
+			end = 20
+			custom_tooltip = mygo_stardust_analysis_stage_0_tt
+		}
+		mygo_stardust_analysis_stage_string = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_blue
+			end = 40
+			modifier = {
+				all_technology_research_speed = 0.10
+				country_physics_research_produces_mult = 0.05
+				country_society_research_produces_mult = 0.05
+				country_engineering_research_produces_mult = 0.05
+				country_unity_produces_mult = 0.05
+			}
+			custom_tooltip = mygo_stardust_analysis_stage_1_tt
+		}
+		mygo_stardust_analysis_stage_black_gold = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_blue
+			end = 60
+			modifier = {
+				all_technology_research_speed = 0.20
+				country_physics_research_produces_mult = 0.10
+				country_society_research_produces_mult = 0.10
+				country_engineering_research_produces_mult = 0.10
+				country_unity_produces_mult = 0.08
+			}
+			custom_tooltip = mygo_stardust_analysis_stage_2_tt
+		}
+		mygo_stardust_analysis_stage_distant_echo = {
+			icon = GFX_situation_stage_4
+			icon_background = GFX_situation_stage_frame_blue
+			end = 80
+			modifier = {
+				all_technology_research_speed = 0.30
+				country_physics_research_produces_mult = 0.20
+				country_society_research_produces_mult = 0.20
+				country_engineering_research_produces_mult = 0.20
+				country_unity_produces_mult = 0.12
+			}
+			custom_tooltip = mygo_stardust_analysis_stage_3_tt
+		}
+		mygo_stardust_analysis_stage_popy_archive = {
+			icon = GFX_situation_stage_5
+			icon_background = GFX_situation_stage_frame_green
+			end = 100
+			modifier = {
+				all_technology_research_speed = 0.40
+				country_physics_research_produces_mult = 0.30
+				country_society_research_produces_mult = 0.30
+				country_engineering_research_produces_mult = 0.30
+				country_unity_produces_mult = 0.16
+				research_alternatives_add = 1
+			}
+			custom_tooltip = mygo_stardust_analysis_stage_4_tt
+		}
+	}
+
+	on_progress_complete = {
+		custom_tooltip = mygo_stardust_analysis_complete_tt
+		hidden_effect = {
+			owner = {
+				set_country_flag = mygo_stardust_analysis_complete
+				if = {
+					limit = { NOT = { has_modifier = mygo_stardust_analysis_complete } }
+					add_modifier = { modifier = mygo_stardust_analysis_complete days = -1 }
+				}
+			}
+			destroy_situation = this
+		}
+	}
+}

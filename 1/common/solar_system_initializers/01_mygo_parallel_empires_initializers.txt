@@ -1,0 +1,405 @@
+# The three story empires are generated as unique misc systems only when a
+# playable MyGO Eternal Return country exists. This follows the vanilla Lost
+# Colony parent pattern and avoids adding the bands to unrelated galaxies.
+
+mygo_parallel_popipa_initializer = {
+	name = "NAME_MyGO_Popipa_System"
+	class = sc_g
+	usage = misc_system_init
+	max_instances = 1
+	flags = { mygo_parallel_popipa_system }
+
+	usage_odds = {
+		base = 0
+		modifier = {
+			any_playable_country = { has_origin = origin_mygo_eternal_return }
+			NOT = { has_star_flag = empire_cluster }
+			add = @spawn_system_max
+		}
+	}
+
+	planet = {
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 27
+		has_ring = no
+	}
+
+	planet = {
+		count = { min = 1 max = 2 }
+		class = random_non_colonizable
+		orbit_distance = 25
+		orbit_angle = { min = 60 max = 300 }
+	}
+
+	planet = {
+		name = "NAME_MyGO_Popipa_Homeworld"
+		class = pc_tropical
+		orbit_distance = 30
+		orbit_angle = 120
+		size = 24
+		starting_planet = yes
+		home_planet = yes
+		deposit_blockers = none
+		modifiers = none
+		flags = { mygo_parallel_popipa_homeworld }
+
+		init_effect = {
+			prevent_anomaly = yes
+			log = "MYGO PARALLEL POPIPA SYSTEM INITIALIZER REACHED"
+			create_species = {
+				class = "HUM"
+				portrait = "human"
+				name = "PRESCRIPTED_species_name_band_humans"
+				plural = "PRESCRIPTED_species_plural_band_humans"
+				adjective = "PRESCRIPTED_species_adjective_band_humans"
+				traits = {
+					trait = trait_organic
+					trait = trait_adaptive
+				}
+				homeworld = this
+			}
+			create_country = {
+				name = "EMPIRE_DESIGN_popipa_commonwealth"
+				adjective = "PRESCRIPTED_adjective_popipa_commonwealth"
+				type = default
+				species = last_created_species
+				name_list = "MYGO_POPIPA"
+				ship_prefix = "PRESCRIPTED_ship_prefix_popipa_commonwealth"
+				authority = auth_dictatorial
+				origin = origin_mygo_parallel_ark_colony
+				civics = {
+					civic = civic_free_haven
+					civic = civic_environmentalist
+				}
+				ethos = {
+					ethic = ethic_fanatic_xenophile
+					ethic = ethic_pacifist
+				}
+				ignore_initial_colony_error = yes
+				day_zero_contact = no
+				flag = {
+					icon = { category = "human" file = "flag_mygo_popipa.dds" }
+					background = { category = "backgrounds" file = "00_solid.dds" }
+					colors = { "red" "yellow" "null" "null" }
+				}
+				effect = {
+					log = "MYGO PARALLEL POPIPA COUNTRY CREATED"
+					set_country_flag = mygo_popipa
+					save_global_event_target_as = mygo_popipa_country
+					set_graphical_culture = mammalian_01
+					set_ai_personality = federation_builders
+					advanced_empire_base_init_effect = yes
+				}
+			}
+			create_colony = { owner = event_target:mygo_popipa_country }
+			log = "MYGO PARALLEL POPIPA COLONY CREATED"
+			generate_start_deposits_and_blockers = yes
+			clear_blockers = yes
+			colony = {
+				generate_start_buildings_and_districts = yes
+				generate_start_pops = yes
+				generate_lost_colony_parent_bonus = yes
+			}
+			set_name = NAME_MyGO_Popipa_Homeworld
+			solar_system = { set_name = NAME_MyGO_Popipa_System }
+			event_target:mygo_popipa_country = {
+				create_starting_leaders = yes
+				ruler = {
+					set_name = PRESCRIPTED_ruler_name_kasumi
+					change_leader_portrait = kasumi_leader_mygo_portrait
+					set_immortal = yes
+					set_age = 18
+				}
+				country_event = { id = game_start.9 }
+				country_event = { id = game_start.33 days = 1 }
+			}
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 4 }
+		class = random_non_colonizable
+		orbit_distance = 25
+		orbit_angle = { min = 60 max = 300 }
+	}
+
+	init_effect = {
+		create_starbase = {
+			size = starbase_starport
+			module = shipyard
+			building = crew_quarters
+			owner = event_target:mygo_popipa_country
+			effect = { set_starbase_module = { slot = 2 module = trading_hub } }
+		}
+	}
+}
+
+mygo_parallel_morfonica_initializer = {
+	name = "NAME_MyGO_Morfonica_System"
+	class = sc_f
+	usage = misc_system_init
+	max_instances = 1
+	flags = { mygo_parallel_morfonica_system }
+
+	usage_odds = {
+		base = 0
+		modifier = {
+			any_playable_country = { has_origin = origin_mygo_eternal_return }
+			NOT = { has_star_flag = empire_cluster }
+			add = @spawn_system_max
+		}
+	}
+
+	planet = {
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 25
+		has_ring = no
+	}
+
+	planet = {
+		count = { min = 1 max = 2 }
+		class = random_non_colonizable
+		orbit_distance = 25
+		orbit_angle = { min = 60 max = 300 }
+	}
+
+	planet = {
+		name = "NAME_MyGO_Morfonica_Homeworld"
+		class = pc_alpine
+		orbit_distance = 30
+		orbit_angle = 140
+		size = 24
+		starting_planet = yes
+		home_planet = yes
+		deposit_blockers = none
+		modifiers = none
+		flags = { mygo_parallel_morfonica_homeworld }
+
+		init_effect = {
+			prevent_anomaly = yes
+			log = "MYGO PARALLEL MORFONICA SYSTEM INITIALIZER REACHED"
+			create_species = {
+				class = "HUM"
+				portrait = "human"
+				name = "PRESCRIPTED_species_name_band_humans"
+				plural = "PRESCRIPTED_species_plural_band_humans"
+				adjective = "PRESCRIPTED_species_adjective_band_humans"
+				traits = {
+					trait = trait_organic
+					trait = trait_traditional
+				}
+				homeworld = this
+			}
+			create_country = {
+				name = "EMPIRE_DESIGN_morfonica_pact"
+				adjective = "PRESCRIPTED_adjective_morfonica_pact"
+				type = default
+				species = last_created_species
+				name_list = "MYGO_MORFONICA"
+				ship_prefix = "PRESCRIPTED_ship_prefix_morfonica_pact"
+				authority = auth_dictatorial
+				origin = origin_mygo_parallel_ark_colony
+				civics = {
+					civic = civic_environmentalist
+					civic = civic_beastmasters
+				}
+				ethos = {
+					ethic = ethic_fanatic_spiritualist
+					ethic = ethic_pacifist
+				}
+				ignore_initial_colony_error = yes
+				day_zero_contact = no
+				flag = {
+					icon = { category = "human" file = "flag_mygo_morfonica.dds" }
+					background = { category = "backgrounds" file = "00_solid.dds" }
+					colors = { "blue" "teal" "null" "null" }
+				}
+				effect = {
+					log = "MYGO PARALLEL MORFONICA COUNTRY CREATED"
+					set_country_flag = mygo_morfonica
+					save_global_event_target_as = mygo_morfonica_country
+					set_graphical_culture = mammalian_01
+					set_ai_personality = erudite_explorers
+					advanced_empire_base_init_effect = yes
+				}
+			}
+			create_colony = { owner = event_target:mygo_morfonica_country }
+			log = "MYGO PARALLEL MORFONICA COLONY CREATED"
+			generate_start_deposits_and_blockers = yes
+			clear_blockers = yes
+			colony = {
+				generate_start_buildings_and_districts = yes
+				generate_start_pops = yes
+				generate_lost_colony_parent_bonus = yes
+			}
+			set_name = NAME_MyGO_Morfonica_Homeworld
+			solar_system = { set_name = NAME_MyGO_Morfonica_System }
+			event_target:mygo_morfonica_country = {
+				create_starting_leaders = yes
+				ruler = {
+					set_name = PRESCRIPTED_ruler_name_mashiro
+					change_leader_portrait = mashiro_leader_mygo_portrait
+					set_immortal = yes
+					set_age = 18
+				}
+				country_event = { id = game_start.9 }
+				country_event = { id = game_start.33 days = 1 }
+			}
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 4 }
+		class = random_non_colonizable
+		orbit_distance = 25
+		orbit_angle = { min = 60 max = 300 }
+	}
+
+	init_effect = {
+		create_starbase = {
+			size = starbase_starport
+			module = shipyard
+			building = crew_quarters
+			owner = event_target:mygo_morfonica_country
+			effect = { set_starbase_module = { slot = 2 module = trading_hub } }
+		}
+	}
+}
+
+mygo_parallel_tsukinomori_initializer = {
+	name = "NAME_MyGO_Tsukinomori_System"
+	class = sc_k
+	usage = misc_system_init
+	max_instances = 1
+	flags = { mygo_parallel_tsukinomori_system }
+
+	usage_odds = {
+		base = 0
+		modifier = {
+			any_playable_country = { has_origin = origin_mygo_eternal_return }
+			NOT = { has_star_flag = empire_cluster }
+			add = @spawn_system_max
+		}
+	}
+
+	planet = {
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 26
+		has_ring = no
+	}
+
+	planet = {
+		count = { min = 1 max = 2 }
+		class = random_non_colonizable
+		orbit_distance = 25
+		orbit_angle = { min = 60 max = 300 }
+	}
+
+	planet = {
+		name = "NAME_MyGO_Tsukinomori_Homeworld"
+		class = pc_arctic
+		orbit_distance = 30
+		orbit_angle = 160
+		size = 24
+		starting_planet = yes
+		home_planet = yes
+		deposit_blockers = none
+		modifiers = none
+		flags = { mygo_parallel_tsukinomori_homeworld }
+
+		init_effect = {
+			prevent_anomaly = yes
+			log = "MYGO PARALLEL TSUKINOMORI SYSTEM INITIALIZER REACHED"
+			create_species = {
+				class = "HUM"
+				portrait = "human"
+				name = "PRESCRIPTED_species_name_band_humans"
+				plural = "PRESCRIPTED_species_plural_band_humans"
+				adjective = "PRESCRIPTED_species_adjective_band_humans"
+				traits = {
+					trait = trait_organic
+					trait = trait_intelligent
+				}
+				homeworld = this
+			}
+			create_country = {
+				name = "EMPIRE_DESIGN_tsukinomori_alliance"
+				adjective = "PRESCRIPTED_adjective_tsukinomori_alliance"
+				type = default
+				species = last_created_species
+				name_list = "MYGO_TSUKINOMORI"
+				ship_prefix = "PRESCRIPTED_ship_prefix_tsukinomori_alliance"
+				authority = auth_corporate
+				origin = origin_mygo_parallel_ark_colony
+				civics = {
+					civic = civic_indentured_assets
+					civic = civic_corporate_crafters
+				}
+				ethos = {
+					ethic = ethic_authoritarian
+					ethic = ethic_fanatic_materialist
+				}
+				ignore_initial_colony_error = yes
+				day_zero_contact = no
+				flag = {
+					icon = { category = "human" file = "flag_mygo_tsukinomori.dds" }
+					background = { category = "backgrounds" file = "00_solid.dds" }
+					colors = { "purple" "black" "null" "null" }
+				}
+				effect = {
+					log = "MYGO PARALLEL TSUKINOMORI COUNTRY CREATED"
+					set_country_flag = mygo_tsukinomori
+					save_global_event_target_as = mygo_tsukinomori_country
+					set_graphical_culture = mammalian_01
+					set_ai_personality = ruthless_capitalists
+					advanced_empire_base_init_effect = yes
+				}
+			}
+			create_colony = { owner = event_target:mygo_tsukinomori_country }
+			log = "MYGO PARALLEL TSUKINOMORI COLONY CREATED"
+			generate_start_deposits_and_blockers = yes
+			clear_blockers = yes
+			colony = {
+				generate_start_buildings_and_districts = yes
+				generate_start_pops = yes
+				generate_lost_colony_parent_bonus = yes
+			}
+			set_name = NAME_MyGO_Tsukinomori_Homeworld
+			solar_system = { set_name = NAME_MyGO_Tsukinomori_System }
+			event_target:mygo_tsukinomori_country = {
+				create_starting_leaders = yes
+				ruler = {
+					set_name = PRESCRIPTED_ruler_name_sakiko
+					change_leader_portrait = sakiko_leader_mygo_portrait
+					set_immortal = yes
+					set_age = 18
+				}
+				country_event = { id = game_start.9 }
+				country_event = { id = game_start.33 days = 1 }
+			}
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 4 }
+		class = random_non_colonizable
+		orbit_distance = 25
+		orbit_angle = { min = 60 max = 300 }
+	}
+
+	init_effect = {
+		create_starbase = {
+			size = starbase_starport
+			module = shipyard
+			building = crew_quarters
+			owner = event_target:mygo_tsukinomori_country
+			effect = { set_starbase_module = { slot = 2 module = trading_hub } }
+		}
+	}
+}

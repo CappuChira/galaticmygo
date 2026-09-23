@@ -1,0 +1,114 @@
+# ==========================================
+# 阶段一：茶话会的灾难开端
+# ==========================================
+country_event = {
+	id = mygo.460
+	title = mygo_story.460.name
+	desc = mygo_story.460.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	# 选项A/B/C：纯互动，不推进
+	option = {
+		name = mygo_story.460.a
+		response_text = mygo_story.460.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.460.b
+		response_text = mygo_story.460.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.460.c
+		response_text = mygo_story.460.c.response
+		is_dialog_only = yes
+	}
+	# 选项D：切入正题，推进到阶段二
+	option = {
+		name = mygo_story.460.d
+		response_text = mygo_story.460.d.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.461 } }
+	}
+}
+
+# ==========================================
+# 阶段二：受害者们的陆续登场
+# ==========================================
+country_event = {
+	id = mygo.461
+	title = mygo_story.461.name
+	desc = mygo_story.461.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.461.a
+		response_text = mygo_story.461.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.461.b
+		response_text = mygo_story.461.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.461.c
+		response_text = mygo_story.461.c.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.462 } }
+	}
+}
+
+# ==========================================
+# 阶段三：野猫的突袭与点心鉴赏
+# ==========================================
+country_event = {
+	id = mygo.462
+	title = mygo_story.462.name
+	desc = mygo_story.462.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.462.a
+		response_text = mygo_story.462.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.462.b
+		response_text = mygo_story.462.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.462.c
+		response_text = mygo_story.462.c.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.463 } }
+	}
+}
+
+# ==========================================
+# 阶段四：灾难收尾与凝聚力大捷
+# ==========================================
+country_event = {
+	id = mygo.463
+	title = mygo_story.463.name
+	desc = mygo_story.463.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.463.a
+		response_text = mygo_story.463.a.response
+		hidden_effect = {
+			# “看起来天塌了实际不太痛”反向运用：看起来是一场灾难下午茶，实际上加了大笔凝聚力
+			add_resource = { unity = 150 }
+		}
+	}
+}

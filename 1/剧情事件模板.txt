@@ -1,0 +1,69 @@
+MyGO剧情事件填充模板
+
+目标文件：
+- 事件骨架：events/mygo_story_events.txt
+- 中文文本：localisation/simp_chinese/mygo_l_simp_chinese.yml
+- 复用效果：common/scripted_effects/01_mygo_story_effects.txt
+
+事件ID分段：
+- mygo.400-499：开局与Phase 1通讯样本
+- mygo.500-599：后续Phase 1主线通讯
+- mygo.600-699：Phase 2通讯
+- mygo.700-799：终局前后通讯
+
+新增通讯事件时，复制以下结构。通讯事件不是普通弹窗，必须使用 diplomatic = yes 和 picture_event_data：
+
+country_event = {
+	id = mygo.4XX
+	title = mygo_story.4XX.name
+	desc = mygo_story.4XX.desc
+	diplomatic = yes
+	picture_event_data = {
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_4XX_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_4XX_seen
+	}
+
+	option = {
+		name = mygo_story.4XX.a
+		response_text = mygo_story.4XX.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.4XX.b
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.4XY days = 2 }
+		}
+	}
+}
+
+约定：
+- 不推进剧情、可重复询问的选项使用 is_dialog_only = yes。
+- 推进剧情的选项不写 response_text，使用 default_hide_option = yes，并在 hidden_effect 中跳转到下一事件或发放奖励。
+- 需要在显示回复后再出现新菜单时，新建一个 mygo.4XY 事件，把上一项 response 的结果写成 mygo_story.4XY.desc。
+- 非推进选项不得独占关键情节、必要情报或后续事件成立所需的信息。
+- 连续小链间隔 1-5 天；分段剧情间隔 20-60 天。
+- 草稿必须先放入文案草稿或 import_queue，完成人工复核后才能写入游戏加载目录。
+- 通过复核后的导入载荷开头必须包含：
+  # MYGO_REVIEW_STATUS: APPROVED
+  # MYGO_REVIEWED_BY: 人工复核者
+- 导入器默认只做预检；人工确认预检报告后才允许使用 -Apply，成功后可用 -ArchiveOnSuccess 归档。
+
+对应本地化key：
+- mygo_story.4XX.name
+- mygo_story.4XX.desc
+- mygo_story.4XX.a
+- mygo_story.4XX.a.response
+- mygo_story.4XX.b
+
+需要给领袖、资源、考古点或阶段切换时，优先把效果写成 scripted_effect，再从事件 hidden_effect 中调用。

@@ -1,0 +1,152 @@
+defined_text = {
+	name = GetMygoContractCompositionIssued
+	text = {
+		trigger = { has_country_flag = mygo_popipa }
+		localization_key = "contract_mygo_composition_issued_popipa"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_morfonica }
+		localization_key = "contract_mygo_composition_issued_morfonica"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_tsukinomori }
+		localization_key = "contract_mygo_composition_issued_tsukinomori"
+	}
+	default = "contract_mygo_composition_issued_generic"
+}
+
+defined_text = {
+	name = GetMygoContractCompositionCompleted
+	text = {
+		trigger = { has_country_flag = mygo_popipa }
+		localization_key = "contract_mygo_composition_completed_popipa"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_morfonica }
+		localization_key = "contract_mygo_composition_completed_morfonica"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_tsukinomori }
+		localization_key = "contract_mygo_composition_completed_tsukinomori"
+	}
+	default = "contract_mygo_composition_completed_generic"
+}
+
+defined_text = {
+	name = GetMygoContractCompositionFailed
+	text = {
+		trigger = { has_country_flag = mygo_popipa }
+		localization_key = "contract_mygo_composition_failed_popipa"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_morfonica }
+		localization_key = "contract_mygo_composition_failed_morfonica"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_tsukinomori }
+		localization_key = "contract_mygo_composition_failed_tsukinomori"
+	}
+	default = "contract_mygo_composition_failed_generic"
+}
+
+defined_text = {
+	name = GetMygoContractPerformanceIssued
+	text = {
+		trigger = { has_country_flag = mygo_popipa }
+		localization_key = "contract_mygo_performance_issued_popipa"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_morfonica }
+		localization_key = "contract_mygo_performance_issued_morfonica"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_tsukinomori }
+		localization_key = "contract_mygo_performance_issued_tsukinomori"
+	}
+	default = "contract_mygo_performance_issued_generic"
+}
+
+defined_text = {
+	name = GetMygoContractPerformanceCompleted
+	text = {
+		trigger = { has_country_flag = mygo_popipa }
+		localization_key = "contract_mygo_performance_completed_popipa"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_morfonica }
+		localization_key = "contract_mygo_performance_completed_morfonica"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_tsukinomori }
+		localization_key = "contract_mygo_performance_completed_tsukinomori"
+	}
+	default = "contract_mygo_performance_completed_generic"
+}
+
+defined_text = {
+	name = GetMygoContractPerformanceFailed
+	text = {
+		trigger = { has_country_flag = mygo_popipa }
+		localization_key = "contract_mygo_performance_failed_popipa"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_morfonica }
+		localization_key = "contract_mygo_performance_failed_morfonica"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_tsukinomori }
+		localization_key = "contract_mygo_performance_failed_tsukinomori"
+	}
+	default = "contract_mygo_performance_failed_generic"
+}
+
+defined_text = {
+	name = GetMygoContractTourIssued
+	text = {
+		trigger = { has_country_flag = mygo_popipa }
+		localization_key = "contract_mygo_tour_issued_popipa"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_morfonica }
+		localization_key = "contract_mygo_tour_issued_morfonica"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_tsukinomori }
+		localization_key = "contract_mygo_tour_issued_tsukinomori"
+	}
+	default = "contract_mygo_tour_issued_generic"
+}
+
+defined_text = {
+	name = GetMygoContractTourCompleted
+	text = {
+		trigger = { has_country_flag = mygo_popipa }
+		localization_key = "contract_mygo_tour_completed_popipa"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_morfonica }
+		localization_key = "contract_mygo_tour_completed_morfonica"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_tsukinomori }
+		localization_key = "contract_mygo_tour_completed_tsukinomori"
+	}
+	default = "contract_mygo_tour_completed_generic"
+}
+
+defined_text = {
+	name = GetMygoContractTourFailed
+	text = {
+		trigger = { has_country_flag = mygo_popipa }
+		localization_key = "contract_mygo_tour_failed_popipa"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_morfonica }
+		localization_key = "contract_mygo_tour_failed_morfonica"
+	}
+	text = {
+		trigger = { has_country_flag = mygo_tsukinomori }
+		localization_key = "contract_mygo_tour_failed_tsukinomori"
+	}
+	default = "contract_mygo_tour_failed_generic"
+}

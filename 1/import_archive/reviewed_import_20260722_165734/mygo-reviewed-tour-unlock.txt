@@ -1,0 +1,6 @@
+# MYGO_REVIEW_STATUS: APPROVED
+# MYGO_REVIEWED_BY: LemueDuck
+# SOURCE: user-directed replacement of mygo.220 on 2026-07-22
+
+l_simp_chinese:
+ mygo.220.a.tooltip:0 "解锁§Y星海巡演§!合约。与迷子号保持通讯且未处于战争状态的普通星际国家，将有机会发布巡演委托。"

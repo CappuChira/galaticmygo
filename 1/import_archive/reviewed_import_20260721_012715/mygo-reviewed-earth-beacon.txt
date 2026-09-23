@@ -1,0 +1,38 @@
+# MYGO_REVIEW_STATUS: APPROVED
+# MYGO_REVIEWED_BY: LemueDuck
+# SOURCE: 文案草稿/地球信标/01_六阶段考古文案草稿.md
+
+country_event = {
+	id = mygo.207
+	title = mygo_story.207.name
+	desc = mygo_story.207.desc
+	picture = GFX_evt_mygo_anon
+	show_sound = event_mysterious_signal
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_207_seen }
+	}
+	immediate = { set_country_flag = mygo_story_207_seen }
+	option = {
+		name = mygo_story.207.a
+		default_hide_option = yes
+	}
+}
+
+l_simp_chinese:
+ mygo.201.a:0 "开始降落吧。"
+ mygo.202.a:0 "那就去RiNG看一看吧。"
+ mygo.203.a:0 "去防灾中心看看吧。"
+ mygo.204.name:0 "防灾中心"
+ mygo.204.desc:0 "旧防灾中心看起来像一个巨大的鸡蛋壳。这个比喻非常准确，因为我们发现那个时候防灾中心还有一个别名，叫作§Y东京巨蛋§!。\n\n防灾中心的内部有规模巨大的避难所，还有负责接收离港方舟定期回传的数据中心。数据中心一直运作到方舟驶离地球的几年后。\n\n我们找到了关于迷子号的档案。在贴在墙上的设计图里，迷子号看上去就像一根长长的木棍，上面穿着一只柠檬。\n\n从图纸上看，迷子号被剥离出去的A3到A7区段在设计上就是用于主动脱离并寻找新殖民地的。但这与我们后来在内乱中出现的爆破分离自相矛盾。"
+ mygo.204.a:0 "小祥……头好疼……"
+ mygo.205.name:0 "毁灭日"
+ mygo.205.desc:0 "我们找到了很多关于灾难发生的影像资料。\n\n火光在大地上四起，流动的焰从地面飞上高空。\n\n雨从脚下向天上倒流，飞到半空就变成了赤焰，重重地砸向云端。\n\n哭喊声，落石，在轰鸣中倒塌的废墟。\n\n铁锈味充斥起鼻腔。那是混杂着灰尘与烟的味道，是这座城市最后的气息——\n\n也是这颗星球最后的气息。\n\n人类所能做的最后一件事，是在灾难中把人们送上太空，送到比地球更安全的方舟之上。"
+ mygo.205.a:0 "……"
+ mygo.206.name:0 "方舟开拔之日"
+ mygo.206.desc:0 "方舟开拔之日，晴空万里，但方舟自己就能将太阳光遮蔽。\n\n在地球轨道上的方舟一望无际。每一条方舟都能装下一整个文明，装下音乐，装下对未来的小小期待，装下启程的每一个人。\n\n爱音舰长意气风发，仿佛启航时就已经把一切困难全部扫平了。\n\n新世界是什么样？没有人知道。但所有人都相信，在少女乐队的带领下，人类会延续下去的。"
+ mygo.206.a:0 "而今天，我们回来了。"
+ mygo_story.207.name:0 "爆破栓"
+ mygo_story.207.desc:0 "§H丰川祥子。千早爱音。§!\n\n§L爆破栓。§!\n\n自从重新想起了丰川祥子的事，你的头一天比一天疼了。\n\n被剥离出去的区段。\n\n§L“如果必须要有人来当这个坏人，那我希望，这个人是我。”§!\n\n是什么时候？谁说了这样的话？\n\n杂乱的人群，火光，喊声，巨大的爆炸声——\n\n以及爆炸在真空中断开，戛然而止的瞬间。\n\n这些声音在你的耳畔反复出现，一遍又一遍。\n\n你掐住了自己的太阳穴。"
+ mygo_story.207.a:0 "我没事……"

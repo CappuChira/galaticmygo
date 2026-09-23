@@ -1,0 +1,1888 @@
+namespace = mygo
+
+# Structured opening story event template:
+# country_event = {
+#	id = mygo.4XX
+#	title = mygo_story.4XX.name
+#	desc = mygo_story.4XX.desc
+#	diplomatic = yes
+#	picture_event_data = {
+#		portrait = CHARACTER_leader_mygo_portrait
+#		room = root
+#	}
+#	is_triggered_only = yes
+#
+#	option = {
+#		name = mygo_story.4XX.a
+#		response_text = mygo_story.4XX.a.response
+#		is_dialog_only = yes
+#	}
+#	option = {
+#		name = mygo_story.4XX.b
+#		default_hide_option = yes
+#		hidden_effect = { country_event = { id = mygo.4XY } }
+#	}
+# }
+
+country_event = {
+	id = mygo.400
+	title = mygo_story.400.name
+	desc = mygo_story.400.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = soyo_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_soyo_report_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_soyo_report_seen
+	}
+
+	option = {
+		name = mygo_story.400.a
+		response_text = mygo_story.400.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.400.b
+		response_text = mygo_story.400.b.response
+		default_hide_option = yes
+		hidden_effect = {
+			mygo_story_grant_soyo_official = yes
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.410
+	title = mygo_story.410.name
+	desc = mygo_story.410.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	show_sound = event_mysterious_signal
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_tomori_report_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_tomori_report_seen
+	}
+
+	option = {
+		name = mygo_story.410.a
+		response_text = mygo_story.410.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.410.b
+		response_text = mygo_story.410.b.response
+		default_hide_option = yes
+		hidden_effect = {
+			mygo_story_grant_tomori_scientist = yes
+			mygo_story_reveal_first_stardust_signal = yes
+			country_event = { id = mygo.420 days = 35 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.420
+	title = mygo_story.420.name
+	desc = mygo_story.420.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = taki_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_420_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_420_seen
+	}
+
+	option = {
+		name = mygo_story.420.a
+		response_text = mygo_story.420.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.420.b
+		response_text = mygo_story.420.b.response
+		default_hide_option = yes
+		hidden_effect = {
+			mygo_story_grant_taki_commander = yes
+			country_event = { id = mygo.421 days = 25 }
+		}
+	}
+}
+country_event = {
+	id = mygo.421
+	title = mygo_story.421.name
+	desc = mygo_story.421.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = anon_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_421_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_421_seen
+	}
+
+	option = {
+		name = mygo_story.421.a
+		hidden_effect = {
+			country_event = { id = mygo.422 days = 3 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.422
+	title = mygo_story.422.name
+	desc = mygo_story.422.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = anon_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_422_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_422_seen
+	}
+
+	option = {
+		name = mygo_story.422.a
+		response_text = mygo_story.422.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.422.b
+		response_text = mygo_story.422.b.response
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.423 days = 2 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.423
+	title = mygo_story.423.name
+	desc = mygo_story.423.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = anon_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_423_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_423_seen
+	}
+
+	option = {
+		name = mygo_story.423.a
+		response_text = mygo_story.423.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.423.b
+		response_text = mygo_story.423.b.response
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.424 days = 2 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.424
+	title = mygo_story.424.name
+	desc = mygo_story.424.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = anon_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_424_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_424_seen
+	}
+
+	option = {
+		name = mygo_story.424.a
+		response_text = mygo_story.424.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.424.b
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.425 days = 25 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.425
+	title = mygo_story.425.name
+	desc = mygo_story.425.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = rana_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_425_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_425_seen
+	}
+
+	option = {
+		name = mygo_story.425.a
+		response_text = mygo_story.425.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.425.b
+		response_text = mygo_story.425.b.response
+		default_hide_option = yes
+		hidden_effect = {
+			mygo_story_grant_rana_scientist = yes
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+		}
+	}
+}
+
+country_event = {
+	id = mygo.430
+	title = mygo_story.430.name
+	desc = mygo_story.430.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = soyo_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_430_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_430_seen
+	}
+
+	option = {
+		name = mygo_story.430.a
+		response_text = mygo_story.430.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.430.b
+		response_text = mygo_story.430.b.response
+		default_hide_option = yes
+	}
+}
+
+country_event = {
+	id = mygo.440
+	title = mygo_story.440.name
+	desc = mygo_story.440.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = soyo_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_440_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_440_seen
+	}
+
+	option = {
+		name = mygo_story.440.a
+		response_text = mygo_story.440.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.440.b
+		response_text = mygo_story.440.b.response
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.450 days = 30 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.450
+	title = mygo_story.450.name
+	desc = mygo_story.450.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = soyo_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_story_440_seen
+		NOT = { has_country_flag = mygo_story_450_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_450_seen
+	}
+
+	option = {
+		name = mygo_story.450.a
+		response_text = mygo_story.450.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = mygo_story.450.b
+		response_text = mygo_story.450.b.response
+		default_hide_option = yes
+		hidden_effect = {
+			add_resource = { influence = -20 }
+			country_event = { id = mygo.460 days = 350 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.460
+	title = mygo_story.460.name
+	desc = mygo_story.460.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_460_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_460_seen
+	}
+
+	option = {
+		name = mygo_story.460.a
+		response_text = mygo_story.460.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.460.b
+		response_text = mygo_story.460.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.460.c
+		response_text = mygo_story.460.c.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.460.d
+		response_text = mygo_story.460.d.response
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.461 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.461
+	title = mygo_story.461.name
+	desc = mygo_story.461.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = taki_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_461_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_461_seen
+	}
+
+	option = {
+		name = mygo_story.461.a
+		response_text = mygo_story.461.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.461.b
+		response_text = mygo_story.461.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.461.c
+		response_text = mygo_story.461.c.response
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.462 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.462
+	title = mygo_story.462.name
+	desc = mygo_story.462.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = rana_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_462_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_462_seen
+	}
+
+	option = {
+		name = mygo_story.462.a
+		response_text = mygo_story.462.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.462.b
+		response_text = mygo_story.462.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.462.c
+		response_text = mygo_story.462.c.response
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.463 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.463
+	title = mygo_story.463.name
+	desc = mygo_story.463.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = soyo_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_463_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_463_seen
+	}
+
+	option = {
+		name = mygo_story.463.a
+		response_text = mygo_story.463.a.response
+		hidden_effect = {
+			add_resource = { unity = 150 }
+			country_event = { id = mygo.470 days = 400 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.470
+	title = mygo_story.470.name
+	desc = mygo_story.470.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = taki_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_470_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_470_seen
+	}
+
+	option = { name = mygo_story.470.a response_text = mygo_story.470.a.response is_dialog_only = yes }
+	option = { name = mygo_story.470.b response_text = mygo_story.470.b.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.470.c
+		response_text = mygo_story.470.c.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.471 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.471
+	title = mygo_story.471.name
+	desc = mygo_story.471.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = taki_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_471_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_471_seen
+	}
+
+	option = { name = mygo_story.471.a response_text = mygo_story.471.a.response is_dialog_only = yes }
+	option = { name = mygo_story.471.b response_text = mygo_story.471.b.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.471.c
+		response_text = mygo_story.471.c.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.472 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.472
+	title = mygo_story.472.name
+	desc = mygo_story.472.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = taki_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_472_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_472_seen
+	}
+
+	option = { name = mygo_story.472.a response_text = mygo_story.472.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.472.b
+		response_text = mygo_story.472.b.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.473 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.473
+	title = mygo_story.473.name
+	desc = mygo_story.473.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = taki_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_473_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_473_seen
+	}
+
+	option = {
+		name = mygo_story.473.a
+		response_text = mygo_story.473.a.response
+		hidden_effect = {
+			add_resource = { influence = -10 unity = 100 }
+			country_event = { id = mygo.480 days = 638 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.480
+	title = mygo_story.480.name
+	desc = mygo_story.480.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_480_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_480_seen
+	}
+
+	option = { name = mygo_story.480.a response_text = mygo_story.480.a.response is_dialog_only = yes }
+	option = { name = mygo_story.480.b response_text = mygo_story.480.b.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.480.c
+		response_text = mygo_story.480.c.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.481 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.481
+	title = mygo_story.481.name
+	desc = mygo_story.481.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_481_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_481_seen
+	}
+
+	option = { name = mygo_story.481.a response_text = mygo_story.481.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.481.b
+		response_text = mygo_story.481.b.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.482 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.482
+	title = mygo_story.482.name
+	desc = mygo_story.482.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = rana_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_482_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_482_seen
+	}
+
+	option = { name = mygo_story.482.a response_text = mygo_story.482.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.482.b
+		response_text = mygo_story.482.b.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.483 days = 1 } }
+	}
+}
+
+country_event = {
+	id = mygo.483
+	title = mygo_story.483.name
+	desc = mygo_story.483.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_483_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_483_seen
+	}
+
+	option = {
+		name = mygo_story.483.a
+		response_text = mygo_story.483.a.response
+		hidden_effect = {
+			add_resource = { unity = 200 }
+			set_country_flag = mygo_second_signal_scheduled
+			country_event = { id = mygo.496 days = 35 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.489
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = amoeba_befriended
+		NOT = { has_country_flag = mygo_lost_amoeba_story_started }
+		NOT = { has_country_flag = mygo_has_amoeba_pet }
+	}
+
+	immediate = {
+		set_country_flag = mygo_lost_amoeba_story_started
+		country_event = { id = mygo.490 days = 1 }
+	}
+}
+
+country_event = {
+	id = mygo.490
+	title = mygo_story.490.name
+	desc = mygo_story.490.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_lost_amoeba_story_started
+		NOT = { has_country_flag = mygo_story_490_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_490_seen
+	}
+
+	option = {
+		name = mygo_story.490.a
+		response_text = mygo_story.490.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.490.b
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.491 days = 2 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.491
+	title = mygo_story.491.name
+	desc = mygo_story.491.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = anon_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_491_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_491_seen
+	}
+
+	option = {
+		name = mygo_story.491.a
+		response_text = mygo_story.491.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.491.b
+		response_text = mygo_story.491.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.491.c
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.492 days = 2 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.492
+	title = mygo_story.492.name
+	desc = mygo_story.492.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = taki_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_492_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_492_seen
+	}
+
+	option = {
+		name = mygo_story.492.a
+		response_text = mygo_story.492.a.response
+		hidden_effect = {
+			set_country_flag = mygo_has_amoeba_pet
+			add_resource = { unity = 100 }
+		}
+	}
+}
+
+fleet_event = {
+	id = mygo.488
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_arkship_fleet = yes
+		from = { is_inside_nebula = yes }
+		owner = {
+			has_origin = origin_mygo_eternal_return
+			# site_anon_zero_shatter is completed by mygo.1006, which sets this flag.
+			has_country_flag = mygo_relic_string
+			NOT = { has_country_flag = mygo_story_nebula_aquarium_seen }
+		}
+	}
+
+	immediate = {
+		owner = {
+			set_country_flag = mygo_story_nebula_aquarium_seen
+			country_event = { id = mygo.493 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.493
+	title = mygo_story.493.name
+	desc = mygo_story.493.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_story_nebula_aquarium_seen
+		NOT = { has_country_flag = mygo_story_493_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_493_seen
+	}
+
+	option = {
+		name = mygo_story.493.a
+		response_text = mygo_story.493.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.493.b
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.494 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.494
+	title = mygo_story.494.name
+	desc = mygo_story.494.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_494_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_494_seen
+	}
+
+	option = {
+		name = mygo_story.494.a
+		response_text = mygo_story.494.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.494.b
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.495 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.495
+	title = mygo_story.495.name
+	desc = mygo_story.495.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_495_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_495_seen
+	}
+
+	option = {
+		name = mygo_story.495.a
+		response_text = mygo_story.495.a.response
+		hidden_effect = {
+			add_resource = { unity = 2000 }
+		}
+	}
+}
+
+# Second stardust beacon bridge. The daily-life chain schedules this after 35 days;
+# if the first beacon is still active, retry until its excavation has concluded.
+country_event = {
+	id = mygo.496
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_second_signal_scheduled
+		NOT = { has_country_flag = mygo_second_signal_revealed }
+		NOT = { has_country_flag = mygo_relic_black_gold }
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_country_flag = mygo_relic_string
+				NOT = { has_country_flag = mygo_active_stardust_signal }
+			}
+			mygo_reveal_next_stardust_signal = yes
+			set_country_flag = mygo_second_signal_revealed
+		}
+		else = {
+			country_event = { id = mygo.496 days = 30 }
+		}
+	}
+}
+
+### Post-black-gold daily-life chain. The third beacon is revealed only after
+### the recovered CRYCHIC name has been processed through these events.
+### wojuede zhege shabi wanyi shuode bushi renhua
+
+country_event = {
+	id = mygo.500
+	title = mygo_story.500.name
+	desc = mygo_story.500.desc
+	diplomatic = yes
+	picture_event_data = { portrait = anon_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_relic_black_gold
+		NOT = { has_country_flag = mygo_story_500_seen }
+	}
+	immediate = { set_country_flag = mygo_story_500_seen }
+	option = { name = mygo_story.500.a response_text = mygo_story.500.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.500.b
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.501 days = 14 } }
+	}
+}
+
+country_event = {
+	id = mygo.501
+	title = mygo_story.501.name
+	desc = mygo_story.501.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_501_seen } }
+	immediate = { set_country_flag = mygo_story_501_seen }
+	option = { name = mygo_story.501.a response_text = mygo_story.501.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.501.b
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.502 days = 14 } }
+	}
+}
+
+country_event = {
+	id = mygo.502
+	title = mygo_story.502.name
+	desc = mygo_story.502.desc
+	diplomatic = yes
+	picture_event_data = { portrait = tomori_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_502_seen } }
+	immediate = { set_country_flag = mygo_story_502_seen }
+	option = {
+		name = mygo_story.502.a
+		hidden_effect = { country_event = { id = mygo.510 days = 66 } }
+	}
+}
+
+country_event = {
+	id = mygo.510
+	title = mygo_story.510.name
+	desc = mygo_story.510.desc
+	diplomatic = yes
+	picture_event_data = { portrait = taki_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_510_seen } }
+	immediate = { set_country_flag = mygo_story_510_seen }
+	option = { name = mygo_story.510.a response_text = mygo_story.510.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.510.b
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.511 days = 20 } }
+	}
+}
+
+country_event = {
+	id = mygo.511
+	title = mygo_story.511.name
+	desc = mygo_story.511.desc
+	diplomatic = yes
+	picture_event_data = { portrait = tomori_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_511_seen } }
+	immediate = { set_country_flag = mygo_story_511_seen }
+	option = { name = mygo_story.511.a response_text = mygo_story.511.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.511.b
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.512 days = 20 } }
+	}
+}
+
+country_event = {
+	id = mygo.512
+	title = mygo_story.512.name
+	desc = mygo_story.512.desc
+	diplomatic = yes
+	picture_event_data = { portrait = anon_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_512_seen } }
+	immediate = { set_country_flag = mygo_story_512_seen }
+	option = {
+		name = mygo_story.512.a
+		hidden_effect = { country_event = { id = mygo.520 days = 66 } }
+	}
+}
+
+country_event = {
+	id = mygo.520
+	title = mygo_story.520.name
+	desc = mygo_story.520.desc
+	diplomatic = yes
+	picture_event_data = { portrait = anon_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_520_seen } }
+	immediate = { set_country_flag = mygo_story_520_seen }
+	option = { name = mygo_story.520.a response_text = mygo_story.520.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.520.b
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.521 days = 2 } }
+	}
+}
+
+country_event = {
+	id = mygo.521
+	title = mygo_story.521.name
+	desc = mygo_story.521.desc
+	diplomatic = yes
+	picture_event_data = { portrait = taki_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_521_seen } }
+	immediate = { set_country_flag = mygo_story_521_seen }
+	option = { name = mygo_story.521.a response_text = mygo_story.521.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.521.b
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.522 days = 2 } }
+	}
+}
+
+country_event = {
+	id = mygo.522
+	title = mygo_story.522.name
+	desc = mygo_story.522.desc
+	diplomatic = yes
+	picture_event_data = { portrait = rana_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_522_seen } }
+	immediate = { set_country_flag = mygo_story_522_seen }
+	option = { name = mygo_story.522.a response_text = mygo_story.522.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.522.b
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.523 days = 2 } }
+	}
+}
+
+country_event = {
+	id = mygo.523
+	title = mygo_story.523.name
+	desc = mygo_story.523.desc
+	diplomatic = yes
+	picture_event_data = { portrait = tomori_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_523_seen } }
+	immediate = { set_country_flag = mygo_story_523_seen }
+	option = {
+		name = mygo_story.523.a
+		hidden_effect = { add_resource = { unity = 1500 } country_event = { id = mygo.530 days = 20 } }
+	}
+}
+
+country_event = {
+	id = mygo.530
+	title = mygo_story.530.name
+	desc = mygo_story.530.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_530_seen } }
+	immediate = { set_country_flag = mygo_story_530_seen }
+	option = { name = mygo_story.530.a response_text = mygo_story.530.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.530.b
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.531 days = 77 } }
+	}
+}
+
+country_event = {
+	id = mygo.531
+	title = mygo_story.531.name
+	desc = mygo_story.531.desc
+	diplomatic = yes
+	picture_event_data = { portrait = tomori_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_531_seen } }
+	immediate = { set_country_flag = mygo_story_531_seen }
+	option = { name = mygo_story.531.a response_text = mygo_story.531.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.531.b
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.540 days = 25 } }
+	}
+}
+
+country_event = {
+	id = mygo.540
+	title = mygo_story.540.name
+	desc = mygo_story.540.desc
+	diplomatic = yes
+	picture_event_data = { portrait = tomori_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_540_seen } }
+	immediate = { set_country_flag = mygo_story_540_seen }
+	option = { name = mygo_story.540.a response_text = mygo_story.540.a.response is_dialog_only = yes }
+	option = {
+		name = mygo_story.540.b
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.541 days = 2 } }
+	}
+}
+
+country_event = {
+	id = mygo.541
+	title = mygo_story.541.name
+	desc = mygo_story.541.desc
+	diplomatic = yes
+	picture_event_data = { portrait = anon_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = { has_origin = origin_mygo_eternal_return NOT = { has_country_flag = mygo_story_541_seen } }
+	immediate = { set_country_flag = mygo_story_541_seen }
+	option = {
+		name = mygo_story.541.a
+		hidden_effect = {
+			set_country_flag = mygo_post_black_gold_story_complete
+			add_resource = { unity = 200 }
+			country_event = { id = mygo.542 days = 35 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.542
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_post_black_gold_story_complete
+		NOT = { has_country_flag = mygo_third_signal_revealed }
+		NOT = { has_country_flag = mygo_relic_record }
+	}
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = mygo_active_stardust_signal } }
+			mygo_reveal_next_stardust_signal = yes
+			set_country_flag = mygo_third_signal_revealed
+		}
+		else = { country_event = { id = mygo.542 days = 30 } }
+	}
+}
+
+
+# BEGIN REVIEWED IMPORT mygo.550 from mygo-reviewed-joint-live-opening.txt
+country_event = {
+	id = mygo.550
+	title = mygo_story.550.name
+	desc = mygo_story.550.desc
+	picture = GFX_evt_mygo_story_550
+	show_sound = event_arkship_bridge
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_550_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_550_seen
+	}
+
+	option = {
+		name = OK
+		hidden_effect = {
+			country_event = { id = mygo.551 days = 3 }
+		}
+	}
+}
+# END REVIEWED IMPORT mygo.550
+
+
+# BEGIN REVIEWED IMPORT mygo.551 from mygo-reviewed-joint-live-opening.txt
+country_event = {
+	id = mygo.551
+	title = mygo_story.551.name
+	desc = mygo_story.551.desc
+	picture = GFX_evt_mygo_story_551
+	show_sound = event_arkship_bridge
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_551_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_551_seen
+	}
+
+	option = {
+		name = mygo_story.551.a
+		hidden_effect = {
+			country_event = { id = mygo.552 days = 3 }
+		}
+	}
+}
+# END REVIEWED IMPORT mygo.551
+
+
+# BEGIN REVIEWED IMPORT mygo.552 from mygo-reviewed-joint-live-opening.txt
+country_event = {
+	id = mygo.552
+	title = mygo_story.552.name
+	desc = mygo_story.552.desc
+	picture = GFX_evt_mygo_story_552
+	show_sound = event_arkship_bridge
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_552_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_552_seen
+	}
+
+	option = {
+		name = mygo_story.552.a
+		hidden_effect = {
+			country_event = { id = mygo.553 days = 3 }
+		}
+	}
+}
+# END REVIEWED IMPORT mygo.552
+
+
+# BEGIN REVIEWED IMPORT mygo.553 from mygo-reviewed-joint-live-opening.txt
+country_event = {
+	id = mygo.553
+	title = mygo_story.553.name
+	desc = mygo_story.553.desc
+	picture = GFX_evt_mygo_story_553
+	show_sound = event_arkship_bridge
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_553_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_553_seen
+	}
+
+	option = {
+		name = mygo_story.553.a
+		hidden_effect = {
+			set_country_flag = mygo_joint_live_opening_complete
+			set_country_flag = mygo_joint_live_bridge_scheduled
+			country_event = { id = mygo.554 days = 25 }
+		}
+	}
+}
+# END REVIEWED IMPORT mygo.553
+
+
+# BEGIN REVIEWED IMPORT mygo.554 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.554
+	title = mygo_story.554.name
+	desc = mygo_story.554.desc
+	picture = GFX_evt_arkship_in_orbit
+	show_sound = event_arkship_bridge
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_554_seen }
+	}
+	immediate = { set_country_flag = mygo_story_554_seen }
+	option = {
+		name = mygo_story.554.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.555 days = 3 } }
+	}
+}
+# END REVIEWED IMPORT mygo.554
+
+
+# BEGIN REVIEWED IMPORT mygo.555 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.555
+	title = mygo_story.555.name
+	desc = mygo_story.555.desc
+	diplomatic = yes
+	picture_event_data = { portrait = tomori_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_555_seen }
+	}
+	immediate = { set_country_flag = mygo_story_555_seen }
+	option = {
+		name = mygo_story.555.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.556 days = 1 } }
+	}
+}
+# END REVIEWED IMPORT mygo.555
+
+
+# BEGIN REVIEWED IMPORT mygo.556 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.556
+	title = mygo_story.556.name
+	desc = mygo_story.556.desc
+	diplomatic = yes
+	picture_event_data = { portrait = tomori_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_556_seen }
+	}
+	immediate = { set_country_flag = mygo_story_556_seen }
+	option = {
+		name = mygo_story.556.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.557 days = 25 } }
+	}
+}
+# END REVIEWED IMPORT mygo.556
+
+
+# BEGIN REVIEWED IMPORT mygo.557 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.557
+	title = mygo_story.557.name
+	desc = mygo_story.557.desc
+	diplomatic = yes
+	picture_event_data = { portrait = kasumi_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_557_seen }
+	}
+	immediate = { set_country_flag = mygo_story_557_seen }
+	option = {
+		name = mygo_story.557.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.558 days = 1 } }
+	}
+}
+# END REVIEWED IMPORT mygo.557
+
+
+# BEGIN REVIEWED IMPORT mygo.558 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.558
+	title = mygo_story.558.name
+	desc = mygo_story.558.desc
+	diplomatic = yes
+	picture_event_data = { portrait = kasumi_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_558_seen }
+	}
+	immediate = { set_country_flag = mygo_story_558_seen }
+	option = {
+		name = mygo_story.558.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.559 days = 20 } }
+	}
+}
+# END REVIEWED IMPORT mygo.558
+
+
+# BEGIN REVIEWED IMPORT mygo.559 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.559
+	title = mygo_story.559.name
+	desc = mygo_story.559.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_559_seen }
+	}
+	immediate = { set_country_flag = mygo_story_559_seen }
+	option = {
+		name = mygo_story.559.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.560 days = 1 } }
+	}
+}
+# END REVIEWED IMPORT mygo.559
+
+
+# BEGIN REVIEWED IMPORT mygo.560 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.560
+	title = mygo_story.560.name
+	desc = mygo_story.560.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_560_seen }
+	}
+	immediate = { set_country_flag = mygo_story_560_seen }
+	option = {
+		name = mygo_story.560.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.561 days = 1 } }
+	}
+}
+# END REVIEWED IMPORT mygo.560
+
+
+# BEGIN REVIEWED IMPORT mygo.561 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.561
+	title = mygo_story.561.name
+	desc = mygo_story.561.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_561_seen }
+	}
+	immediate = { set_country_flag = mygo_story_561_seen }
+	option = {
+		name = mygo_story.561.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.562 days = 1 } }
+	}
+}
+# END REVIEWED IMPORT mygo.561
+
+
+# BEGIN REVIEWED IMPORT mygo.562 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.562
+	title = mygo_story.562.name
+	desc = mygo_story.562.desc
+	diplomatic = yes
+	picture_event_data = { portrait = soyo_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_562_seen }
+	}
+	immediate = { set_country_flag = mygo_story_562_seen }
+	option = {
+		name = mygo_story.562.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.563 days = 25 } }
+	}
+}
+# END REVIEWED IMPORT mygo.562
+
+
+# BEGIN REVIEWED IMPORT mygo.563 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.563
+	title = mygo_story.563.name
+	desc = mygo_story.563.desc
+	diplomatic = yes
+	picture_event_data = { portrait = kasumi_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_563_seen }
+	}
+	immediate = { set_country_flag = mygo_story_563_seen }
+	option = {
+		name = mygo_story.563.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.564 days = 1 } }
+	}
+}
+# END REVIEWED IMPORT mygo.563
+
+
+# BEGIN REVIEWED IMPORT mygo.564 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.564
+	title = mygo_story.564.name
+	desc = mygo_story.564.desc
+	diplomatic = yes
+	picture_event_data = { portrait = kasumi_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_564_seen }
+	}
+	immediate = { set_country_flag = mygo_story_564_seen }
+	option = {
+		name = mygo_story.564.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.565 days = 30 } }
+	}
+}
+# END REVIEWED IMPORT mygo.564
+
+
+# BEGIN REVIEWED IMPORT mygo.565 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.565
+	title = mygo_story.565.name
+	desc = mygo_story.565.desc
+	diplomatic = yes
+	picture_event_data = { portrait = mashiro_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_565_seen }
+	}
+	immediate = { set_country_flag = mygo_story_565_seen }
+	option = {
+		name = mygo_story.565.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.566 days = 1 } }
+	}
+}
+# END REVIEWED IMPORT mygo.565
+
+
+# BEGIN REVIEWED IMPORT mygo.566 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.566
+	title = mygo_story.566.name
+	desc = mygo_story.566.desc
+	diplomatic = yes
+	picture_event_data = { portrait = mashiro_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_566_seen }
+	}
+	immediate = { set_country_flag = mygo_story_566_seen }
+	option = {
+		name = mygo_story.566.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.567 days = 3 } }
+	}
+}
+# END REVIEWED IMPORT mygo.566
+
+
+# BEGIN REVIEWED IMPORT mygo.567 from mygo-reviewed-joint-live-bridge.txt
+country_event = {
+	id = mygo.567
+	title = mygo_story.567.name
+	desc = mygo_story.567.desc
+	diplomatic = yes
+	picture_event_data = { portrait = mashiro_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_relic_record
+		NOT = { has_country_flag = mygo_story_567_seen }
+		NOT = { has_country_flag = mygo_relic_popy_station }
+		NOT = { has_country_flag = mygo_active_stardust_signal }
+		NOT = { has_country_flag = mygo_popy_route_accepted }
+	}
+	immediate = { set_country_flag = mygo_story_567_seen }
+	option = {
+		name = mygo_story.567.ask
+		response_text = mygo_story.567.ask.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.567.a
+		default_hide_option = yes
+		hidden_effect = {
+			set_country_flag = mygo_joint_live_bridge_complete
+			set_country_flag = mygo_popy_route_accepted
+			mygo_spawn_popy_rest_stop_site = yes
+			set_country_flag = mygo_stardust_signal_popy_station
+		}
+	}
+}
+# END REVIEWED IMPORT mygo.567
+
+
+# BEGIN REVIEWED IMPORT mygo.207 from mygo-reviewed-earth-beacon.txt
+country_event = {
+	id = mygo.207
+	title = mygo_story.207.name
+	desc = mygo_story.207.desc
+	picture = GFX_evt_mygo_story_553
+	show_sound = event_mysterious_signal
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_207_seen }
+	}
+	immediate = { set_country_flag = mygo_story_207_seen }
+	option = {
+		name = mygo_story.207.a
+		default_hide_option = yes
+	}
+}
+# END REVIEWED IMPORT mygo.207
+
+
+# BEGIN REVIEWED IMPORT mygo.640-642 from 01_大脑升级与MyGO改名事件链草稿.md
+country_event = {
+	id = mygo.640
+	title = mygo_story.640.name
+	desc = mygo_story.640.desc
+	diplomatic = yes
+	picture_event_data = { portrait = anon_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_earth_tomb_complete
+		has_country_flag = mygo_tour_unlocked
+		NOT = { has_country_flag = mygo_story_640_seen }
+	}
+
+	immediate = { set_country_flag = mygo_story_640_seen }
+
+	option = {
+		name = mygo_story.640.a
+		default_hide_option = yes
+		hidden_effect = {
+			country_event = { id = mygo.641 days = 2 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.641
+	title = mygo_story.641.name
+	desc = mygo_story.641.desc
+	diplomatic = yes
+	picture_event_data = { portrait = anon_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_story_640_seen
+		NOT = { has_country_flag = mygo_story_641_seen }
+		NOT = { has_country_flag = mygo_renamed_to_mygo }
+	}
+
+	immediate = { set_country_flag = mygo_story_641_seen }
+
+	option = {
+		name = mygo_story.641.a
+		default_hide_option = yes
+		hidden_effect = {
+			set_name = NAME_MyGO_Renamed_Country
+			set_country_flag = mygo_renamed_to_mygo
+			country_event = { id = mygo.642 days = 2 }
+		}
+	}
+}
+
+country_event = {
+	id = mygo.642
+	title = mygo_story.642.name
+	desc = mygo_story.642.desc
+	diplomatic = yes
+	picture_event_data = { portrait = anon_leader_mygo_portrait room = root }
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		has_country_flag = mygo_renamed_to_mygo
+		NOT = { has_country_flag = mygo_story_642_seen }
+	}
+
+	immediate = { set_country_flag = mygo_story_642_seen }
+
+	option = {
+		name = mygo_story.642.a
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.649 } }
+	}
+}
+# END REVIEWED IMPORT mygo.640-642

@@ -1,0 +1,95 @@
+song = {
+	name = "椎名立希, 高松燈 - 栞 covered by 立希"
+}
+
+song = {
+	name = "高松燈 - 【歌ってみた】シンデレラボーイ（Cinderella Boy） covered by 燈"
+}
+
+song = {
+	name = "高松燈 - Henceforth"
+}
+
+song = {
+	name = "高松燈 - Subtitle"
+}
+
+song = {
+	name = "高松燈 - ティアドロップス"
+}
+
+song = {
+	name = "高松燈 - ホワイトノイズ (Game Size)"
+}
+
+song = {
+	name = "高松燈 - もしも命が描けたら"
+}
+
+song = {
+	name = "千早爱音, 立石凛 - ないばいたりてぃ"
+}
+
+song = {
+	name = "小日向美香, 长崎素世 - キリトリセン"
+}
+
+song = {
+	name = "要楽奈, 高松燈 - TEENAGE RIOT covered by 楽奈"
+}
+
+song = {
+	name = "CRYCHIC - 春日影"
+}
+
+song = {
+	name = "CRYCHIC - 人間になりたいうた"
+}
+
+song = {
+	name = "MyGO!!!!! - 焚音打 (instrumental)"
+}
+
+song = {
+	name = "MyGO!!!!! - 君の神様になりたい。 (Cover)"
+}
+
+song = {
+	name = "MyGO!!!!! - 栞 (instrumental)"
+}
+
+song = {
+	name = "MyGO!!!!! - 猛独が襲う (Cover)"
+}
+
+song = {
+	name = "MyGO!!!!! - 迷星叫 (instrumental)"
+}
+
+song = {
+	name = "MyGO!!!!! - 名無声 (instrumental)"
+}
+
+song = {
+	name = "MyGO!!!!! - 潜在表明 (instrumental)"
+}
+
+song = {
+	name = "MyGO!!!!! - 壱雫空 (instrumental)"
+}
+
+song = {
+	name = "MyGO!!!!! - 音一会 (instrumental)"
+}
+
+song = {
+	name = "MyGO!!!!! - 影色舞 (instrumental)"
+}
+
+song = {
+	name = "MyGO!!!!! - swim (Cover)"
+}
+
+song = {
+	name = "Poppin'Party, 高松 燈 - 幾億光年 (Cover)"
+}

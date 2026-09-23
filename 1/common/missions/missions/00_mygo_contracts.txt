@@ -1,0 +1,640 @@
+contract_mygo_composition = {
+	category = science_contract
+	desc = contract_mygo_composition_desc
+	event_chain = contract_mygo_composition_chain
+	icon = gfx/interface/icons/situation_log/situation_log_quest.dds
+	picture = GFX_evt_society_research
+	small_picture = GFX_contract_onboard_society_research_small
+	location = no
+	time_to_accept = @contract_time_base
+	cost = 1000
+
+	lore_issued = contract_mygo_composition_issued
+	lore_completed = contract_mygo_composition_completed
+	lore_failed = contract_mygo_composition_failed
+
+	abort_trigger = {
+		NOT = { has_event_chain = contract_mygo_composition_chain }
+	}
+
+	counter = {
+		contract_progress_counter = {
+			max = 1
+		}
+	}
+
+	potential_issuer = {
+		can_issue_contracts_trigger = yes
+		OR = {
+			has_country_flag = mygo_popipa
+			has_country_flag = mygo_morfonica
+			has_country_flag = mygo_tsukinomori
+		}
+		any_relation = {
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+			has_communications = prev
+			NOT = { is_at_war_with = prev }
+		}
+	}
+
+	possible_issuer = {
+		custom_tooltip = {
+			fail_text = mygo_contract_already_active
+			NOT = { has_country_flag = mygo_contract_active }
+		}
+	}
+
+	potential_operator = {
+		custom_tooltip = {
+			fail_text = mygo_contract_requires_mygo_nomad
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+		}
+		fromfrom = {
+			custom_tooltip = {
+				fail_text = mygo_contract_requires_band_issuer
+				OR = {
+					has_country_flag = mygo_popipa
+					has_country_flag = mygo_morfonica
+					has_country_flag = mygo_tsukinomori
+				}
+			}
+			has_communications = root
+			NOT = { is_at_war_with = root }
+		}
+	}
+
+	possible_operator = {
+		custom_tooltip = {
+			fail_text = already_doing_same_contract
+			NOT = { has_event_chain = contract_mygo_composition_chain }
+		}
+	}
+
+	on_issue = {
+		set_timed_country_flag = { flag = mygo_contract_active days = @contract_time_base }
+	}
+
+	on_accept = {
+		prev = { set_country_flag = mygo_contract_active }
+		begin_event_chain = {
+			event_chain = contract_mygo_composition_chain
+			target = root
+		}
+		capital_scope = {
+			enable_special_project = {
+				name = MYGO_CONTRACT_COMPOSITION_PROJECT
+				location = this
+				owner = root
+			}
+		}
+		if = {
+			limit = { prev = { has_country_flag = mygo_popipa } }
+			country_event = { id = mygo.607 days = 1 }
+		}
+		else_if = {
+			limit = { prev = { has_country_flag = mygo_morfonica } }
+			country_event = { id = mygo.616 days = 1 }
+		}
+		else_if = {
+			limit = { prev = { has_country_flag = mygo_tsukinomori } }
+			country_event = { id = mygo.619 days = 1 }
+		}
+	}
+
+	on_success = {
+		if = {
+			limit = { exists = root }
+			contract_scaling_reward_effect = { TRADE = 1250 RESOURCE = society_research RESOURCE_AMOUNT = 250 }
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+			custom_tooltip = trust5
+			custom_tooltip = opinion50
+			hidden_effect = {
+				prev = {
+					add_opinion_modifier = {
+						modifier = opinion_completed_contract_small
+						who = root
+					}
+					add_trust = {
+						amount = 5
+						who = root
+					}
+					add_monthly_resource_mult = {
+						resource = society_research
+						value = @tier1researchreward
+						min = @tier1researchmin
+						max = @tier1researchmax
+					}
+					remove_country_flag = mygo_contract_active
+				}
+			}
+		}
+	}
+
+	on_cancel = {
+		if = {
+			limit = { exists = root }
+			end_event_chain = contract_mygo_composition_chain
+			prev = {
+				add_opinion_modifier = {
+					modifier = opinion_failed_contract_small
+					who = root
+				}
+				remove_country_flag = mygo_contract_active
+			}
+		}
+	}
+
+	on_stop = {
+		if = {
+			limit = { exists = root }
+			hidden_effect = {
+				abort_special_project = { type = MYGO_CONTRACT_COMPOSITION_PROJECT }
+				end_event_chain = contract_mygo_composition_chain
+				prev = { remove_country_flag = mygo_contract_active }
+			}
+		}
+		else = {
+			remove_country_flag = mygo_contract_active
+		}
+	}
+
+	ai_weight = {
+		weight = 10
+		modifier = {
+			factor = 6
+			fromfrom = { has_country_flag = mygo_morfonica }
+		}
+		modifier = {
+			factor = 3
+			fromfrom = { has_country_flag = mygo_popipa }
+		}
+		modifier = {
+			factor = 0.5
+			fromfrom = { has_country_flag = mygo_tsukinomori }
+		}
+	}
+}
+
+contract_mygo_performance = {
+	category = resource_contract
+	desc = contract_mygo_performance_desc
+	event_chain = contract_mygo_performance_chain
+	icon = gfx/interface/icons/situation_log/situation_log_quest.dds
+	picture = GFX_evt_mysterious_signal
+	small_picture = GFX_contract_onboard_energy_resource_small
+	location = yes
+	time_to_accept = @contract_time_base
+	cost = 1000
+
+	lore_issued = contract_mygo_performance_issued
+	lore_completed = contract_mygo_performance_completed
+	lore_failed = contract_mygo_performance_failed
+
+	abort_trigger = {
+		NAND = {
+			has_event_chain = contract_mygo_performance_chain
+			contract_target_system_reachable = { SYSTEM = fromfrom }
+		}
+	}
+
+	counter = {
+		contract_progress_counter = {
+			max = 1
+		}
+	}
+
+	potential_issuer = {
+		can_issue_contracts_trigger = yes
+		OR = {
+			has_country_flag = mygo_popipa
+			has_country_flag = mygo_morfonica
+			has_country_flag = mygo_tsukinomori
+		}
+		any_relation = {
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+			has_communications = prev
+			NOT = { is_at_war_with = prev }
+		}
+	}
+
+	possible_issuer = {
+		custom_tooltip = {
+			fail_text = mygo_contract_already_active
+			NOT = { has_country_flag = mygo_contract_active }
+		}
+		custom_tooltip = {
+			fail_text = mygo_contract_target_unreachable
+			from = {
+				exists = owner
+				owner = { is_same_value = root }
+				any_system_planet = {
+					is_colony = yes
+					is_under_colonization = no
+				}
+			}
+		}
+	}
+
+	potential_operator = {
+		custom_tooltip = {
+			fail_text = mygo_contract_requires_mygo_nomad
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+		}
+		fromfrom = {
+			custom_tooltip = {
+				fail_text = mygo_contract_requires_band_issuer
+				OR = {
+					has_country_flag = mygo_popipa
+					has_country_flag = mygo_morfonica
+					has_country_flag = mygo_tsukinomori
+				}
+			}
+			has_communications = root
+			NOT = { is_at_war_with = root }
+		}
+	}
+
+	possible_operator = {
+		custom_tooltip = {
+			fail_text = already_doing_same_contract
+			NOT = { has_event_chain = contract_mygo_performance_chain }
+		}
+		custom_tooltip = {
+			fail_text = mygo_contract_target_unreachable
+			contract_target_system_reachable = { SYSTEM = from }
+		}
+	}
+
+	on_issue = {
+		set_timed_country_flag = { flag = mygo_contract_active days = @contract_time_base }
+	}
+
+	on_accept = {
+		prev = { set_country_flag = mygo_contract_active }
+		begin_event_chain = {
+			event_chain = contract_mygo_performance_chain
+			target = root
+		}
+		fromfrom = {
+			random_system_planet = {
+				limit = {
+					is_colony = yes
+					is_under_colonization = no
+				}
+				save_event_target_as = mygo_contract_performance_planet
+			}
+		}
+		enable_special_project = {
+			name = MYGO_CONTRACT_PERFORMANCE_PROJECT
+			location = event_target:mygo_contract_performance_planet
+			owner = root
+		}
+		if = {
+			limit = { prev = { has_country_flag = mygo_popipa } }
+			country_event = { id = mygo.608 days = 1 }
+		}
+		else_if = {
+			limit = { prev = { has_country_flag = mygo_morfonica } }
+			country_event = { id = mygo.617 days = 1 }
+		}
+		else_if = {
+			limit = { prev = { has_country_flag = mygo_tsukinomori } }
+			country_event = { id = mygo.620 days = 1 }
+		}
+	}
+
+	on_success = {
+		if = {
+			limit = { exists = root }
+			contract_scaling_reward_effect = { TRADE = 1500 RESOURCE = energy RESOURCE_AMOUNT = 300 }
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+			custom_tooltip = trust5
+			custom_tooltip = opinion50
+			hidden_effect = {
+				prev = {
+					add_opinion_modifier = {
+						modifier = opinion_completed_contract_small
+						who = root
+					}
+					add_trust = {
+						amount = 5
+						who = root
+					}
+					add_modifier = {
+						modifier = mygo_contract_performance_issuer
+						years = 5
+					}
+					remove_country_flag = mygo_contract_active
+				}
+			}
+		}
+	}
+
+	on_cancel = {
+		if = {
+			limit = { exists = root }
+			end_event_chain = contract_mygo_performance_chain
+			prev = {
+				add_opinion_modifier = {
+					modifier = opinion_failed_contract_small
+					who = root
+				}
+				remove_country_flag = mygo_contract_active
+			}
+		}
+	}
+
+	on_stop = {
+		if = {
+			limit = { exists = root }
+			hidden_effect = {
+				abort_special_project = { type = MYGO_CONTRACT_PERFORMANCE_PROJECT }
+				end_event_chain = contract_mygo_performance_chain
+				prev = { remove_country_flag = mygo_contract_active }
+			}
+		}
+		else = {
+			remove_country_flag = mygo_contract_active
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 5
+			fromfrom = { has_country_flag = mygo_popipa }
+		}
+		modifier = {
+			factor = 2
+			fromfrom = { has_country_flag = mygo_morfonica }
+		}
+	}
+}
+
+contract_mygo_tour = {
+	category = passenger_diplomacy_contract_special
+	desc = contract_mygo_tour_desc
+	event_chain = contract_mygo_tour_chain
+	icon = gfx/interface/icons/situation_log/situation_log_quest.dds
+	picture = GFX_evt_forever_cruise
+	small_picture = GFX_contract_shoreleave_passenger_1_small
+	location = yes
+	time_to_accept = @contract_time_base
+	cost = 1000
+
+	lore_issued = contract_mygo_tour_issued
+	lore_completed = contract_mygo_tour_completed
+	lore_failed = contract_mygo_tour_failed
+
+	abort_trigger = {
+		NAND = {
+			has_event_chain = contract_mygo_tour_chain
+			contract_target_system_reachable = { SYSTEM = fromfrom }
+		}
+	}
+
+	counter = {
+		contract_progress_counter = {
+			max = 1
+		}
+	}
+
+	potential_issuer = {
+		can_issue_contracts_trigger = yes
+		is_country_type = default
+		any_relation = {
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+			has_country_flag = mygo_tour_unlocked
+			has_communications = prev
+			NOT = { is_at_war_with = prev }
+		}
+	}
+
+	possible_issuer = {
+		custom_tooltip = {
+			fail_text = mygo_contract_already_active
+			NOT = { has_country_flag = mygo_contract_active }
+		}
+		custom_tooltip = {
+			fail_text = mygo_contract_target_unreachable
+			from = {
+				exists = owner
+				owner = { is_same_value = root }
+				any_system_planet = {
+					is_colony = yes
+					is_under_colonization = no
+					NOT = { has_planet_flag = mygo_tour_visited }
+					OR = {
+						is_capital = yes
+						pop_amount >= 200
+					}
+				}
+			}
+		}
+	}
+
+	potential_operator = {
+		custom_tooltip = {
+			fail_text = mygo_contract_requires_mygo_nomad
+			has_origin = origin_mygo_eternal_return
+			is_nomadic = yes
+			has_country_flag = mygo_tour_unlocked
+		}
+		fromfrom = {
+			custom_tooltip = {
+				fail_text = mygo_contract_requires_tour_issuer
+				is_country_type = default
+			}
+			has_communications = root
+			NOT = { is_at_war_with = root }
+		}
+	}
+
+	possible_operator = {
+		custom_tooltip = {
+			fail_text = already_doing_same_contract
+			NOT = { has_event_chain = contract_mygo_tour_chain }
+		}
+		custom_tooltip = {
+			fail_text = mygo_contract_target_unreachable
+			contract_target_system_reachable = { SYSTEM = from }
+		}
+		custom_tooltip = {
+			fail_text = mygo_contract_target_unreachable
+			from = {
+				any_system_planet = {
+					is_colony = yes
+					is_under_colonization = no
+					NOT = { has_planet_flag = mygo_tour_visited }
+					OR = {
+						is_capital = yes
+						pop_amount >= 200
+					}
+				}
+			}
+		}
+	}
+
+	on_issue = {
+		set_timed_country_flag = { flag = mygo_contract_active days = @contract_time_base }
+		set_timed_country_flag = { flag = mygo_tour_contract_open days = @contract_time_base }
+		fromfrom = {
+			set_star_flag = mygo_tour_contract_issued@root
+		}
+	}
+
+	on_accept = {
+		prev = { set_country_flag = mygo_contract_active }
+		begin_event_chain = {
+			event_chain = contract_mygo_tour_chain
+			target = root
+		}
+		set_variable = { which = mygo_tour_stops_completed value = 0 }
+		prev = {
+			country_event = { id = mygo.635 scopes = { from = root } }
+		}
+		if = {
+			limit = { prev = { has_country_flag = mygo_popipa } }
+			country_event = { id = mygo.609 days = 1 }
+			country_event = { id = mygo.600 days = 3 }
+		}
+		else_if = {
+			limit = { prev = { has_country_flag = mygo_morfonica } }
+			country_event = { id = mygo.618 days = 1 }
+			country_event = { id = mygo.600 days = 3 }
+		}
+		else_if = {
+			limit = { prev = { has_country_flag = mygo_tsukinomori } }
+			country_event = { id = mygo.621 days = 1 }
+			country_event = { id = mygo.600 days = 3 }
+		}
+		else = {
+			country_event = { id = mygo.600 days = 1 }
+		}
+	}
+
+	on_success = {
+		if = {
+			limit = { exists = root }
+			cruise_contract_scaling_reward_effect = { TRADE = 2000 }
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier2unityreward
+				min = @tier2unitymin
+				max = @tier2unitymax
+			}
+			add_resource = { influence = @opinion_contract_small }
+			custom_tooltip = trust5
+			custom_tooltip = opinion50
+			hidden_effect = {
+				prev = {
+					add_opinion_modifier = {
+						modifier = opinion_completed_contract_small
+						who = root
+					}
+					add_trust = {
+						amount = 10
+						who = root
+					}
+					add_modifier = {
+						modifier = mygo_contract_tour_issuer
+						years = 5
+					}
+					mygo_check_tour_country_completion = yes
+					remove_country_flag = mygo_contract_active
+					remove_country_flag = mygo_tour_contract_open
+				}
+				clear_variable = mygo_tour_stops_completed
+				remove_country_flag = mygo_tour_skip_route_complete_event
+				remove_country_flag = mygo_tour_style_old
+				remove_country_flag = mygo_tour_style_new
+				remove_country_flag = mygo_tour_style_experimental
+			}
+		}
+		else = {
+			remove_country_flag = mygo_contract_active
+			remove_country_flag = mygo_tour_contract_open
+		}
+	}
+
+	on_cancel = {
+		if = {
+			limit = { exists = root }
+			end_event_chain = contract_mygo_tour_chain
+			prev = {
+				add_opinion_modifier = {
+					modifier = opinion_failed_contract_small
+					who = root
+				}
+				remove_country_flag = mygo_contract_active
+				remove_country_flag = mygo_tour_contract_open
+			}
+			remove_point_of_interest = mygo_tour_stop_poi
+			clear_variable = mygo_tour_stops_completed
+			remove_country_flag = mygo_tour_skip_route_complete_event
+			random_galaxy_planet = {
+				limit = { has_carrier_flag = mygo_tour_current_stop@root }
+				remove_carrier_flag = mygo_tour_current_stop@root
+				solar_system = { remove_star_flag = mygo_tour_current_system@root }
+			}
+			remove_country_flag = mygo_tour_style_old
+			remove_country_flag = mygo_tour_style_new
+			remove_country_flag = mygo_tour_style_experimental
+		}
+	}
+
+	on_stop = {
+		if = {
+			limit = { exists = root }
+			hidden_effect = {
+				abort_special_project = { type = MYGO_CONTRACT_TOUR_PROJECT }
+				end_event_chain = contract_mygo_tour_chain
+				prev = {
+					remove_country_flag = mygo_contract_active
+					remove_country_flag = mygo_tour_contract_open
+				}
+				remove_point_of_interest = mygo_tour_stop_poi
+				clear_variable = mygo_tour_stops_completed
+				remove_country_flag = mygo_tour_skip_route_complete_event
+				fromfrom = {
+					remove_star_flag = mygo_tour_contract_issued@root
+				}
+				random_galaxy_planet = {
+					limit = { has_carrier_flag = mygo_tour_current_stop@root }
+					remove_carrier_flag = mygo_tour_current_stop@root
+					solar_system = { remove_star_flag = mygo_tour_current_system@root }
+				}
+				remove_country_flag = mygo_tour_style_old
+				remove_country_flag = mygo_tour_style_new
+				remove_country_flag = mygo_tour_style_experimental
+			}
+		}
+		else = {
+			remove_country_flag = mygo_contract_active
+			remove_country_flag = mygo_tour_contract_open
+		}
+	}
+
+	ai_weight = {
+		weight = 2
+		modifier = {
+			factor = 3
+			fromfrom = { has_country_flag = mygo_tsukinomori }
+		}
+	}
+}

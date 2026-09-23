@@ -1,0 +1,21 @@
+fleet_event = {
+	id = mygo.1309
+	title = mygo_three.9.name
+	desc = mygo_three.9.desc
+	picture = GFX_evt_synth_sabotage
+	show_sound = event_power_down
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = { from = { set_site_progress_locked = yes } }
+	after = { from = { set_site_progress_locked = no } }
+
+	option = {
+		name = mygo_three.9.a
+		owner = {
+			mygo_collect_stardust_beacon = yes
+			set_country_flag = mygo_relic_black_gold
+			mygo_reveal_next_stardust_signal = yes
+		}
+	}
+}

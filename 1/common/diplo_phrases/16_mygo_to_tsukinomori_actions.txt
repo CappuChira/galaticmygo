@@ -1,0 +1,191 @@
+# MyGO speaking to Tsukinomori. FROM is the acting country in propose slots;
+# ROOT is the responding country in consider/accept/refuse slots.
+
+action_declare_war = {
+	propose = {
+		MYGO_TO_TSUKINOMORI_DOW_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } }
+		}
+	}
+	accept = {
+		MYGO_TO_TSUKINOMORI_DOW_ACCEPT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } }
+		}
+	}
+}
+
+action_offer_peace = {
+	consider = {
+		MYGO_TO_TSUKINOMORI_PEACE_CONSIDER_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } }
+		}
+	}
+	propose = {
+		MYGO_TO_TSUKINOMORI_PEACE_PROPOSE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } }
+		}
+	}
+	accept = {
+		MYGO_TO_TSUKINOMORI_PEACE_ACCEPT_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } }
+		}
+	}
+	refuse = {
+		MYGO_TO_TSUKINOMORI_PEACE_DECLINE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } }
+		}
+	}
+}
+
+action_offer_trade_deal = {
+	propose = {
+		MYGO_TO_TSUKINOMORI_TRADE_PROPOSE_01 = {
+			only_for_trade = yes
+			weight = { weight = 100000000 }
+			trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } }
+		}
+	
+		MYGO_TO_TSUKINOMORI_GIFT_PROPOSE_01 = {
+			only_for_gift = yes
+			weight = { weight = 100000000 }
+			trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } }
+		}}
+	consider = {
+		MYGO_TO_TSUKINOMORI_TRADE_CONSIDER_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } }
+		}
+	}
+	accept = {
+		MYGO_TO_TSUKINOMORI_GIFT_ACCEPT_01 = {
+			only_for_gift = yes
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } }
+		}
+		MYGO_TO_TSUKINOMORI_TRADE_ACCEPT_01 = {
+			only_for_trade = yes
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } }
+		}
+	}
+	refuse = {
+		MYGO_TO_TSUKINOMORI_TRADE_DECLINE_01 = {
+			weight = { weight = 100000000 }
+			trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } }
+		}
+	}
+}
+
+action_open_borders = {
+	propose = { MYGO_TO_TSUKINOMORI_OPEN_BORDERS_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_close_borders = {
+	propose = { MYGO_TO_TSUKINOMORI_CLOSE_BORDERS_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+
+action_embassy = {
+	accept = { MYGO_TO_TSUKINOMORI_EMBASSY_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+	refuse = { MYGO_TO_TSUKINOMORI_EMBASSY_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_recall_embassy = {
+	propose = { MYGO_TO_TSUKINOMORI_RECALL_EMBASSY_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+
+action_form_research_agreement = {
+	propose = { MYGO_TO_TSUKINOMORI_RESEARCH_PROPOSE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+	accept = { MYGO_TO_TSUKINOMORI_RESEARCH_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+	refuse = { MYGO_TO_TSUKINOMORI_RESEARCH_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_break_research_agreement = {
+	propose = { MYGO_TO_TSUKINOMORI_RESEARCH_BREAK_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+
+action_form_commercial_pact = {
+	accept = { MYGO_TO_TSUKINOMORI_COMMERCIAL_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+	refuse = { MYGO_TO_TSUKINOMORI_COMMERCIAL_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_break_commercial_pact = {
+	propose = { MYGO_TO_TSUKINOMORI_COMMERCIAL_BREAK_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+
+action_form_migration_pact = {
+	propose = { MYGO_TO_TSUKINOMORI_MIGRATION_PROPOSE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+	accept = { MYGO_TO_TSUKINOMORI_MIGRATION_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+	refuse = { MYGO_TO_TSUKINOMORI_MIGRATION_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_break_migration_pact = {
+	propose = { MYGO_TO_TSUKINOMORI_MIGRATION_BREAK_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+
+action_form_non_aggression_pact = {
+	accept = { MYGO_TO_TSUKINOMORI_NAP_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+	refuse = { MYGO_TO_TSUKINOMORI_NAP_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_break_non_aggression_pact = {
+	propose = { MYGO_TO_TSUKINOMORI_NAP_BREAK_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_form_defensive_pact = {
+	accept = { MYGO_TO_TSUKINOMORI_DEFENSIVE_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+	refuse = { MYGO_TO_TSUKINOMORI_DEFENSIVE_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_break_defensive_pact = {
+	propose = { MYGO_TO_TSUKINOMORI_DEFENSIVE_BREAK_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+
+action_invite_to_federation = {
+	propose = { MYGO_TO_TSUKINOMORI_FEDERATION_INVITE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+	accept = { MYGO_TO_TSUKINOMORI_FEDERATION_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+	refuse = { MYGO_TO_TSUKINOMORI_FEDERATION_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_leave_federation = {
+	propose = { MYGO_TO_TSUKINOMORI_FEDERATION_LEAVE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+
+action_form_waystation_pact = {
+	propose = { MYGO_TO_TSUKINOMORI_WAYSTATION_PROPOSE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+	accept = { MYGO_TO_TSUKINOMORI_WAYSTATION_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+	refuse = { MYGO_TO_TSUKINOMORI_WAYSTATION_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_break_waystation_pact = {
+	propose = { MYGO_TO_TSUKINOMORI_WAYSTATION_BREAK_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+
+action_demand_subjugation = {
+	propose = { MYGO_TO_TSUKINOMORI_SUBJUGATE_PROPOSE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+	accept = { MYGO_TO_TSUKINOMORI_BECOME_SUBJECT_ACCEPT_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+	refuse = { MYGO_TO_TSUKINOMORI_SUBJUGATE_DECLINE_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_ask_to_become_subjugated = {
+	accept = { MYGO_TO_TSUKINOMORI_ACCEPT_SUBJECT_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_release_subject = {
+	propose = { MYGO_TO_TSUKINOMORI_RELEASE_SUBJECT_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_ask_to_be_released_subject = {
+	propose = { MYGO_TO_TSUKINOMORI_ASK_RELEASE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_pledge_secret_fealty = {
+	propose = { MYGO_TO_TSUKINOMORI_SECRET_FEALTY_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+
+action_make_rival = {
+	propose = { MYGO_TO_TSUKINOMORI_RIVAL_PROPOSE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_end_rivalry = {
+	propose = { MYGO_TO_TSUKINOMORI_RIVAL_END_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_insult = {
+	propose = { MYGO_TO_TSUKINOMORI_INSULT_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_guarantee_independence = {
+	propose = { MYGO_TO_TSUKINOMORI_GUARANTEE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}
+action_support_independence = {
+	propose = { MYGO_TO_TSUKINOMORI_SUPPORT_INDEPENDENCE_01 = { weight = { weight = 100000000 } trigger = { FROM = { has_origin = origin_mygo_eternal_return } ROOT = { has_country_flag = mygo_tsukinomori } } } }
+}

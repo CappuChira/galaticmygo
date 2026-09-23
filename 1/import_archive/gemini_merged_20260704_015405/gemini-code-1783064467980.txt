@@ -1,0 +1,42 @@
+# 脚本调用效果 (scripted_effect)
+# unlock_taki_leader_effect = {
+#     add_leader = { name = "椎名立希" class = admiral type = military_officer }
+#     set_country_flag = taki_unlocked
+# }
+
+country_event = {
+    id = mygo.420
+    title = mygo_story.420.name
+    desc = mygo_story.420.desc
+    diplomatic = yes
+    picture_event_data = {
+        room = root
+    }
+    is_triggered_only = yes
+
+    trigger = {
+        has_origin = origin_mygo_eternal_return
+        NOT = { has_country_flag = mygo_story_420_seen }
+    }
+
+    immediate = {
+        set_country_flag = mygo_story_420_seen
+    }
+
+    # 选项A：常规询问 (不推进剧情)
+    option = {
+        name = mygo_story.420.a
+        response_text = mygo_story.420.a.response
+        is_dialog_only = yes
+    }
+
+    # 选项B：确认并结束汇报 (推进剧情，解锁立希)
+    option = {
+        name = mygo_story.420.b
+        response_text = mygo_story.420.b.response
+        default_hide_option = yes
+        hidden_effect = {
+            unlock_taki_leader_effect = yes
+        }
+    }
+}

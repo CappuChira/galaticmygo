@@ -1,0 +1,42 @@
+# 脚本调用效果 (scripted_effect)
+# unlock_rana_leader_effect = {
+#     add_leader = { name = "要乐奈" class = scientist type = explorer }
+#     set_country_flag = rana_unlocked
+# }
+
+country_event = {
+	id = mygo.425
+	title = mygo_story.425.name
+	desc = mygo_story.425.desc
+	diplomatic = yes
+	picture_event_data = {
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		NOT = { has_country_flag = mygo_story_425_seen }
+	}
+
+	immediate = {
+		set_country_flag = mygo_story_425_seen
+	}
+
+	# 选项A：尝试沟通 (不推进剧情)
+	option = {
+		name = mygo_story.425.a
+		response_text = mygo_story.425.a.response
+		is_dialog_only = yes
+	}
+
+	# 选项B：无奈放任，编入序列 (推进剧情，解锁乐奈)
+	option = {
+		name = mygo_story.425.b
+		response_text = mygo_story.425.b.response
+		default_hide_option = yes
+		hidden_effect = {
+			unlock_rana_leader_effect = yes
+		}
+	}
+}

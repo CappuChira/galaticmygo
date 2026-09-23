@@ -1,0 +1,25 @@
+country_event = {
+    id = mygo.421
+    title = mygo_story.421.name
+    desc = mygo_story.421.desc
+    diplomatic = yes
+    picture_event_data = {
+        room = root
+    }
+    is_triggered_only = yes
+
+    trigger = {
+        has_origin = origin_mygo_eternal_return
+        NOT = { has_country_flag = mygo_story_421_seen }
+    }
+
+    immediate = {
+        set_country_flag = mygo_story_421_seen
+    }
+
+    # 选项A：结束自白
+    option = {
+        name = mygo_story.421.a
+        is_dialog_only = yes
+    }
+}

@@ -1,0 +1,290 @@
+namespace = mygo_resurrection
+
+# The death notification on_actions fire immediately before the leader object
+# is removed. Each mourning event records the character on the country, then
+# schedules the corresponding canonical leader recreation seven days later.
+
+# Nagasaki Soyo: mourning
+country_event = {
+	id = mygo_resurrection.1
+	title = mygo_resurrection.1.name
+	desc = mygo_resurrection.1.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = soyo_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		exists = from
+		from = { has_leader_flag = mygo_story_soyo }
+		NOT = { has_country_flag = mygo_soyo_resurrection_pending }
+	}
+
+	immediate = {
+		set_country_flag = mygo_soyo_resurrection_pending
+		country_event = { id = mygo_resurrection.2 days = 7 }
+	}
+
+	option = {
+		name = mygo_resurrection.mourn
+	}
+}
+
+# Nagasaki Soyo: resurrection
+country_event = {
+	id = mygo_resurrection.2
+	title = mygo_resurrection.2.name
+	desc = mygo_resurrection.2.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = soyo_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = mygo_soyo_resurrection_pending
+	}
+
+	immediate = {
+		remove_country_flag = mygo_story_soyo_recruited
+		mygo_story_grant_soyo_official = yes
+		remove_country_flag = mygo_soyo_resurrection_pending
+	}
+
+	option = {
+		name = mygo_resurrection.welcome_back
+	}
+}
+
+# Takamatsu Tomori: mourning
+country_event = {
+	id = mygo_resurrection.3
+	title = mygo_resurrection.3.name
+	desc = mygo_resurrection.3.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		exists = from
+		from = { has_leader_flag = mygo_story_tomori }
+		NOT = { has_country_flag = mygo_tomori_resurrection_pending }
+	}
+
+	immediate = {
+		set_country_flag = mygo_tomori_resurrection_pending
+		country_event = { id = mygo_resurrection.4 days = 7 }
+	}
+
+	option = {
+		name = mygo_resurrection.mourn
+	}
+}
+
+# Takamatsu Tomori: resurrection
+country_event = {
+	id = mygo_resurrection.4
+	title = mygo_resurrection.4.name
+	desc = mygo_resurrection.4.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = tomori_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = mygo_tomori_resurrection_pending
+	}
+
+	immediate = {
+		remove_country_flag = mygo_story_tomori_recruited
+		mygo_story_grant_tomori_scientist = yes
+		remove_country_flag = mygo_tomori_resurrection_pending
+	}
+
+	option = {
+		name = mygo_resurrection.welcome_back
+	}
+}
+
+# Kaname Rana: mourning
+country_event = {
+	id = mygo_resurrection.5
+	title = mygo_resurrection.5.name
+	desc = mygo_resurrection.5.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = rana_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		exists = from
+		from = { has_leader_flag = mygo_story_rana }
+		NOT = { has_country_flag = mygo_rana_resurrection_pending }
+	}
+
+	immediate = {
+		set_country_flag = mygo_rana_resurrection_pending
+		country_event = { id = mygo_resurrection.6 days = 7 }
+	}
+
+	option = {
+		name = mygo_resurrection.mourn
+	}
+}
+
+# Kaname Rana: resurrection
+country_event = {
+	id = mygo_resurrection.6
+	title = mygo_resurrection.6.name
+	desc = mygo_resurrection.6.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = rana_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = mygo_rana_resurrection_pending
+	}
+
+	immediate = {
+		remove_country_flag = mygo_story_rana_recruited
+		mygo_story_grant_rana_scientist = yes
+		remove_country_flag = mygo_rana_resurrection_pending
+	}
+
+	option = {
+		name = mygo_resurrection.welcome_back
+	}
+}
+
+# Shiina Taki: mourning
+country_event = {
+	id = mygo_resurrection.7
+	title = mygo_resurrection.7.name
+	desc = mygo_resurrection.7.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = taki_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+		exists = from
+		from = { has_leader_flag = mygo_story_taki }
+		NOT = { has_country_flag = mygo_taki_resurrection_pending }
+	}
+
+	immediate = {
+		set_country_flag = mygo_taki_resurrection_pending
+		country_event = { id = mygo_resurrection.8 days = 7 }
+	}
+
+	option = {
+		name = mygo_resurrection.mourn
+	}
+}
+
+# Shiina Taki: resurrection
+country_event = {
+	id = mygo_resurrection.8
+	title = mygo_resurrection.8.name
+	desc = mygo_resurrection.8.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = taki_leader_mygo_portrait
+		room = root
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = mygo_taki_resurrection_pending
+	}
+
+	immediate = {
+		remove_country_flag = mygo_story_taki_recruited
+		mygo_story_grant_taki_commander = yes
+		remove_country_flag = mygo_taki_resurrection_pending
+	}
+
+	option = {
+		name = mygo_resurrection.welcome_back
+	}
+}
+
+# Manual fallback from the internal communications menu. This deliberately
+# ignores the persistent recruited flags, but only recreates characters that
+# are not currently in the player's owned-leader list. Do not include Anon:
+# her portrait can be restored manually, but she is not part of this system.
+country_event = {
+	id = mygo_resurrection.9
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_mygo_eternal_return
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_country_flag = mygo_story_soyo_recruited
+				NOT = {
+					any_owned_leader = { has_leader_flag = mygo_story_soyo }
+				}
+			}
+			remove_country_flag = mygo_story_soyo_recruited
+			mygo_story_grant_soyo_official = yes
+			remove_country_flag = mygo_soyo_resurrection_pending
+		}
+		if = {
+			limit = {
+				has_country_flag = mygo_story_tomori_recruited
+				NOT = {
+					any_owned_leader = { has_leader_flag = mygo_story_tomori }
+				}
+			}
+			remove_country_flag = mygo_story_tomori_recruited
+			mygo_story_grant_tomori_scientist = yes
+			remove_country_flag = mygo_tomori_resurrection_pending
+		}
+		if = {
+			limit = {
+				has_country_flag = mygo_story_rana_recruited
+				NOT = {
+					any_owned_leader = { has_leader_flag = mygo_story_rana }
+				}
+			}
+			remove_country_flag = mygo_story_rana_recruited
+			mygo_story_grant_rana_scientist = yes
+			remove_country_flag = mygo_rana_resurrection_pending
+		}
+		if = {
+			limit = {
+				has_country_flag = mygo_story_taki_recruited
+				NOT = {
+					any_owned_leader = { has_leader_flag = mygo_story_taki }
+				}
+			}
+			remove_country_flag = mygo_story_taki_recruited
+			mygo_story_grant_taki_commander = yes
+			remove_country_flag = mygo_taki_resurrection_pending
+		}
+	}
+}

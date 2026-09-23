@@ -1,0 +1,45 @@
+# Special band-country greetings while either side is a subject.
+
+greetings = {
+	MYGO_POPIPA_SUBJECT_GREETING_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_popipa FROM = { has_origin = origin_mygo_eternal_return is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_POPIPA_SUBJECT_GREETING_02 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_popipa FROM = { has_origin = origin_mygo_eternal_return is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_POPIPA_SUBJECT_GREETING_03 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_popipa FROM = { has_origin = origin_mygo_eternal_return is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_POPIPA_OVERLORD_GREETING_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_popipa FROM = { has_origin = origin_mygo_eternal_return } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_POPIPA_OVERLORD_GREETING_02 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_popipa FROM = { has_origin = origin_mygo_eternal_return } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_POPIPA_OVERLORD_GREETING_03 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_popipa FROM = { has_origin = origin_mygo_eternal_return } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+
+	MYGO_TO_POPIPA_OVERLORD_GREETING_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_POPIPA_OVERLORD_GREETING_02 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_POPIPA_OVERLORD_GREETING_03 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_POPIPA_SUBJECT_GREETING_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_POPIPA_SUBJECT_GREETING_02 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_POPIPA_SUBJECT_GREETING_03 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_popipa is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+
+	MYGO_MORFONICA_SUBJECT_GREETING_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_MORFONICA_SUBJECT_GREETING_02 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_MORFONICA_SUBJECT_GREETING_03 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_MORFONICA_OVERLORD_GREETING_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_MORFONICA_OVERLORD_GREETING_02 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_MORFONICA_OVERLORD_GREETING_03 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_morfonica FROM = { has_origin = origin_mygo_eternal_return } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+
+	MYGO_TO_MORFONICA_OVERLORD_GREETING_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_morfonica } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_MORFONICA_OVERLORD_GREETING_02 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_morfonica } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_MORFONICA_OVERLORD_GREETING_03 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_morfonica } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_MORFONICA_SUBJECT_GREETING_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_morfonica is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_MORFONICA_SUBJECT_GREETING_02 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_morfonica is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_MORFONICA_SUBJECT_GREETING_03 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_morfonica is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+
+	MYGO_TSUKINOMORI_SUBJECT_GREETING_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_tsukinomori FROM = { has_origin = origin_mygo_eternal_return is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_TSUKINOMORI_SUBJECT_GREETING_02 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_tsukinomori FROM = { has_origin = origin_mygo_eternal_return is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_TSUKINOMORI_SUBJECT_GREETING_03 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_tsukinomori FROM = { has_origin = origin_mygo_eternal_return is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_TSUKINOMORI_OVERLORD_GREETING_01 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_tsukinomori FROM = { has_origin = origin_mygo_eternal_return } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_TSUKINOMORI_OVERLORD_GREETING_02 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_tsukinomori FROM = { has_origin = origin_mygo_eternal_return } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_TSUKINOMORI_OVERLORD_GREETING_03 = { weight = { weight = 100000000 } trigger = { has_country_flag = mygo_tsukinomori FROM = { has_origin = origin_mygo_eternal_return } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+
+	MYGO_TO_TSUKINOMORI_OVERLORD_GREETING_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_TSUKINOMORI_OVERLORD_GREETING_02 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_TSUKINOMORI_OVERLORD_GREETING_03 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori } is_overlord_to = FROM NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_TSUKINOMORI_SUBJECT_GREETING_01 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_TSUKINOMORI_SUBJECT_GREETING_02 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+	MYGO_TO_TSUKINOMORI_SUBJECT_GREETING_03 = { weight = { weight = 100000000 } trigger = { has_origin = origin_mygo_eternal_return FROM = { has_country_flag = mygo_tsukinomori is_overlord_to = ROOT } NOT = { is_at_war_with = FROM } } }
+}

@@ -1,0 +1,101 @@
+mygo_stardust_signal_system_initializer = {
+	name = "NAME_mygo_stardust_signal_system"
+	class = sc_f
+
+	planet = {
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 25
+		has_ring = no
+	}
+
+	planet = {
+		class = pc_barren_cold
+		orbit_distance = 40
+		orbit_angle = 120
+		size = 18
+		has_ring = no
+		flags = { mygo_stardust_signal_planet_flag }
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+		}
+	}
+
+	planet = {
+		class = pc_barren
+		orbit_distance = 25
+		orbit_angle = 210
+		size = 12
+		has_ring = no
+	}
+}
+
+mygo_popy_rest_stop_system_initializer = {
+	name = "NAME_mygo_popy_rest_stop_system"
+	class = sc_f
+	flags = { mygo_popy_rest_stop_system }
+
+	planet = {
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 27
+		has_ring = no
+	}
+
+	# Archaeological sites require a planetary carrier. This asteroid represents
+	# the station's shattered central ring while the event art carries the station view.
+	planet = {
+		name = "NAME_mygo_popy_rest_stop"
+		class = pc_asteroid
+		orbit_distance = 42
+		orbit_angle = 110
+		size = 9
+		has_ring = no
+		flags = { mygo_popy_rest_stop_carrier }
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+		}
+	}
+
+	planet = {
+		class = pc_barren
+		orbit_distance = 28
+		orbit_angle = 225
+		size = 13
+		has_ring = no
+	}
+}
+
+# Used only when an empire-home Sol prevents the wild Sol from being reused.
+# Keep all vanilla Sol/Earth flags and sol_system_earth off this fallback.
+mygo_earth_tomb_fallback_system_initializer = {
+	name = "NAME_Sol"
+	class = sc_g
+	flags = { mygo_earth_tomb_fallback_system }
+
+	planet = {
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 30
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_Earth"
+		class = pc_nuked
+		orbit_distance = 48
+		orbit_angle = 120
+		size = 18
+		has_ring = no
+		flags = { mygo_earth_tomb_fallback_planet }
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+		}
+	}
+}

@@ -1,0 +1,115 @@
+councilor_mygo_star_seekers = {
+	leader_class = { scientist commander }
+
+	civic = civic_mygo_star_seekers
+
+	is_leader_possible = {
+		OR = {
+			leader_class = commander
+			leader_class = scientist
+		}
+	}
+
+	modifier = {
+		science_ship_survey_speed = 0.02
+		ship_speed_mult = 0.015
+	}
+
+	icon = "GFX_icon_councilor_research"
+	ai_hiring_weight = {
+		inline_script = councilor_leader_weights
+	}
+}
+
+councilor_mygo_internal_affairs = {
+	leader_class = { official }
+
+	possible = {
+		has_origin = origin_mygo_eternal_return
+	}
+
+	is_leader_possible = {
+		leader_class = official
+	}
+
+	modifier = {
+		country_unity_produces_mult = 0.02
+		planet_jobs_produces_mult = 0.01
+	}
+
+	icon = "GFX_icon_councilor_state"
+	ai_hiring_weight = {
+		inline_script = councilor_leader_weights
+	}
+	ai_priority = 2
+}
+
+councilor_mygo_stardust_archivist = {
+	leader_class = { scientist }
+
+	possible = {
+		has_origin = origin_mygo_eternal_return
+	}
+
+	is_leader_possible = {
+		leader_class = scientist
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.02
+		ship_archaeological_site_excavation_speed_mult = 0.03
+	}
+
+	icon = "GFX_icon_councilor_research"
+	ai_hiring_weight = {
+		inline_script = councilor_leader_weights
+	}
+	ai_priority = 2
+}
+
+councilor_mygo_fleet_rhythm = {
+	leader_class = { commander }
+
+	possible = {
+		has_origin = origin_mygo_eternal_return
+	}
+
+	is_leader_possible = {
+		leader_class = commander
+	}
+
+	modifier = {
+		ship_fire_rate_mult = 0.02
+		ships_upkeep_mult = -0.01
+	}
+
+	icon = "GFX_icon_councilor_defense"
+	ai_hiring_weight = {
+		inline_script = councilor_leader_weights
+	}
+	ai_priority = 2
+}
+
+councilor_mygo_free_scout = {
+	leader_class = { scientist }
+
+	possible = {
+		has_origin = origin_mygo_eternal_return
+	}
+
+	is_leader_possible = {
+		leader_class = scientist
+	}
+
+	modifier = {
+		science_ship_survey_speed = 0.03
+		ship_speed_mult = 0.02
+		ship_anomaly_generation_chance_mult = 0.02
+	}
+
+	icon = "GFX_icon_councilor_research"
+	ai_hiring_weight = {
+		inline_script = councilor_leader_weights
+	}
+	ai_priority = 2
+}

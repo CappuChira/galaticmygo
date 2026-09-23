@@ -1,0 +1,97 @@
+# ==========================================
+# 阶段一：全景舷窗外的异象
+# ==========================================
+country_event = {
+	id = mygo.480
+	title = mygo_story.480.name
+	desc = mygo_story.480.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.480.a
+		response_text = mygo_story.480.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.480.b
+		response_text = mygo_story.480.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.480.c
+		response_text = mygo_story.480.c.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.481 } }
+	}
+}
+
+# ==========================================
+# 阶段二：小灯的执着与星尘眼泪
+# ==========================================
+country_event = {
+	id = mygo.481
+	title = mygo_story.481.name
+	desc = mygo_story.481.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.481.a
+		response_text = mygo_story.481.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.481.b
+		response_text = mygo_story.481.b.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.482 } }
+	}
+}
+
+# ==========================================
+# 阶段三：野猫与落灰的吉他
+# ==========================================
+country_event = {
+	id = mygo.482
+	title = mygo_story.482.name
+	desc = mygo_story.482.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.482.a
+		response_text = mygo_story.482.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = mygo_story.482.b
+		response_text = mygo_story.482.b.response
+		default_hide_option = yes
+		hidden_effect = { country_event = { id = mygo.483 } }
+	}
+}
+
+# ==========================================
+# 阶段四：真空中无声的流星雨
+# ==========================================
+country_event = {
+	id = mygo.483
+	title = mygo_story.483.name
+	desc = mygo_story.483.desc
+	diplomatic = yes
+	picture_event_data = { room = root }
+	is_triggered_only = yes
+
+	option = {
+		name = mygo_story.483.a
+		response_text = mygo_story.483.a.response
+		hidden_effect = {
+			# 完美的心理治愈，全舰居民幸福度大幅度回升（用增加凝聚力呈现）
+			add_resource = { unity = 200 }
+		}
+	}
+}

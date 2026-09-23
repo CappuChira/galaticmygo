@@ -1,0 +1,136 @@
+on_game_start_country = {
+	events = {
+		mygo.1
+		mygo.298
+		mygo.3
+	}
+}
+
+on_monthly_pulse_country = {
+	events = {
+		mygo.4
+		mygo.12
+		mygo.14
+		mygo.7
+		mygo.11
+		mygo.5
+		mygo.6
+		mygo.298
+		mygo.489
+		mygo.549
+		mygo.648
+		mygo.649
+		mygo.681
+		mygo_resolution.1
+	}
+}
+
+on_modification_completion = {
+	events = {
+		mygo.12
+	}
+}
+
+on_subspecies_integration_complete = {
+	events = {
+		mygo.12
+	}
+}
+
+on_ruler_set = {
+	events = {
+		mygo.4
+	}
+}
+
+on_leader_death_notify = {
+	events = {
+		mygo_resurrection.1
+		mygo_resurrection.3
+		mygo_resurrection.5
+		mygo_resurrection.7
+	}
+}
+
+on_leader_death_no_notify = {
+	events = {
+		mygo_resurrection.1
+		mygo_resurrection.3
+		mygo_resurrection.5
+		mygo_resurrection.7
+	}
+}
+
+on_election_ended = {
+	events = {
+		mygo.4
+	}
+}
+
+on_custom_diplomacy = {
+	events = {
+		mygo.299
+	}
+}
+
+on_arkship_encamped = {
+	events = {
+		mygo.8
+	}
+}
+
+on_arkship_mobile = {
+	events = {
+		mygo.9
+	}
+}
+
+on_entering_system_fleet = {
+	events = {
+		mygo.488
+		mygo.634
+		mygo.637
+		mygo.638
+		mygo.639
+	}
+}
+
+on_war_beginning = {
+	events = {
+		mygo.610
+		mygo.622
+		mygo.628
+	}
+}
+
+on_war_won = {
+	events = {
+		mygo.612
+		mygo.624
+		mygo.630
+	}
+}
+
+on_war_lost = {
+	events = {
+		mygo.613
+		mygo.625
+		mygo.631
+	}
+}
+
+on_status_quo = {
+	events = {
+		mygo.614
+		mygo.626
+		mygo.632
+	}
+}
+
+on_status_quo_forced = {
+	events = {
+		mygo.614
+		mygo.626
+		mygo.632
+	}
+}

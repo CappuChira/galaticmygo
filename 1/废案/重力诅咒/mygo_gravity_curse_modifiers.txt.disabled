@@ -1,0 +1,28 @@
+mygo_gravity_curse_stage_1 = {
+	pop_happiness = -0.01
+	country_unity_produces_mult = -0.01
+}
+
+mygo_gravity_curse_stage_2 = {
+	pop_happiness = -0.02
+	country_unity_produces_mult = -0.02
+	all_technology_research_speed = -0.01
+}
+
+mygo_gravity_curse_stage_3 = {
+	pop_happiness = -0.03
+	country_unity_produces_mult = -0.03
+	all_technology_research_speed = -0.02
+}
+
+mygo_gravity_curse_stage_4 = {
+	pop_happiness = -0.04
+	country_unity_produces_mult = -0.04
+	all_technology_research_speed = -0.03
+}
+
+mygo_gravity_curse_stage_5 = {
+	pop_happiness = -0.05
+	country_unity_produces_mult = -0.05
+	all_technology_research_speed = -0.04
+}

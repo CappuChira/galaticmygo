@@ -1,0 +1,58 @@
+﻿REVIEW_OK mygo-reviewed-capital-visits.txt by LemueDuck
+READY_LOC mygo-reviewed-capital-visits.txt => mygo.637.name
+READY_LOC mygo-reviewed-capital-visits.txt => mygo.637.desc
+READY_LOC mygo-reviewed-capital-visits.txt => mygo.637.a
+READY_LOC mygo-reviewed-capital-visits.txt => mygo.638.name
+READY_LOC mygo-reviewed-capital-visits.txt => mygo.638.desc
+READY_LOC mygo-reviewed-capital-visits.txt => mygo.638.a
+READY_LOC mygo-reviewed-capital-visits.txt => mygo.639.name
+READY_LOC mygo-reviewed-capital-visits.txt => mygo.639.desc
+READY_LOC mygo-reviewed-capital-visits.txt => mygo.639.a
+IMPORT_LOC mygo-reviewed-capital-visits.txt => mygo.637.name
+IMPORT_LOC mygo-reviewed-capital-visits.txt => mygo.637.desc
+IMPORT_LOC mygo-reviewed-capital-visits.txt => mygo.637.a
+IMPORT_LOC mygo-reviewed-capital-visits.txt => mygo.638.name
+IMPORT_LOC mygo-reviewed-capital-visits.txt => mygo.638.desc
+IMPORT_LOC mygo-reviewed-capital-visits.txt => mygo.638.a
+IMPORT_LOC mygo-reviewed-capital-visits.txt => mygo.639.name
+IMPORT_LOC mygo-reviewed-capital-visits.txt => mygo.639.desc
+IMPORT_LOC mygo-reviewed-capital-visits.txt => mygo.639.a
+ARCHIVE mygo-reviewed-capital-visits.txt => C:\Users\LemueDuck\Documents\Paradox Interactive\Stellaris\mod\1\import_archive\reviewed_import_20260722_231701
+APPLY_OK
+MANUAL_CONNECT mygo.637-639 => on_entering_system_fleet
+TRIGGER_GUARD arkship/origin/communications/peace/original-capital/unoccupied/one-time
+MANUAL_REPLACE mygo.637-639 localisation => final user-edited review drafts
+MANUAL_PRESENTATION mygo.637-639 => Kasumi/Mashiro/Sakiko diplomatic portraits
+REVIEW_OK 01_WIP正式文本审核稿.md by LemueDuck
+MANUAL_REPLACE origin/preset/poi/comms localisation => reviewed WIP draft
+MANUAL_ADD mygo.300 Phase2/Tour character localisation => reviewed WIP draft
+MANUAL_CONNECT mygo.300-305 => Phase1/Phase2/Tour desc routing
+MANUAL_CONNECT NAME_mygo_internal_comms => custom diplomacy contact via mygo.299
+SELF_HEAL mygo.298 => create/reconnect Contacts entry for existing saves
+GATE mygo.298-300 => internal comms unlock after mygo_relic_string
+LEGACY_CLEANUP mygo.298 => remove premature contact from pre-beacon test saves
+MANUAL_REMOVE edict_mygo_open_comms => Contacts screen entry replaces edict
+STATIC_VALIDATE validate_mygo_mod.ps1 => ok
+REVISION mygo.671 => Sakiko choice first; double pressure war; all other combinations peaceful subject
+REVISION mygo.672 => preset_tributary; mygo.681 grants one-time 200 loyalty
+REVISION mygo.673 => 30-day delay; mygo.678 confirms subjugation war
+FIX mygo.681 => run in Tsukinomori subject scope and mirror vanilla random_agreement loyalty effect
+COMPAT mygo.681 => monthly one-time retry for existing peaceful-subject saves
+LOCALISATION mygo_story.678.a => dedicated reviewed-exempt transition option
+REVIEW_OK 01_四国臣属关系外交问候审核稿.md by LemueDuck
+MANUAL_ADD 36 subject/overlord greeting keys => 18_mygo_subject_greetings.txt
+TRIGGER_GUARD six ordinary greeting files => exclude both directions of subject relationship
+CORRECTION WIP正式文本审核稿 => replaced generated draft text with LemueDuck-edited review text
+WORKFLOW_RULE reviewed drafts => reread current file at merge time; never merge cached/generated version
+REVIEW_OK 01_四国命名库本地化审核稿.md by LemueDuck
+REREAD_CURRENT 01_四国命名库本地化审核稿.md => 235 reviewed ship/planet keys
+MANUAL_REPLACE mygo_names_l_simp_chinese.yml => 191 ship names and 44 planet names
+PRESERVE name list structure/prefixes/capital names => no gameplay key changes
+REVIEW_OK 丰川祥子_归来航路/01_归来航路事件链草稿.md by LemueDuck
+REVIEW_OK 丰川祥子_归来航路/02_董事会分支接线事件草稿.md by LemueDuck
+MANUAL_CONNECT mygo.649-680 => Earth Tomb/MyGO rename/Tsukinomori capital visit/contact/peace
+MANUAL_ADD MYGO_A3_A7_AUDIT_PROJECT => mygo.652 to mygo.653
+MANUAL_BRANCH mygo.659 => reconciliation/protectorate/subjugation war/Sakiko control
+MECHANICS preset_tributary/wg_subjugation/opinion_mygo_sakiko_reconciliation
+KEY_CORRECTION mygo_story.663/666/679 => mygo_story.659/664/677
+STATIC_VALIDATE validate_mygo_mod.ps1 => ok
