@@ -2,4 +2,6 @@
 .idea/
 *.zip
 *.exe
+*.mp4
+/.local-tools/
 

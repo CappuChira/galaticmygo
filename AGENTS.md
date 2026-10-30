@@ -162,6 +162,14 @@ powershell -ExecutionPolicy Bypass -File 1\tools\import_gemini_drafts.ps1
 
 ## 校验要求
 
+### 外部 Stellaris 工具（2026-10-11 接入）
+
+- 已配置项目级 MCP `rstellariscribe` 和 `rstellarisgui`，源码位于根目录 `.local-tools/`，不打包进 mod。操作方法、固定版本和已知限制见 `tools/stellaris/README.md`。
+- 脚本工作先用 Scribe 查询相关知识、打开 `1/` 工作区；修改后运行原有校验器，再用 `node tools/stellaris/run.mjs validate` 获取补充诊断。只检查现役加载内容，不能根据归档、废案或其他版本规则直接改游戏文件。
+- Gui 用于现有界面、素材注册和日志的检查与参考；本次工具接入不改变“不新建 GUI、不新增美术”的约束。生成器先 dry-run；文案写入仍遵守人工批准和导入预检规则。
+- 本机原版当前为 4.5.0，descriptor 为 4.4.*；Gui 的原版读取限定 4.4.x，不能绕过版本检查或把工具自检当成游戏内验收。Scribe 文档混有 4.1.7 与 4.4.x 口径，语法结论务必核对本机原版。
+- 当前会话未加载新 MCP 时，使用 `node tools/stellaris/run.mjs list scribe` / `list gui` 查看参数，再用 `call scribe|gui TOOL ARGS.json` 调用。不要将整个 mod 根目录交给 Gui 递归检查（会包含归档和废案）。
+
 每次修改后至少运行：
 
 ```powershell

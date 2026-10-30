@@ -1,6 +1,6 @@
 # 星际迷子：永恒归还
 
-Stellaris 4.4.x 的 MyGO 游牧国家 Mod。游戏内容位于 `1/`，本地启动描述文件为 `1.mod`。
+Stellaris 4.5.x 的 MyGO 游牧国家 Mod，当前 descriptor 版本为 `0.4.2`。游戏内容位于 `1/`，本地启动描述文件为 `1.mod`。
 
 ## 本地安装
 
